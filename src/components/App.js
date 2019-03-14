@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo } from '@fortawesome/free-solid-svg-icons'
-import AppRoutes from '../routes'
+import { faUserCircle, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 import Navbar from './ui/Navbar'
 import Sidebar from './ui/Sidebar'
 
-library.add(faIgloo)
+library.add( faUserCircle, faAddressBook)
 
 class App extends Component {
   render() {
@@ -16,7 +14,7 @@ class App extends Component {
         <div className="container-fluid">
           <div className="row">
             <Sidebar />
-            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+            <main role="main" className="col-md-10 ml-sm-auto col-lg-10 px-4">
               Main content
             </main>
           </div>
