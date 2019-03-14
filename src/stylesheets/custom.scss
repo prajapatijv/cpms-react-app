@@ -2,3 +2,15 @@
 
 // Import Bootstrap and its default variables
 @import '~bootstrap/scss/bootstrap.scss';
+
+
+//Extended 
+.cpms-list-item {
+    @extend .list-group-item;
+    border: 1px aliceblue solid;
+  }
+
+.cpms-button {
+    @extend .btn-outline-secondary;
+    border-color: aliceblue
+}

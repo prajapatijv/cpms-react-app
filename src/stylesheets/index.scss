@@ -1,3 +1,4 @@
+
 body {
   margin: 0;
   padding: 0;
@@ -19,6 +20,17 @@ code {
   height: 16px;
   vertical-align: text-bottom;
 }
+
+
+//Base Styles
+.full-height {
+  height: 100vh;
+}
+
+.right-border {
+  border-right: 1px aliceblue solid;
+}
+
 
 .sidebar {
   position: fixed;

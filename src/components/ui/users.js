@@ -2,20 +2,24 @@ import React from 'react';
 import User from './user'
 
 const UserComponent = () => 
-    <div className="row" >
-        <Users />
-        <User />
+    <div>
+        <h4>Users</h4>
+        <hr/>
+        <div className="row full-height py-0" >
+            <Users />
+            <User />
+        </div>
     </div>
 
 
 const Users = () => 
-    <div className="col-md-4">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">User 1</li>
-            <li class="list-group-item">User 2</li>
-            <li class="list-group-item">User 3</li>
-            <li class="list-group-item">User 14</li>
-            <li class="list-group-item">User 1201</li>
+    <div className="col-md-4 right-border">
+        <ul className="list-group list-group-flush">
+            <li className="cpms-list-item">User 1</li>
+            <li className="cpms-list-item">User 2</li>
+            <li className="cpms-list-item">User 3</li>
+            <li className="cpms-list-item">User 14</li>
+            <li className="cpms-list-item">User 1201</li>
         </ul>
     </div>
 
