@@ -1,7 +1,7 @@
 import React from 'react';
 import User from './user'
 
-const UserComponent = () => 
+const UserPage = () => 
     <div>
         <h4>Users</h4>
         <hr/>
@@ -23,4 +23,4 @@ const Users = () =>
         </ul>
     </div>
 
-export default UserComponent;
+export default UserPage;
