@@ -1,23 +1,24 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
             ADD_USER, SELECT_USER, 
             SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED } from './actions'
-/*
-initialState = {
+
+const initialState = {
     users:[],
     user:null,
     fetching:false,
     saving:false,
     errors:[]
-} */ 
+} 
 
-const users = (state={}, action) => {
+const users = (state=initialState, action) => {
 
     switch (action.type) {
         case FETCH_USERS:
-            return {...state, fetching:true }
+            return {...state, fetching:true , error:null}
         
         case FETCH_USERS_SUCCEED: {
-            return {...state, users:action.payload}
+            debugger
+            return {...state, fetching:false, users:action.payload }
         }
 
         case FETCH_USERS_FAILED: {
