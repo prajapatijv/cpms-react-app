@@ -9,7 +9,7 @@ import './stylesheets/index.scss';
 
 import configureStore from './configureStore'
 
-import App from './components/App';
+import App from './App';
 
 const store = configureStore({})
 
