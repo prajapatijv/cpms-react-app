@@ -1,15 +1,16 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
             ADD_USER, SELECT_USER, 
-            SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED } from './user-page-actions'
-
+            SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED } from './actions'
+/*
 initialState = {
     users:[],
     user:null,
     fetching:false,
     saving:false,
     errors:[]
-}            
-const userPageReducer = (state=initialState, action) => {
+} */ 
+
+const users = (state={}, action) => {
 
     switch (action.type) {
         case FETCH_USERS:
@@ -48,3 +49,5 @@ const userPageReducer = (state=initialState, action) => {
     }
 
 }
+
+export default users

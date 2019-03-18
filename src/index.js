@@ -11,7 +11,7 @@ import configureStore from './configureStore'
 
 import App from './components/App';
 
-const store = configureStore(null)
+const store = configureStore({})
 
 ReactDOM.render(
     <Provider store={store}>

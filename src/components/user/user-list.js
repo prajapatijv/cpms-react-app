@@ -1,19 +1,19 @@
 import React from 'react'
 import PageTitle from '../shared/page-title'
 import SearchBar from '../shared/search-bar'
-import User from './user'
+import UserForm from './user-form'
 
-const Users = () => 
+const UserList = () => 
     <div className="user-page">
         <PageTitle title="Users"></PageTitle>
         <div className="row full-height py-0" >
-            <UserList />
-            <User />
+            <UserLines />
+            <UserForm />
         </div>
     </div>
 
 
-const UserList = () => 
+const UserLines = () => 
     <div className="col-md-4 right-border">
         <SearchBar />
         <ul className="list-group list-group-flush">
@@ -25,4 +25,4 @@ const UserList = () =>
         </ul>
     </div>
 
-export default Users;
+export default UserList;
