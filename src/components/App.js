@@ -3,10 +3,10 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faUserCircle, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 import { Route , Switch } from "react-router-dom";
 
-import UserPage from './user/user-page'
+import UserPage from './user/users'
 
-import Navbar from './shared/Navbar'
-import Sidebar from './shared/Sidebar'
+import Navbar from './shared/navbar'
+import Sidebar from './shared/sidebar'
 
 
 library.add(faUserCircle, faAddressBook)
