@@ -10,8 +10,7 @@ class UserContainer extends Component {
     }
 
     componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(fetchUsers())
+        this.props.dispatch(fetchUsers())
     }
 
     render() {
@@ -21,15 +20,14 @@ class UserContainer extends Component {
 
 const mapStateToProps = (state, props) => {
     return {
-        users:state.users
     }
 }
 
 
 const mapStateToDispatch = (dispatch) => {
     return {
-        fetchUsers
+
     }
 }
 
-export default connect(mapStateToProps, mapStateToDispatch)(UserContainer)
+export default connect(mapStateToProps, null)(UserContainer)
