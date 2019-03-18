@@ -1,4 +1,5 @@
 import React from 'react'
+import ButtonBar from '../shared/ButtonBar'
 
 const User = () =>
     <div className="col-md-6">
@@ -27,10 +28,7 @@ const User = () =>
                 <input type="password" class="form-control" id="password" />
             </div>
             
-            <div class="btn-group  btn-group float-right" role="group" >
-                <button type="button" class="btn cpms-button">Cancel</button>
-                <button type="button" class="btn cpms-button">Save</button>
-            </div>
+            <ButtonBar />
         </form>
     </div>
 
