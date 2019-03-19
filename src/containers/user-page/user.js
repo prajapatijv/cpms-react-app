@@ -1,7 +1,7 @@
 import React , { Component } from 'react'
 import { connect } from 'react-redux'
 import UserList from '../../components/user/user-list'
-import {  fetchUsers } from './actions'
+import {  fetchUsers, selectUser } from './actions'
 
 class UserContainer extends Component {
 
@@ -14,7 +14,12 @@ class UserContainer extends Component {
     }
 
     render() {
-        return <UserList users={this.props.users}/>
+        const { users } = this.props
+        return <UserList users={users} onSelect={this.onSelect.bind(this)} />
+    }
+
+    onSelect = () => {
+        alert("1")
     }
 }
 
@@ -25,10 +30,8 @@ const mapStateToProps = (state, props) => {
 }
 
 
-const mapStateToDispatch = (dispatch) => {
-    return {
-
-    }
-}
+const mapStateToDispatch = (dispatch) => ({
+    onSelect: dispatch(selectUser)
+})
 
 export default connect(mapStateToProps, null)(UserContainer)

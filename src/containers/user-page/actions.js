@@ -12,17 +12,21 @@ export const SAVE_USER = 'SAVE_USER';
 export const SAVE_USER_SUCCEED = 'SAVE_USER_SUCCEED';
 export const SAVE_USER_FAILED = 'SAVE_USER_FAILED';
 
-export const fetchUsers = () => {
-    return dispatch => {
-        return axios.get('http://localhost:3333/api/users')   
-        .then(({data}) => {
-            dispatch(receiveUsers(data))
-        })
-        .catch(err => console.log(err))
-    }
+export const fetchUsers = () => dispatch => {
+    return axios.get('http://localhost:3333/api/users')   
+    .then(({data}) => {
+        dispatch(receiveUsers(data))
+    })
+    .catch(err => console.log(err))
 }
 
 const receiveUsers = (users) => ({
     type: FETCH_USERS_SUCCEED,
     payload: users
 });
+
+export const selectUser = () => {
+    return dispatch => {
+        dispatch({ type:SELECT_USER })
+    }
+}
