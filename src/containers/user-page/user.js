@@ -1,5 +1,6 @@
 import React , { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import UserList from '../../components/user/user-list'
 import {  fetchUsers, selectUser } from './actions'
 
@@ -10,28 +11,28 @@ class UserContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(fetchUsers())
+        this.props.fetchUsers()
     }
 
     render() {
-        const { users } = this.props
-        return <UserList users={users} onSelect={this.onSelect.bind(this)} />
-    }
-
-    onSelect = () => {
-        alert("1")
+        const { users, onSelectUser } = this.props
+        return <UserList users={users} onSelect={onSelectUser} />
     }
 }
 
-const mapStateToProps = (state, props) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         users: state.userState.users
     }
 }
 
 
-const mapStateToDispatch = (dispatch) => ({
-    onSelect: dispatch(selectUser)
-})
+const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(
+    {
+        fetchUsers: fetchUsers,
+        onSelectUser: selectUser
+    } 
+,dispatch)
 
-export default connect(mapStateToProps, null)(UserContainer)
+
+export default connect(mapStateToProps,mapDispatchToProps)(UserContainer)
