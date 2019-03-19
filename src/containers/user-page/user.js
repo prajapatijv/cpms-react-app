@@ -14,12 +14,13 @@ class UserContainer extends Component {
     }
 
     render() {
-        return <UserList />
+        return <UserList users={this.props.users}/>
     }
 }
 
 const mapStateToProps = (state, props) => {
     return {
+        users: state.userState.users
     }
 }
 

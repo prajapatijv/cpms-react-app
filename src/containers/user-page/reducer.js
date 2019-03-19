@@ -17,7 +17,6 @@ const users = (state=initialState, action) => {
             return {...state, fetching:true , error:null}
         
         case FETCH_USERS_SUCCEED: {
-            debugger
             return {...state, fetching:false, users:action.payload }
         }
 

@@ -3,25 +3,26 @@ import PageTitle from '../shared/page-title'
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 
-const UserList = () => 
+const UserList = ({ users }) => 
     <div className="user-page">
         <PageTitle title="Users"></PageTitle>
+        {console.log(users)}
         <div className="row full-height py-0" >
-            <UserLines />
+            <UserLines users={users} />
             <UserForm />
         </div>
     </div>
 
 
-const UserLines = () => 
+const UserLines = ({ users }) => 
     <div className="col-md-4 right-border">
         <SearchBar />
         <ul className="list-group list-group-flush">
-            <li className="cpms-list-item">User 1</li>
-            <li className="cpms-list-item">User 2</li>
-            <li className="cpms-list-item">User 3</li>
-            <li className="cpms-list-item">User 14</li>
-            <li className="cpms-list-item">User 1201</li>
+        {
+            users.map((user, i) => <
+                    li key={i} className="cpms-list-item">{user.firstName}</li>
+                )
+        }
         </ul>
     </div>
 

@@ -14,7 +14,6 @@ export const SAVE_USER_FAILED = 'SAVE_USER_FAILED';
 
 export const fetchUsers = () => {
     return dispatch => {
-        debugger
         return axios.get('http://localhost:3333/api/users')   
         .then(({data}) => {
             dispatch(receiveUsers(data))
