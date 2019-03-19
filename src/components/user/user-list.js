@@ -19,8 +19,8 @@ const UserLines = ({ users }) =>
         <SearchBar />
         <ul className="list-group list-group-flush">
         {
-            users.map((user, i) => <
-                    li key={i} className="cpms-list-item">{user.firstName}</li>
+            users.map((user, i) => 
+                   <button key={i} className="cpms-list-item list-group-item-action">{user.firstName}</button>
                 )
         }
         </ul>
