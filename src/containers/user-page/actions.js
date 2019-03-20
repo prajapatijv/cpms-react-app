@@ -8,6 +8,7 @@ export const ADD_USER = 'ADD_USER';
 export const SELECT_USER = 'SELECT_USER';
 export const SEARCH_USERS = 'SEARCH_USERS';
 
+export const CANCEL_USER = 'CANCEL_USER';
 export const SAVE_USER = 'SAVE_USER';
 export const SAVE_USER_SUCCEED = 'SAVE_USER_SUCCEED';
 export const SAVE_USER_FAILED = 'SAVE_USER_FAILED';
@@ -29,6 +30,14 @@ export const selectUser = (id) => {
         dispatch({ 
             type:SELECT_USER ,
             payload: id
+        })
+    }
+}
+
+export const cancelUser = () => {
+    return dispatch => {
+        dispatch({ 
+            type:CANCEL_USER
         })
     }
 }

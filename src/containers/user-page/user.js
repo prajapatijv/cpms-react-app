@@ -2,8 +2,7 @@ import React , { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import UserList from '../../components/user/user-list'
-import {  fetchUsers, selectUser } from './actions'
-import { stat } from 'fs';
+import * as userActionCreators from './actions'
 
 class UserContainer extends Component {
 
@@ -16,9 +15,12 @@ class UserContainer extends Component {
     }
 
     render() {
-        const { users, user, onSelectUser } = this.props
+        const { users, user, selectUser, cancelUser } = this.props
         
-        return <UserList users={users} user={user} onSelect= {onSelectUser } />
+        return <UserList users={users} user={user} 
+            onSelect= {selectUser}
+            onCancel= {cancelUser}
+        />
     }
 }
 
@@ -30,12 +32,7 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 
-const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(
-    {
-        fetchUsers: fetchUsers,
-        onSelectUser: selectUser
-    } 
-,dispatch)
+const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(userActionCreators, dispatch)
 
 
 export default connect(mapStateToProps,mapDispatchToProps)(UserContainer)

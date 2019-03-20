@@ -1,5 +1,5 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
-            ADD_USER, SELECT_USER, 
+            ADD_USER, SELECT_USER, CANCEL_USER,
             SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED } from './actions'
 
 const initialState = {
@@ -31,6 +31,10 @@ const users = (state=initialState, action) => {
         case SELECT_USER:{
             const user = state.users.find(u => u.id === action.payload)
             return {...state, user:user }
+        }
+
+        case CANCEL_USER:{
+            return {...state, user:null }
         }
 
         case SAVE_USER: {

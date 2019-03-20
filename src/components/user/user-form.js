@@ -1,7 +1,7 @@
 import React from 'react'
 import ButtonBar from '../shared/button-bar'
 
-const UserForm = ({user}) =>
+const UserForm = ({user , onCancel}) =>
     user &&
     <div className="col-md-6">
         <form className="needs-validation" noValidate="">
@@ -29,7 +29,7 @@ const UserForm = ({user}) =>
                 <input type="password" className="form-control" id="password" value={user.password}/>
             </div>
             
-            <ButtonBar />
+            <ButtonBar onCancel={onCancel}/>
         </form>
     </div>
 
