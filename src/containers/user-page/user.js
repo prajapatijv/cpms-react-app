@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import UserList from '../../components/user/user-list'
 import {  fetchUsers, selectUser } from './actions'
+import { stat } from 'fs';
 
 class UserContainer extends Component {
 
@@ -15,14 +16,16 @@ class UserContainer extends Component {
     }
 
     render() {
-        const { users, onSelectUser } = this.props
-        return <UserList users={users} onSelect={onSelectUser} />
+        const { users, user, onSelectUser } = this.props
+        
+        return <UserList users={users} user={user} onSelect= {onSelectUser } />
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        users: state.userState.users
+        users: state.userState.users,
+        user: state.userState.user
     }
 }
 

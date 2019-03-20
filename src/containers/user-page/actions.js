@@ -15,18 +15,20 @@ export const SAVE_USER_FAILED = 'SAVE_USER_FAILED';
 export const fetchUsers = () => dispatch => {
     return axios.get('http://localhost:3333/api/users')   
     .then(({data}) => {
-        dispatch(receiveUsers(data))
+        dispatch({    
+            type: FETCH_USERS_SUCCEED,
+            payload: data
+        })
     })
     .catch(err => console.log(err))
 }
 
-const receiveUsers = (users) => ({
-    type: FETCH_USERS_SUCCEED,
-    payload: users
-});
 
-export const selectUser = () => {
+export const selectUser = (id) => {
     return dispatch => {
-        dispatch({ type:SELECT_USER })
+        dispatch({ 
+            type:SELECT_USER ,
+            payload: id
+        })
     }
 }

@@ -1,9 +1,14 @@
 import React from 'react';
 
 const ButtonBar = () => 
-<div className="btn-group  btn-group float-right" role="group" >
-    <button type="button" className="btn cpms-button">Cancel</button>
-    <button type="button" className="btn cpms-button">Save</button>
+<div className="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+    <div className="btn-group" role="group" aria-label="Third group">
+        <button type="button" className="btn cpms-button">Delete</button>
+    </div>
+    <div className="btn-group  float-right" role="group" >
+        <button type="button" className="btn cpms-button">Cancel</button>
+        <button type="button" className="btn cpms-button">Save</button>
+    </div>
 </div>
 
 export default ButtonBar

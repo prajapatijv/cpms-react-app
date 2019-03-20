@@ -29,7 +29,8 @@ const users = (state=initialState, action) => {
         }
 
         case SELECT_USER:{
-            return {...state, user:{} }
+            const user = state.users.find(u => u.id === action.payload)
+            return {...state, user:user }
         }
 
         case SAVE_USER: {
