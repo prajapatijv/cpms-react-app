@@ -3,19 +3,19 @@ import PageTitle from '../shared/page-title'
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 
-const UserList = ({ users, user, onSelect , onCancel, onSave}) => 
+const UserList = ({ users, user, onSelect , onAdd, onCancel, onSave}) => 
     <div className="user-page">
         <PageTitle title="Users"></PageTitle>
         <div className="row full-height py-0" >
-            <UserLines users={users} onSelect={onSelect}/>
+            <UserLines users={users} onSelect={onSelect} onAdd={onAdd}/>
             <UserForm user={user} onCancel={onCancel} onSave={onSave} />
         </div>
     </div>
 
 
-const UserLines = ({ users , onSelect }) => 
+const UserLines = ({ users , onSelect, onAdd }) => 
     <div className="col-md-4 right-border">
-        <SearchBar />
+        <SearchBar onAdd={onAdd} />
         <ul className="list-group list-group-flush">
         {
             users.map((user) => 

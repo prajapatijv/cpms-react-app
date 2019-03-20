@@ -34,6 +34,14 @@ export const selectUser = (id) => {
     }
 }
 
+export const addUser = () => {
+    return dispatch => {
+        dispatch({ 
+            type:ADD_USER
+        })
+    }
+}
+
 export const cancelUser = () => {
     return dispatch => {
         dispatch({ 

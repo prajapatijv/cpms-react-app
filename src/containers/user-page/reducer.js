@@ -25,7 +25,7 @@ const users = (state=initialState, action) => {
         }
 
         case ADD_USER: {
-            return {...state, user:{} }
+            return {...state, user:{id:0} }
         }
 
         case SELECT_USER:{

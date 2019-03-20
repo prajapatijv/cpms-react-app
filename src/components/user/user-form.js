@@ -29,7 +29,7 @@ const UserForm = ({user , onCancel, onSave}) =>
                 <input type="password" className="form-control" id="password" value={user.password}/>
             </div>
             
-            <ButtonBar onCancel={onCancel} onSave={onSave}/>
+            <ButtonBar onCancel={onCancel} onSave={onSave} showDelete={user.id !== 0}/>
         </form>
     </div>
 
