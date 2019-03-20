@@ -3,12 +3,12 @@ import PageTitle from '../shared/page-title'
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 
-const UserList = ({ users, user, onSelect , onCancel}) => 
+const UserList = ({ users, user, onSelect , onCancel, onSave}) => 
     <div className="user-page">
         <PageTitle title="Users"></PageTitle>
         <div className="row full-height py-0" >
             <UserLines users={users} onSelect={onSelect}/>
-            <UserForm user={user} onCancel={onCancel} />
+            <UserForm user={user} onCancel={onCancel} onSave={onSave} />
         </div>
     </div>
 

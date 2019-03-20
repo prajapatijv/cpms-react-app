@@ -41,3 +41,14 @@ export const cancelUser = () => {
         })
     }
 }
+
+export const saveUser = (user) => dispatch => {
+    return axios.post('http://localhost:3333/api/users', user)   
+    .then(({data}) => {
+        dispatch({    
+            type: SAVE_USER_SUCCEED,
+            payload: data
+        })
+    })
+    .catch(err => console.log(err))
+}

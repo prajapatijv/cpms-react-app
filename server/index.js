@@ -17,4 +17,8 @@ app.get('/api/users', (req, res) =>
     res.status(200).json(users)
 )
 
+app.post('/api/users', (req, res) =>
+    res.status(200).json(users)
+)
+
 app.listen(port, () => console.log('CMPS app server running on port ' + port + ' with a ' + delay/1000 + ' second delay'))
