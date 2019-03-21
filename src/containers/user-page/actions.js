@@ -13,6 +13,10 @@ export const SAVE_USER = 'SAVE_USER';
 export const SAVE_USER_SUCCEED = 'SAVE_USER_SUCCEED';
 export const SAVE_USER_FAILED = 'SAVE_USER_FAILED';
 
+export const DELETE_USER = 'DELETE_USER';
+export const DELETE_USER_SUCCEED = 'DELETE_USER_SUCCEED';
+export const DELETE_USER_FAILED = 'DELETE_USER_FAILED';
+
 export const fetchUsers = () => dispatch => {
     return axios.get('http://localhost:3333/api/users')   
     .then(({data}) => {
@@ -51,11 +55,22 @@ export const cancelUser = () => {
 }
 
 export const saveUser = (user) => dispatch => {
+    debugger
     return axios.post('http://localhost:3333/api/users', user)   
     .then(({data}) => {
         dispatch({    
-            type: SAVE_USER_SUCCEED,
-            payload: data
+            type: SAVE_USER_SUCCEED
+        })
+    })
+    .catch(err => console.log(err))
+}
+
+export const deleteUser = (user) => dispatch => {
+    debugger
+    return axios.delete('http://localhost:3333/api/users', user.id)   
+    .then(({data}) => {
+        dispatch({    
+            type: DELETE_USER_SUCCEED
         })
     })
     .catch(err => console.log(err))

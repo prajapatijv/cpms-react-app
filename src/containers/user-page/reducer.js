@@ -1,6 +1,8 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
             ADD_USER, SELECT_USER, CANCEL_USER,
-            SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED } from './actions'
+            SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED,
+            DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCEED
+         } from './actions'
 
 const initialState = {
     users:[],
@@ -14,14 +16,14 @@ const users = (state=initialState, action) => {
 
     switch (action.type) {
         case FETCH_USERS:
-            return {...state, fetching:true , error:null}
+            return {...state, busy:true , error:null}
         
         case FETCH_USERS_SUCCEED: {
-            return {...state, fetching:false, users:action.payload }
+            return {...state, busy:false, users:action.payload }
         }
 
         case FETCH_USERS_FAILED: {
-            return {...state, fetching:false }
+            return {...state, busy:false }
         }
 
         case ADD_USER: {
@@ -38,16 +40,28 @@ const users = (state=initialState, action) => {
         }
 
         case SAVE_USER: {
-            return { ...state, saving: true }
+            return { ...state, busy: true }
         }
 
         case SAVE_USER_SUCCEED: {
-            return { ...state, saving: false }
+            return { ...state, busy: false }
         }
 
         case SAVE_USER_FAILED: {
-            return { ...state, saving: false }
+            return { ...state, busy: false }
         }
+
+        case DELETE_USER: {
+            return { ...state, busy: true }
+        }
+
+        case DELETE_USER_SUCCEED: {
+            return { ...state, busy: false }
+        }
+
+        case DELETE_USER_FAILED: {
+            return { ...state, busy: false }
+        }        
 
         default:
             return state;
