@@ -17,8 +17,10 @@ export const DELETE_USER = 'DELETE_USER';
 export const DELETE_USER_SUCCEED = 'DELETE_USER_SUCCEED';
 export const DELETE_USER_FAILED = 'DELETE_USER_FAILED';
 
+const API_URL = 'http://localhost:3333/api/users'
+
 export const fetchUsers = () => dispatch => {
-    return axios.get('http://localhost:3333/api/users')   
+    return axios.get(API_URL)   
     .then(({data}) => {
         dispatch({    
             type: FETCH_USERS_SUCCEED,
@@ -55,7 +57,7 @@ export const cancelUser = () => {
 }
 
 export const saveUser = (user) => dispatch => {
-    return axios.post('http://localhost:3333/api/users', user)   
+    return axios.post(API_URL, user)   
     .then(({data}) => {
         dispatch({    
             type: SAVE_USER_SUCCEED
@@ -65,10 +67,8 @@ export const saveUser = (user) => dispatch => {
 }
 
 export const deleteUser = (id) => dispatch => {
-    debugger
-    return axios.delete(`http://localhost:3333/api/users/{id}`)   
+    return axios.delete(`${API_URL}/${id}`)   
     .then(({data}) => {
-        debugger
         dispatch({    
             type: DELETE_USER_SUCCEED
         })

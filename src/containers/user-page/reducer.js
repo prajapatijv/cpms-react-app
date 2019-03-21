@@ -52,7 +52,7 @@ const users = (state=initialState, action) => {
         }
 
         case DELETE_USER: {
-            return { ...state, busy: true }
+            return {...state, busy:true }
         }
 
         case DELETE_USER_SUCCEED: {
