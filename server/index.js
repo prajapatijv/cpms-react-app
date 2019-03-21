@@ -8,19 +8,25 @@ const logger = (req, res, next) => {
     next()
 }
 
+const byFullNameName = criteria => user => {
+    if (criteria === undefined) {
+        return true
+    }
+    else  {
+        return user.firstName.toLowerCase().match(criteria.toLowerCase()) ||
+            user.lastName.toLowerCase().match(criteria.toLowerCase())
+    }
+}
+    
 const app = express()
     .use(logger)
     .use(cors())
     .use('/', express.static('./dist/img'));
 
-app.get('/api/users/(:criteria)', (req, res) =>
-    res.status(200).json(users)
-)
-
-app.get('/api/users/:name', (req, res) =>
+app.get('/api/users/:criteria?', (req, res) =>
     setTimeout(() =>
         res.status(200).json(
-            users.filter(byName(req.params.name))
+            users.filter(byFullNameName(req.params.criteria))
         )
     ,delay)
 )
