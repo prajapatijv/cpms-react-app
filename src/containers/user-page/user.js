@@ -11,7 +11,7 @@ class UserContainer extends Component {
     }
 
     componentDidMount() {
-        this.props.fetchUsers()
+        this.props.fetchUsers("")
     }
 
     render() {

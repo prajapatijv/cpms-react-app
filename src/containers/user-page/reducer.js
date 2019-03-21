@@ -1,5 +1,5 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
-            ADD_USER, SELECT_USER, CANCEL_USER,
+            ADD_USER, SELECT_USER, CANCEL_USER, SEARCH_USERS,
             SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED,
             DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCEED
          } from './actions'
@@ -18,6 +18,9 @@ const users = (state=initialState, action) => {
         case FETCH_USERS:
             return {...state, busy:true , error:null}
         
+        case SEARCH_USERS:
+            return {...state, criteria:action.payload , error:null}
+
         case FETCH_USERS_SUCCEED: {
             return {...state, busy:false, users:action.payload }
         }

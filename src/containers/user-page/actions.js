@@ -19,8 +19,8 @@ export const DELETE_USER_FAILED = 'DELETE_USER_FAILED';
 
 const API_URL = 'http://localhost:3333/api/users'
 
-export const fetchUsers = () => dispatch => {
-    return axios.get(API_URL)   
+export const fetchUsers = (criteria) => dispatch => {
+    return axios.get(`${API_URL}/${criteria}`)   
     .then(({data}) => {
         dispatch({    
             type: FETCH_USERS_SUCCEED,

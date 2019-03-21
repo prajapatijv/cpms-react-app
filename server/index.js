@@ -13,7 +13,7 @@ const app = express()
     .use(cors())
     .use('/', express.static('./dist/img'));
 
-app.get('/api/users', (req, res) =>
+app.get('/api/users/(:criteria)', (req, res) =>
     res.status(200).json(users)
 )
 
