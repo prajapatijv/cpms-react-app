@@ -13,7 +13,7 @@ const ButtonBar = ( { onCancel , showDelete, onDelete} ) =>
 const DeleteButton = ({showDelete, onDelete}) => 
     <div className="btn-group" role="group" aria-label="Delete">
         {showDelete ?
-         <button type="button" className="btn cpms-button" onClick={()=>onDelete()}>Delete</button> 
+         <button type="button" className="btn cpms-button" onClick={(id)=>onDelete(id)}>Delete</button> 
          : <div />
         }
     </div>
