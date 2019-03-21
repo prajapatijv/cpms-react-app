@@ -15,10 +15,11 @@ class UserContainer extends Component {
     }
 
     render() {
-        const { users, user, selectUser, addUser, cancelUser , saveUser, deleteUser} = this.props
+        const { users, user, selectUser, fetchUsers, addUser, cancelUser , saveUser, deleteUser} = this.props
         
         return <UserList users={users} user={user} 
             onSelect={selectUser}
+            onSearch={fetchUsers}
             onAdd={addUser}
             onCancel={cancelUser}
             onSave={saveUser}
