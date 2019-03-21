@@ -55,9 +55,9 @@ export const cancelUser = () => {
 }
 
 export const saveUser = (user) => dispatch => {
-    debugger
     return axios.post('http://localhost:3333/api/users', user)   
     .then(({data}) => {
+        debugger
         dispatch({    
             type: SAVE_USER_SUCCEED
         })
@@ -65,10 +65,11 @@ export const saveUser = (user) => dispatch => {
     .catch(err => console.log(err))
 }
 
-export const deleteUser = (user) => dispatch => {
+export const deleteUser = (id) => dispatch => {
     debugger
-    return axios.delete('http://localhost:3333/api/users', user.id)   
+    return axios.delete(`http://localhost:3333/api/users/{id}`)   
     .then(({data}) => {
+        debugger
         dispatch({    
             type: DELETE_USER_SUCCEED
         })

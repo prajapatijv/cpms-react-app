@@ -1,11 +1,11 @@
 import React from 'react';
 
-const ButtonBar = ( { onCancel , onSave, showDelete, onDelete} ) => 
+const ButtonBar = ( { onCancel , showDelete, onDelete} ) => 
 <div className="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
     <DeleteButton showDelete={showDelete} onDelete={onDelete}/>
     <div className="btn-group  float-right" role="group" >
         <button type="button" className="btn cpms-button" onClick={() => onCancel()}>Cancel</button>
-        <button type="button" className="btn cpms-button" onClick={() => onSave()}>Save</button>
+        <button type="submit" className="btn cpms-button">Save</button>
     </div>
 </div>
 

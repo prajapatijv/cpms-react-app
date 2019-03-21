@@ -29,7 +29,7 @@ app.post('/api/users', (req, res) =>
     res.status(200)
 )
 
-app.delete('/api/users', (req, res) =>
+app.delete('/api/users/:id', (req, res) =>
     res.status(200)
 )
 
