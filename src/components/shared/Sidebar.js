@@ -7,7 +7,7 @@ const Sidebar = () =>
             <ul className="nav flex-column">
                 <li className="nav-item">
                     <a className="nav-link " href="/users">
-                        <FontAwesomeIcon icon="user-circle" />
+                        <FontAwesomeIcon icon="id-card" />
                         Users
                     </a>
                 </li>
@@ -19,13 +19,13 @@ const Sidebar = () =>
             <ul className="nav flex-column mb-2">
                 <li className="nav-item">
                     <a className="nav-link " href="/report1">
-                        <FontAwesomeIcon icon="address-book" />
+                        <FontAwesomeIcon icon="chart-bar" />
                         Report 1 <span className="sr-only">(current)</span>
                     </a>
                 </li>
                 <li className="nav-item">
                 <a className="nav-link " href="/report2">
-                    <FontAwesomeIcon icon="address-book" />
+                    <FontAwesomeIcon icon="chart-bar" />
                     Report 2 <span className="sr-only">(current)</span>
                 </a>
             </li>

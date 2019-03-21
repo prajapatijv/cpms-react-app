@@ -4,6 +4,8 @@ import { Provider } from 'react-redux'
 import { BrowserRouter as Router } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
+import configureFontawsome from './components/shared/fontawsome'
+
 import './stylesheets/custom.scss';
 import './stylesheets/index.scss';
 
@@ -11,6 +13,7 @@ import configureStore from './configureStore'
 
 import App from './App';
 
+configureFontawsome()
 const store = configureStore({})
 
 ReactDOM.render(

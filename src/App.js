@@ -1,15 +1,10 @@
 import React, { Component } from 'react'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { faUserCircle, faAddressBook } from '@fortawesome/free-solid-svg-icons'
 import { Route , Switch } from "react-router-dom";
 
 import User from './containers/user-page/user'
 
 import Navbar from './components/shared/navbar'
 import Sidebar from './components/shared/sidebar'
-
-
-library.add(faUserCircle, faAddressBook)
 
 class App extends Component {
   render() {
