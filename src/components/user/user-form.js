@@ -17,6 +17,7 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
     return (
     user &&
     <Formik
+        enableReinitialize
         initialValues={user}
         onSubmit={onSaveUser}
         render={ props => (
