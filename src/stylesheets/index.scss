@@ -15,13 +15,6 @@ code {
     monospace;
 }
 
-.feather {
-  width: 16px;
-  height: 16px;
-  vertical-align: text-bottom;
-}
-
-
 //Base Styles
 .full-height {
   height: 100vh;
@@ -42,13 +35,16 @@ code {
   border: 1px aliceblue solid;
 }
 
+.cpms-alert {
+  margin-bottom: 0px;
+  border-radius: 0px;
+}
+
 .sidebar {
-  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
-  z-index: 100;
-  padding: 60px 0 0 6px;
+  padding: 10px 0 0 6px;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 
   .nav-link {
