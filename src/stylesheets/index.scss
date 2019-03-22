@@ -44,7 +44,7 @@ code {
   top: 0;
   bottom: 0;
   left: 0;
-  padding: 10px 0 0 6px;
+  padding: 20px 0 0 6px;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 
   .nav-link {
@@ -55,6 +55,9 @@ code {
       color: #007bff;
     }
 
+    &.hover .feather {
+      color: inherit;
+    }
     .feather {
       margin-right: 4px;
       color: #999;
@@ -73,6 +76,11 @@ code {
   padding-top: .5rem;
   overflow-x: hidden;
   overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+
+  .sidebar-heading {
+    font-size: .75rem;
+    text-transform: uppercase;
+  }
 }
 
 @supports ((position: -webkit-sticky) or (position: sticky)) {
@@ -80,15 +88,4 @@ code {
     position: -webkit-sticky;
     position: sticky;
   }
-}
-
-
-.sidebar .nav-link:hover .feather,
-.sidebar .nav-link.active .feather {
-  color: inherit;
-}
-
-.sidebar-heading {
-  font-size: .75rem;
-  text-transform: uppercase;
 }
