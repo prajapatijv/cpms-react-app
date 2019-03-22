@@ -57,7 +57,10 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
                         value={props.values.password}/>
                 </div>
                 
-                <ButtonBar onCancel={onCancel} showDelete={user.id !== 0} onDelete={(id) => onDeleteUser(user.id)}/>
+                <ButtonBar onCancel={onCancel} 
+                            showDelete={user.id !== 0} 
+                            onDelete={(id) => onDeleteUser(user.id)}
+                            />
             </form>
         </div>
         )}
