@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import { Route , Switch } from "react-router-dom";
 
-import User from './containers/user-page/user'
 import Navbar from './components/shared/navbar'
 import Sidebar from './components/shared/sidebar'
-import StatusBar from './components/shared/status-bar'
+
+import User from './containers/user-page/user'
+import StatusBar from './containers/status-bar/statusbar'
+
 
 class App extends Component {
   render() {
     return (
       <div className="cmps-app">
-        <StatusBar show={false}/>
+        <StatusBar />
         <Navbar />
         <div className="container-fluid">
           <div className="row">
