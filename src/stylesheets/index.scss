@@ -40,6 +40,15 @@ code {
   border-radius: 0px;
 }
 
+.invalid-tooltip.show {
+  display: block
+}
+
+.invalid-feedback.show {
+  display: block
+}
+
+
 .sidebar {
   top: 0;
   bottom: 0;
