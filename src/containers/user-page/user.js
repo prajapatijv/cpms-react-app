@@ -6,10 +6,6 @@ import * as userActionCreators from './actions'
 
 class UserContainer extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
         this.props.fetchUsers("")
     }

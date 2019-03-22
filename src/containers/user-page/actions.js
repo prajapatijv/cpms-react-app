@@ -1,5 +1,5 @@
 import axios from 'axios'
-import HandleError from '../../components/shared/handle-error'
+import HandleError from '../../utility/handle-error'
 
 export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_USERS_SUCCEED = 'FETCH_USERS_SUCCEED';
