@@ -1,7 +1,6 @@
 import { ADD_ERROR, CLEAR_ERRORS } from './actions'
-import { stat } from 'fs';
 
-const errors = (state=["Not a valid argument!"], action) => {
+const errors = (state=[], action) => {
     switch (action.type) {
         case ADD_ERROR:
             return [...state, action.payload]

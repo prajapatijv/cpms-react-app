@@ -1,4 +1,5 @@
 import axios from 'axios'
+import HandleError from '../../components/shared/handle-error'
 
 export const FETCH_USERS = 'FETCH_USERS';
 export const FETCH_USERS_SUCCEED = 'FETCH_USERS_SUCCEED';
@@ -27,7 +28,7 @@ export const fetchUsers = (criteria) => dispatch => {
             payload: data
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => HandleError(err, dispatch))
 }
 
 
@@ -63,7 +64,7 @@ export const saveUser = (user) => dispatch => {
             type: SAVE_USER_SUCCEED
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => HandleError(err, dispatch))
 }
 
 export const deleteUser = (id) => dispatch => {
@@ -73,5 +74,5 @@ export const deleteUser = (id) => dispatch => {
             type: DELETE_USER_SUCCEED
         })
     })
-    .catch(err => console.log(err))
+    .catch(err => HandleError(err, dispatch))
 }
