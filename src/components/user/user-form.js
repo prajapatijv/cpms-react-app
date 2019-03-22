@@ -35,25 +35,29 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
             <form className="needs-validation" 
                 onSubmit={props.handleSubmit}
                 onReset={props.handleReset}>
-                <div className="row">
+                <div className="form-row">
                     <div className="col-md-6 mb-3">
                         <label htmlFor="firstName">First name</label>
-                        <input type="text" className="form-control" name="firstName" 
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.firstName}/>
-                        <ErrorMessage name="firstName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
+                        <div className="input-group">
+                            <input type="text" className="form-control" name="firstName" 
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.firstName}/>
+                            <ErrorMessage name="firstName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
+                        </div>
                     </div>
                     <div className="col-md-6 mb-3">
                         <label htmlFor="lastName">Last name</label>
-                        <input type="text" className="form-control" name="lastName" 
-                            onChange={props.handleChange}
-                            onBlur={props.handleBlur}
-                            value={props.values.lastName}/>
-                        <ErrorMessage name="lastName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
+                        <div className="input-group">
+                            <input type="text" className="form-control" name="lastName" 
+                                onChange={props.handleChange}
+                                onBlur={props.handleBlur}
+                                value={props.values.lastName}/>
+                            <ErrorMessage name="lastName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
+                        </div>
                     </div>
                 </div>
-                <div className="mb-3">
+                <div className="form-row mb-3">
                     <label htmlFor="userName">Username</label>
                     <div className="input-group">
                         <div className="input-group-prepend">
@@ -66,13 +70,15 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
                         <ErrorMessage name="userName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>                            
                     </div>
                 </div>
-                <div className="mb-3">
+                <div className="form-row mb-3">
                     <label htmlFor="password">Password</label>
-                    <input type="password" className="form-control" name="password" 
-                        onChange={props.handleChange}
-                        onBlur={props.handleBlur}
-                        value={props.values.password}/>
-                    <ErrorMessage name="password">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>                                                                        
+                    <div className="input-group">
+                        <input type="password" className="form-control" name="password" 
+                            onChange={props.handleChange}
+                            onBlur={props.handleBlur}
+                            value={props.values.password}/>
+                        <ErrorMessage name="password">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>                                                                        
+                    </div>
                 </div>
 
                 <ButtonBar onCancel={onCancel} 
