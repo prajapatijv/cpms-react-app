@@ -4,12 +4,16 @@ import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
             DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCEED
          } from './actions'
 
+const initUser = { 
+    id:0,
+    firstName:"",
+    lastName:"",
+    userName:"",
+    password:""
+}
+
 const initialState = {
-    users:[],
-    user:null,
-    fetching:false,
-    saving:false,
-    errors:[]
+    users:[]
 } 
 
 const users = (state=initialState, action) => {
@@ -30,7 +34,7 @@ const users = (state=initialState, action) => {
         }
 
         case ADD_USER: {
-            return {...state, user:{id:0} }
+            return {...state, user: initUser }
         }
 
         case SELECT_USER:{

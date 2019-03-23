@@ -6,6 +6,8 @@ import ButtonBar from '../shared/button-bar'
 
 const UserForm = ({user , onCancel, onSave, onDelete}) => {
 
+    const _user = {...user}
+
     const userSchema =  Yup.object().shape({
         firstName: Yup.string().min(5).max(50).required(),
         lastName: Yup.string().min(5).max(50).required(),
@@ -22,11 +24,12 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
         onDelete(id)
     }
 
+
     return (
-    user &&
+    user ?
     <Formik
         enableReinitialize
-        initialValues={user}
+        initialValues={_user}
         validationSchema={userSchema}
         validateOnBlur={true}
         onSubmit={onSaveUser}
@@ -88,7 +91,7 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
             </form>
         </div>
         )}
-    />
+    />:null
     )
 }
 
