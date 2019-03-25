@@ -20,17 +20,14 @@ const users = (state=initialState, action) => {
 
     switch (action.type) {
         case FETCH_USERS:
-            return {...state, busy:true , error:null}
+            return {...state, fetching:true , error:null}
         
-        case SEARCH_USERS:
-            return {...state, criteria:action.payload , error:null}
-
         case FETCH_USERS_SUCCEED: {
-            return {...state, busy:false, users:action.payload }
+            return {...state, fetching:false, users:action.payload }
         }
 
         case FETCH_USERS_FAILED: {
-            return {...state, busy:false }
+            return {...state, fetching:false }
         }
 
         case ADD_USER: {

@@ -11,8 +11,8 @@ class UserContainer extends Component {
     }
 
     render() {
-        const { users, user, selectUser, fetchUsers, addUser, cancelUser , saveUser, deleteUser} = this.props
-        
+        const { users, user, selectUser, fetchUsers, addUser, cancelUser , saveUser, deleteUser, fetching } = this.props
+
         return <UserList users={users} user={user} 
             onSelect={selectUser}
             onSearch={fetchUsers}
@@ -20,6 +20,7 @@ class UserContainer extends Component {
             onCancel={cancelUser}
             onSave={saveUser}
             onDelete={deleteUser}
+            fetching={fetching}
         />
     }
 }
@@ -27,7 +28,8 @@ class UserContainer extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         users: state.userState.users,
-        user: state.userState.user
+        user: state.userState.user,
+        fetching:state.userState.fetching
     }
 }
 

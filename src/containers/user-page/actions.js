@@ -7,7 +7,6 @@ export const FETCH_USERS_FAILED = 'FETCH_USERS_FAILED';
 
 export const ADD_USER = 'ADD_USER';
 export const SELECT_USER = 'SELECT_USER';
-export const SEARCH_USERS = 'SEARCH_USERS';
 
 export const CANCEL_USER = 'CANCEL_USER';
 export const SAVE_USER = 'SAVE_USER';
@@ -21,6 +20,8 @@ export const DELETE_USER_FAILED = 'DELETE_USER_FAILED';
 const API_URL = 'http://localhost:3333/api/users'
 
 export const fetchUsers = (criteria) => dispatch => {
+    dispatch({ type: FETCH_USERS })
+
     return axios.get(`${API_URL}/${criteria}`)   
     .then(({data}) => {
         dispatch({    
@@ -28,7 +29,7 @@ export const fetchUsers = (criteria) => dispatch => {
             payload: data
         })
     })
-    .catch(err => HandleError(err, dispatch))
+    .catch(err => HandleError(FETCH_USERS_FAILED, err, dispatch))
 }
 
 
@@ -64,7 +65,7 @@ export const saveUser = (user) => dispatch => {
             type: SAVE_USER_SUCCEED
         })
     })
-    .catch(err => HandleError(err, dispatch))
+    .catch(err => HandleError(SAVE_USER_FAILED, err, dispatch))
 }
 
 export const deleteUser = (id) => dispatch => {
@@ -74,5 +75,5 @@ export const deleteUser = (id) => dispatch => {
             type: DELETE_USER_SUCCEED
         })
     })
-    .catch(err => HandleError(err, dispatch))
+    .catch(err => HandleError(DELETE_USER_FAILED, err, dispatch))
 }
