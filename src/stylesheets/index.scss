@@ -28,6 +28,10 @@ code {
   h4 {
     padding-left: 1.2rem;
   }
+
+  hr {
+    margin-top: 0px;
+  }
 }
 
 .cpms-search {
@@ -38,6 +42,19 @@ code {
 .cpms-alert {
   margin-bottom: 0px;
   border-radius: 0px;
+}
+
+.cpms-spinner {
+  margin: 5px;
+}
+
+.progress.cpms-progress-bar {
+  height: 3px;
+  border-radius: 0;
+
+  .progress-bar-animated {
+    width: 100%;
+  }
 }
 
 .invalid-tooltip.show {
