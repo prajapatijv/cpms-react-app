@@ -59,6 +59,8 @@ export const cancelUser = () => {
 }
 
 export const saveUser = (user) => dispatch => {
+    dispatch({ type: SAVE_USER })
+
     return axios.post(API_URL, user)   
     .then(({data}) => {
         dispatch({    
@@ -69,6 +71,8 @@ export const saveUser = (user) => dispatch => {
 }
 
 export const deleteUser = (id) => dispatch => {
+    dispatch({ type: DELETE_USER })
+
     return axios.delete(`${API_URL}/${id}`)   
     .then(({data}) => {
         dispatch({    

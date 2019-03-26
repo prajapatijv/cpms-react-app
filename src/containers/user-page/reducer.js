@@ -1,5 +1,5 @@
 import { FETCH_USERS, FETCH_USERS_FAILED, FETCH_USERS_SUCCEED,
-            ADD_USER, SELECT_USER, CANCEL_USER, SEARCH_USERS,
+            ADD_USER, SELECT_USER, CANCEL_USER, 
             SAVE_USER, SAVE_USER_FAILED, SAVE_USER_SUCCEED,
             DELETE_USER, DELETE_USER_FAILED, DELETE_USER_SUCCEED
          } from './actions'
@@ -44,27 +44,27 @@ const users = (state=initialState, action) => {
         }
 
         case SAVE_USER: {
-            return { ...state, busy: true }
+            return { ...state, saving: true }
         }
 
         case SAVE_USER_SUCCEED: {
-            return { ...state, busy: false }
+            return { ...state, saving: false }
         }
 
         case SAVE_USER_FAILED: {
-            return { ...state, busy: false }
+            return { ...state, saving: false }
         }
 
         case DELETE_USER: {
-            return {...state, busy:true }
+            return {...state, deleting:true }
         }
 
         case DELETE_USER_SUCCEED: {
-            return { ...state, busy: false }
+            return { ...state, user:null, deleting: false }
         }
 
         case DELETE_USER_FAILED: {
-            return { ...state, busy: false }
+            return { ...state, deleting: false }
         }        
 
         default:

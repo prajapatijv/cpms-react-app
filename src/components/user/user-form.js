@@ -4,14 +4,14 @@ import * as Yup from 'yup'
 
 import ButtonBar from '../shared/button-bar'
 
-const UserForm = ({user , onCancel, onSave, onDelete}) => {
+const UserForm = ({user , onCancel, onSave, onDelete, saving, deleting}) => {
 
     const _user = {...user}
 
     const userSchema =  Yup.object().shape({
-        firstName: Yup.string().min(5).max(50).required(),
-        lastName: Yup.string().min(5).max(50).required(),
-        userName: Yup.string().min(5).max(30).required(),
+        firstName: Yup.string().min(2).max(50).required(),
+        lastName: Yup.string().min(2).max(50).required(),
+        userName: Yup.string().min(2).max(30).required(),
         password: Yup.string().min(6).max(15).required()
     })
 
@@ -87,6 +87,8 @@ const UserForm = ({user , onCancel, onSave, onDelete}) => {
                 <ButtonBar onCancel={onCancel} 
                             showDelete={user.id !== 0} 
                             onDelete={(id) => onDeleteUser(user.id)}
+                            saving={saving}
+                            deleting={deleting}
                             />
             </form>
         </div>
