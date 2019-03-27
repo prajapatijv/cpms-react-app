@@ -4,9 +4,9 @@ import { USER_ACTIONS as C } from '../actionTypes'
 
 const API_URL = 'http://localhost:3333/api/users'
 
-export const fetchUsers = (criteria) => dispatch => {
-    dispatch({ type: C.FETCH_USERS })
+export const fetchUsers = (criteria) => ({ type: C.FETCH_USERS, payload:criteria })
 
+    /*
     return axios.get(`${API_URL}/${criteria}`)   
     .then(({data}) => {
         dispatch({    
@@ -15,7 +15,8 @@ export const fetchUsers = (criteria) => dispatch => {
         })
     })
     .catch(err => HandleError(C.FETCH_USERS_FAILED, err, dispatch))
-}
+    
+}*/
 
 
 export const selectUser = (id) => {
