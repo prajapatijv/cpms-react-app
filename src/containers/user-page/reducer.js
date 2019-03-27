@@ -1,4 +1,4 @@
-import { USER_ACTIONS as U } from '../actionTypes'
+import { USER_ACTIONS as C } from '../actionTypes'
 
 const initUser = { 
     id:0,
@@ -15,51 +15,51 @@ const initialState = {
 const users = (state=initialState, action) => {
 
     switch (action.type) {
-        case U.FETCH_USERS:
+        case C.FETCH_USERS:
             return {...state, fetching:true , error:null}
         
-        case U.FETCH_USERS_SUCCEED: {
+        case C.FETCH_USERS_SUCCEED: {
             return {...state, fetching:false, users:action.payload }
         }
 
-        case U.FETCH_USERS_FAILED: {
+        case C.FETCH_USERS_FAILED: {
             return {...state, fetching:false }
         }
 
-        case U.ADD_USER: {
+        case C.ADD_USER: {
             return {...state, user: initUser }
         }
 
-        case U.SELECT_USER:{
+        case C.SELECT_USER:{
             const user = state.users.find(u => u.id === action.payload)
             return {...state, user:user }
         }
 
-        case U.CANCEL_USER:{
+        case C.CANCEL_USER:{
             return {...state, user:null }
         }
 
-        case U.SAVE_USER: {
+        case C.SAVE_USER: {
             return { ...state, saving: true }
         }
 
-        case U.SAVE_USER_SUCCEED: {
+        case C.SAVE_USER_SUCCEED: {
             return { ...state, saving: false }
         }
 
-        case U.SAVE_USER_FAILED: {
+        case C.SAVE_USER_FAILED: {
             return { ...state, saving: false }
         }
 
-        case U.DELETE_USER: {
+        case C.DELETE_USER: {
             return {...state, deleting:true }
         }
 
-        case U.DELETE_USER_SUCCEED: {
+        case C.DELETE_USER_SUCCEED: {
             return { ...state, user:null, deleting: false }
         }
 
-        case U.DELETE_USER_FAILED: {
+        case C.DELETE_USER_FAILED: {
             return { ...state, deleting: false }
         }        
 

@@ -89,6 +89,8 @@ const UserForm = ({user , onCancel, onSave, onDelete, saving, deleting}) => {
                             onDelete={(id) => onDeleteUser(user.id)}
                             saving={saving}
                             deleting={deleting}
+                            dirty={props.dirty}
+                            isValid={props.isValid}
                             />
             </form>
         </div>
