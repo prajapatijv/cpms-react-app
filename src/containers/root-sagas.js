@@ -1,10 +1,13 @@
 import { all , call} from "redux-saga/effects";
 
-import { fetchUserSaga, saveUserSaga } from './user-page/sagas'
+import {addErrorSaga} from './status-bar/actions'
+import { fetchUserSaga, saveUserSaga, deleteUserSaga } from './user-page/sagas'
 
 export default function* rootSaga() {
     yield all([
+        call(addErrorSaga),
         call(fetchUserSaga),
-        call(saveUserSaga)
+        call(saveUserSaga),
+        call(deleteUserSaga)
     ])
 }

@@ -1,8 +1,12 @@
-import {addError} from '../containers/status-bar/actions'
+import {addError } from '../containers/status-bar/actions'
+import { put } from 'redux-saga/effects'
 
-const HandleError = (errorType, err, dispatch) => {
+export const HandleError = (errorType, err, dispatch) => {
     dispatch({type: errorType})
     dispatch(addError(err.message))
 }
 
-export default HandleError
+export function* HandleSagaError (errorType, err)  {
+    yield put({"type": 'ADD_ERROR_SUCCESS', payload: err.message})
+    yield put({"type": errorType})
+}
