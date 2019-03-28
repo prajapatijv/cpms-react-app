@@ -1,9 +1,10 @@
-import { all } from "redux-saga/effects";
+import { all , call} from "redux-saga/effects";
 
-import { fetchUserSaga } from './user-page/sagas'
+import { fetchUserSaga, saveUserSaga } from './user-page/sagas'
 
 export default function* rootSaga() {
     yield all([
-        fetchUserSaga(),
+        call(fetchUserSaga),
+        call(saveUserSaga)
     ])
 }
