@@ -35,7 +35,7 @@ const users = (state=initialState, action) => {
             return {...state, user:user }
         }
 
-        case C.CANCEL_USER:{
+        case C.CLOSE_USER:{
             return {...state, user:null }
         }
 
