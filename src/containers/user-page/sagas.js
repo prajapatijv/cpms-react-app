@@ -9,10 +9,15 @@ const fetchUserApi = (criteria) =>  axios.get(`${API_URL}/${criteria}`)
 const saveUserApi = () =>  axios.post(API_URL)
 const deleteUserApi = (id) =>  axios.get(`${API_URL}/${id}`) 
 
-export function* fetchUserSaga() {
-    yield takeLatest(C.FETCH_USERS, fetchUserWorker)
-}
+///Saga Watchers
+export const userSagas = [
+    takeLatest(C.FETCH_USERS, fetchUserWorker),    
+    takeEvery(C.SAVE_USER, saveUserWorker),
+    takeEvery(C.DELETE_USER, deleteUserWorker)
+]
 
+
+///Saga Worker functions
 function* fetchUserWorker(params) {
     
    try {
@@ -24,10 +29,6 @@ function* fetchUserWorker(params) {
     }
 }
 
-export function* saveUserSaga() {
-    yield takeEvery(C.SAVE_USER, saveUserWorker)
-}
-
 function* saveUserWorker(params) {
    try {
         const response = yield(call(saveUserApi, params.user))
@@ -37,15 +38,12 @@ function* saveUserWorker(params) {
     }
 }
 
-export function* deleteUserSaga() {
-    yield takeEvery(C.DELETE_USER, deleteUserWorker)
-}
-
 function* deleteUserWorker(params) {
     try {
         const response = yield(call(deleteUserApi, params.id))
-        yield put({"type": C.DELETE_USER_SUCCEED })
+        yield put({"type": C.DELETE_USER_SUCCEED, payload: response.data })
     } catch (error) {
         yield HandleSagaError(C.DELETE_USER_FAILED, error)
     }
 }
+
