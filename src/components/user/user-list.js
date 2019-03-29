@@ -4,13 +4,12 @@ import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 import { Spinner } from '../shared/progress'
 
-const UserList = ({ users, user, onSelect, onSearch, onAdd, onClose, onSave, onDelete, 
-            fetching, saving, deleting}) => 
+const UserList = (props) => 
     <div className="user-page">
-        <PageTitle title="Users" fetching={fetching}></PageTitle>
+        <PageTitle title="Users" fetching={props.fetching}></PageTitle>
         <div className="row full-height py-0" >
-            <UserLines users={users} onSelect={onSelect} onSearch={onSearch} onAdd={onAdd} fetching={fetching}/>
-            <UserForm user={user} onClose={onClose} onSave={onSave} onDelete={onDelete} saving={saving} deleting={deleting}/>
+            <UserLines {...props} />
+            <UserForm {...props} />
         </div>
     </div>
 
