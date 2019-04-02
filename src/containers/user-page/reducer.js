@@ -18,11 +18,11 @@ const users = (state=initialState, action) => {
         case C.FETCH_USERS:
             return {...state, fetching:true , error:null}
         
-        case C.FETCH_USERS_SUCCEED: {
+        case `${C.FETCH_USERS}_SUCCEED`: {
             return {...state, fetching:false, users:action.payload }
         }
 
-        case C.FETCH_USERS_FAILED: {
+        case `${C.FETCH_USERS}_FAILED`: {
             return {...state, fetching:false }
         }
 

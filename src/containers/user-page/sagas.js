@@ -23,14 +23,6 @@ const CONTEXT = 'users'
 ///Saga Worker functions
 function* fetchUserWorker(params) {
     yield* fetch(CONTEXT, params, true)
-    /*try {
-        if (params.criteria !== "") { yield delay(500) }
-        const response = yield (call(fetchUserApi, params.criteria))
-        yield put({ "type": C.FETCH_USERS_SUCCEED, payload: response.data })
-
-    } catch (error) {
-        yield HandleError(C.FETCH_USERS_FAILED, error)
-    }*/
 }
 
 function* saveUserWorker(params) {
