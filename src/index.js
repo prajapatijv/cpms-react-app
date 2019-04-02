@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux'
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
 import configureFontawsome from './components/shared/fontawsome'
@@ -25,9 +25,9 @@ window.addEventListener("error", (err) => HandleError(err.message, store.dispatc
 
 ReactDOM.render(
     <Provider store={store}>
-        <Router>
+        <BrowserRouter>
             <App />
-        </Router>
+        </BrowserRouter>
     </Provider>,
     document.getElementById('root'));
 

@@ -24,7 +24,8 @@ const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) =>
             users.map((user) => 
                 <button key={user.id} 
                     onClick={() => onSelect(user.id)}
-                    className="cpms-list-item list-group-item-action">{user.firstName} {user.lastName}
+                    className="cpms-list-item list-group-item-action"
+                    >{user.firstName} {user.lastName}
                 </button>
                 )
         }
