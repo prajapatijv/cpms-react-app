@@ -4,7 +4,7 @@ import { AppConfig } from '../../AppConfig'
 import { HandleError } from '../../utility/handle-error'
 import { USER_ACTIONS as C } from '../actionTypes'
 
-const API_URL = AppConfig.UserApiUrl
+const API_URL = `${AppConfig.API_URL}/users`
 
 const fetchUserApi = (criteria) => axios.get(`${API_URL}/${criteria}`)
 const saveUserApi = () => axios.post(API_URL)
