@@ -1,9 +1,10 @@
 import { takeLatest, call, put, takeEvery, delay } from 'redux-saga/effects'
 import axios from "axios"
-import { HandleSagaError } from '../../utility/handle-error'
+import { AppConfig } from '../../AppConfig'
+import { HandleError } from '../../utility/handle-error'
 import { USER_ACTIONS as C } from '../actionTypes'
 
-const API_URL = 'http://localhost:3333/api/users'
+const API_URL = AppConfig.UserApiUrl
 
 const fetchUserApi = (criteria) => axios.get(`${API_URL}/${criteria}`)
 const saveUserApi = () => axios.post(API_URL)
@@ -26,7 +27,7 @@ function* fetchUserWorker(params) {
         yield put({ "type": C.FETCH_USERS_SUCCEED, payload: response.data })
 
     } catch (error) {
-        yield HandleSagaError(C.FETCH_USERS_FAILED, error)
+        yield HandleError(C.FETCH_USERS_FAILED, error)
     }
 }
 
@@ -35,7 +36,7 @@ function* saveUserWorker(params) {
         const response = yield (call(saveUserApi, params.user))
         yield put({ "type": C.SAVE_USER_SUCCEED, payload: response.data })
     } catch (error) {
-        yield HandleSagaError(C.SAVE_USER_FAILED, error)
+        yield HandleError(C.SAVE_USER_FAILED, error)
     }
 }
 
@@ -44,7 +45,7 @@ function* deleteUserWorker(params) {
         const response = yield (call(deleteUserApi, params.id))
         yield put({ "type": C.DELETE_USER_SUCCEED, payload: response.data })
     } catch (error) {
-        yield HandleSagaError(C.DELETE_USER_FAILED, error)
+        yield HandleError(C.DELETE_USER_FAILED, error)
     }
 }
 
