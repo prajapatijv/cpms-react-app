@@ -1,14 +1,9 @@
-import { takeLatest, call, put, takeEvery, delay } from 'redux-saga/effects'
-import axios from "axios"
-import { AppConfig } from '../../AppConfig'
-import { HandleError } from '../../utility/handle-error'
+import { takeLatest, takeEvery } from 'redux-saga/effects'
 import { USER_ACTIONS as C } from '../actionTypes'
-import { fetch, save } from '../../utility/http-client'
+import { fetch, save, remove } from '../../utility/http-client'
 
-const API_URL = `${AppConfig.API_URL}/users`
 const CONTEXT = 'user'
 
-const deleteUserApi = (id) => axios.get(`${API_URL}/${id}`)
 
 ///Saga Watchers
 export const userSagas = [
@@ -28,11 +23,6 @@ function* saveUserWorker(params) {
 }
 
 function* deleteUserWorker(params) {
-    try {
-        const response = yield (call(deleteUserApi, params.id))
-        yield put({ "type": C.DELETE_USER_SUCCEED, payload: response.data })
-    } catch (error) {
-        yield HandleError(C.DELETE_USER_FAILED, error)
-    }
+    yield* remove(CONTEXT, params.id)
 }
 

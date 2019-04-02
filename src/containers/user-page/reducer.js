@@ -55,11 +55,11 @@ const users = (state=initialState, action) => {
             return {...state, deleting:true }
         }
 
-        case C.DELETE_USER_SUCCEED: {
+        case `${C.DELETE_USER}_SUCCEED`: {
             return { ...state, user:null, deleting: false }
         }
 
-        case C.DELETE_USER_FAILED: {
+        case `${C.DELETE_USER}_FAILED`: {
             return { ...state, deleting: false }
         }        
 

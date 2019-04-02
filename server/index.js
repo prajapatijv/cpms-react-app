@@ -1,13 +1,14 @@
 const express = require('express')
 const delay = require('express-delay')
 const { port=3333 } = require('minimist')(process.argv)
+const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const users = require('./data/users.json')
 
 
 const logger = (req, res, next) => {
-    console.log(`${req.method} request for ${req.url}`)
+    console.log(`${req.method} request for ${req.url} with ${req.body}`)
     next()
 }
 
@@ -23,7 +24,9 @@ const byFullNameName = criteria => user => {
     
 const app = express()
     .use(logger)
+    .use(bodyParser.json()) // for parsing application/json    
     .use(delay(1000, 4000))
+    .use(bodyParser.urlencoded({ extended: true }))
     .use(cors())
     .use('/', express.static('./dist/img'));
 
@@ -41,4 +44,4 @@ app.delete('/api/users/:id', (req, res) =>
     res.status(200).json({})
 )
 
-app.listen(port, () => console.log('CMPS app server running on port ' + port + ' with a ' + delay/1000 + ' second delay'))
+app.listen(port, () => console.log('CMPS app server running on port ' + port + ' with random delay'))
