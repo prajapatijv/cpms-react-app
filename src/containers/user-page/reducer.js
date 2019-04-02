@@ -43,11 +43,11 @@ const users = (state=initialState, action) => {
             return { ...state, saving: true }
         }
 
-        case C.SAVE_USER_SUCCEED: {
+        case `${C.SAVE_USER}_SUCCEED`: {
             return { ...state, saving: false }
         }
 
-        case C.SAVE_USER_FAILED: {
+        case `${C.SAVE_USER}_FAILED`: {
             return { ...state, saving: false }
         }
 
