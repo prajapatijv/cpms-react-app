@@ -3,6 +3,7 @@ import axios from "axios"
 import { AppConfig } from '../../AppConfig'
 import { HandleError } from '../../utility/handle-error'
 import { USER_ACTIONS as C } from '../actionTypes'
+import { fetch } from '../../utility/http-client'
 
 const API_URL = `${AppConfig.API_URL}/users`
 
@@ -17,18 +18,19 @@ export const userSagas = [
     takeEvery(C.DELETE_USER, deleteUserWorker)
 ]
 
+const CONTEXT = 'users'
 
 ///Saga Worker functions
 function* fetchUserWorker(params) {
-
-    try {
+    yield* fetch(CONTEXT, params, true)
+    /*try {
         if (params.criteria !== "") { yield delay(500) }
         const response = yield (call(fetchUserApi, params.criteria))
         yield put({ "type": C.FETCH_USERS_SUCCEED, payload: response.data })
 
     } catch (error) {
         yield HandleError(C.FETCH_USERS_FAILED, error)
-    }
+    }*/
 }
 
 function* saveUserWorker(params) {
