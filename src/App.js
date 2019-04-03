@@ -14,10 +14,10 @@ class App extends Component {
       <div className="cmps-app">
         <StatusBar />
         <Navbar />
+        <Sidebar />
         <div className="container-fluid">
           <div className="row">
-            <Sidebar />
-              <main role="main" className="col-md-10 ml-sm-auto col-lg-10 px-0 py-4">
+            <main role="main" className="col-md-10 ml-sm-auto col-lg-10 px-0 py-4">
               <Routes/>
             </main>
           </div>
