@@ -11,16 +11,21 @@ import './stylesheets/custom.scss';
 import './stylesheets/index.scss';
 
 import configureStore from './configureStore'
+import { AppConfig, Env } from './AppConfig'
 
 import App from './App';
 
-  
+
 configureFontawsome()
 
 const store = configureStore({})
 
-window.React = React
-window.store = store
+if (AppConfig.ENV !== Env.Production) {
+    console.log(AppConfig.ENV)
+    window.React = React
+    window.store = store
+}
+
 window.addEventListener("error", (err) => HandleError(err.message, store.dispatch))
 
 ReactDOM.render(
