@@ -8,7 +8,11 @@ const users = require('./data/users.json')
 
 
 const logger = (req, res, next) => {
-    console.log(`${req.method} request for ${req.url} with ${req.body}`)
+    console.log(`${req.method} request for ${req.url}`)
+    if (req.method.toLowerCase() === 'post') {
+        console.log(`Body:  ${JSON.stringify(req.body)}`)
+    }
+
     next()
 }
 
