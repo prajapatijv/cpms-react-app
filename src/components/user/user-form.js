@@ -1,5 +1,6 @@
 import React from 'react'
-import { Formik, ErrorMessage } from 'formik'
+import { Formik, ErrorMessage, Field } from 'formik'
+import { InputBox  } from '../shared/controls'
 import * as Yup from 'yup'
 
 import ButtonBar from '../shared/button-bar'
@@ -47,23 +48,11 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                             <div className="form-row">
                                 <div className="col-md-6 mb-3">
                                     <label htmlFor="firstName">First name</label>
-                                    <div className="input-group">
-                                        <input type="text" className="form-control" name="firstName"
-                                            onChange={props.handleChange}
-                                            onBlur={props.handleBlur}
-                                            value={props.values.firstName} />
-                                        <ErrorMessage name="firstName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
-                                    </div>
+                                    <Field type="text" name="firstName" component={InputBox} />
                                 </div>
                                 <div className="col-md-6 mb-3">
                                     <label htmlFor="lastName">Last name</label>
-                                    <div className="input-group">
-                                        <input type="text" className="form-control" name="lastName"
-                                            onChange={props.handleChange}
-                                            onBlur={props.handleBlur}
-                                            value={props.values.lastName} />
-                                        <ErrorMessage name="lastName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
-                                    </div>
+                                    <Field type="text" name="lastName" component={InputBox} />
                                 </div>
                             </div>
                             <div className="form-row mb-3">
@@ -73,7 +62,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                                         <span className="input-group-text">@</span>
                                     </div>
                                     <input type="text" className="form-control" name="userName" placeholder="Username"
-                                        onChange={props.handleChange}
+                                       onChange={props.handleChange}
                                         onBlur={props.handleBlur}
                                         value={props.values.userName} />
                                     <ErrorMessage name="userName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
@@ -81,13 +70,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                             </div>
                             <div className="form-row mb-3">
                                 <label htmlFor="password">Password</label>
-                                <div className="input-group">
-                                    <input type="password" className="form-control" name="password"
-                                        onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={props.values.password} />
-                                    <ErrorMessage name="password">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
-                                </div>
+                                <Field type="password" name="password" component={InputBox} />
                             </div>
 
                             <ButtonBar 
