@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Sidebar = () =>
@@ -6,10 +7,10 @@ const Sidebar = () =>
         <div className="sidebar-sticky">
             <ul className="nav flex-column">
                 <li className="nav-item">
-                    <a className="nav-link " href="/users">
+                    <NavLink to="/users" className="nav-link" activeClassName="active">
                         <FontAwesomeIcon icon="id-card" />
-                        Users
-                    </a>
+                            Users
+                    </NavLink>
                 </li>
             </ul>
 
