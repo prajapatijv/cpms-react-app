@@ -8,7 +8,8 @@ export const InputBox = ({
 }) => {
   var cls = classNames({
     'form-control': true,
-    'is-invalid': touched[field.name] && errors[field.name]
+    'is-invalid': touched[field.name] && errors[field.name],
+    'field-is-valid': !errors[field.name]
   })
 
   if (props.prefix) {

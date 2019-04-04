@@ -12,5 +12,10 @@
 
 .app-button {
     @extend .btn-outline-secondary;
-    border-color: aliceblue
+    border-color: aliceblue;
+}
+
+.field-is-valid {
+  @extend .is-valid;
+  border-color: #ced4da !important;
 }
