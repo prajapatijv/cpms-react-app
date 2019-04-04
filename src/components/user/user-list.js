@@ -8,14 +8,18 @@ const UserList = (props) =>
     <div className="app-page user-page">
         <PageTitle title="Users" fetching={props.fetching}></PageTitle>
         <div className="row no-gutters full-height px-0" >
-            <UserLines {...props} />
-            <UserForm {...props} />
+            <div className="col-md-4 right-border app-list">
+                <UserLines {...props} />
+            </div>
+            <div className="col-md-6 app-form">
+                <UserForm {...props} />
+            </div>
         </div>
     </div>
 
 
 const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) => 
-    <div className="col-md-4 right-border app-list">
+    <React.Fragment>
         <SearchBar onAdd={onAdd} onSearch={onSearch}/>
         <Spinner show={fetching}/> 
         <ul className="list-group list-group-flush">
@@ -24,12 +28,12 @@ const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) =>
             users.map((user) => 
                 <button key={user.id} 
                     onClick={() => onSelect(user.id)}
-                    className="cpms-list-item list-group-item-action"
+                    className="app-list-item list-group-item-action"
                     >{user.firstName} {user.lastName}
                 </button>
                 )
         }
         </ul>
-    </div>
+    </React.Fragment>
 
 export default UserList;

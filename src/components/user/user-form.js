@@ -34,7 +34,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                 validateOnBlur={true}
                 onSubmit={onSaveUser}
                 render={props => (
-                    <div className="col-md-6 cpms-form">
+                    <React.Fragment>
                         <div className="modal-header px-0 py-0">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"
                                 onClick={() => onClose()}>
@@ -99,7 +99,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                                 isValid={props.isValid}
                             />
                         </form>
-                    </div>
+                    </React.Fragment>
                 )}
             /> : null
     )

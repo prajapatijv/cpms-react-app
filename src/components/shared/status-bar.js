@@ -2,7 +2,7 @@ import React from 'react';
 
 const StatusBar = ({errors, clearErrors}) =>
     (errors && errors.length > 0) ?
-    <div className="alert alert-danger alert-dismissible fade show cpms-alert" role="alert">
+    <div className="alert alert-danger alert-dismissible fade show app-alert" role="alert">
         <strong className="alert-heading">Error!  </strong>
             {errors.join(" ")}
         <button type="button" className="close" data-dismiss="alert" aria-label="Close" 

@@ -2,7 +2,7 @@ import React from 'react';
 
 const SearchBar = ({onAdd, onSearch}) =>
     <div className="input-group">
-        <input type="text" className="form-control cpms-search" 
+        <input type="text" className="form-control app-page-search" 
                 placeholder="Search" aria-label="Search"
                 onChange={(e) => onSearch(e.target.value)}/>
         <div className="input-group-append">

@@ -24,7 +24,7 @@ code {
   border-right: 0.1rem aliceblue solid;
 }
 
-.cpms-title {
+.app-page-title {
   h4 {
     padding-left: 1.2rem;
   }
@@ -34,17 +34,17 @@ code {
   }
 }
 
-.cpms-search {
+.app-page-search {
   padding-left: 1.2rem;
   border: 1px aliceblue solid;
 }
 
-.cpms-alert {
+.app-alert {
   margin-bottom: 0;
   border-radius: 0;
 }
 
-.cpms-spinner {
+.app-spinner {
   margin: 0.5rem;
 
   .spinner-border {
@@ -65,21 +65,21 @@ code {
 
 }
 
-.app-form {
+.app-page {
+  .app-list {
+    padding: 0 1rem 0 0;
+  }
+
+  .app-form {
+    padding: 0 1.5rem;
+  }
+
+
   .modal-header {
     border: none
   }
 }
 
-
-.progress.cpms-progress-bar {
-  height: 0.3rem;
-  border-radius: 0;
-
-  .progress-bar-animated {
-    width: 100%;
-  }
-}
 
 .invalid-tooltip.show {
   display: block
