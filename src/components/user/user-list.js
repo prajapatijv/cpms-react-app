@@ -5,9 +5,9 @@ import UserForm from './user-form'
 import { Spinner } from '../shared/progress'
 
 const UserList = (props) => 
-    <div className="user-page">
+    <div className="app-page user-page">
         <PageTitle title="Users" fetching={props.fetching}></PageTitle>
-        <div className="row full-height py-0" >
+        <div className="row no-gutters full-height px-0" >
             <UserLines {...props} />
             <UserForm {...props} />
         </div>
@@ -15,7 +15,7 @@ const UserList = (props) =>
 
 
 const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) => 
-    <div className="col-md-4 right-border">
+    <div className="col-md-4 right-border app-list">
         <SearchBar onAdd={onAdd} onSearch={onSearch}/>
         <Spinner show={fetching}/> 
         <ul className="list-group list-group-flush">

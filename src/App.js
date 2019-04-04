@@ -13,7 +13,7 @@ class App extends Component {
     return (
       <div className="cmps-app">
         <StatusBar />
-        <Navbar />
+        <Navbar />        
         <Sidebar />
         <div className="container-fluid">
           <div className="row">

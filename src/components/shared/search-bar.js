@@ -6,7 +6,7 @@ const SearchBar = ({onAdd, onSearch}) =>
                 placeholder="Search" aria-label="Search"
                 onChange={(e) => onSearch(e.target.value)}/>
         <div className="input-group-append">
-            <button className="btn cpms-button" type="button" onClick={() => onAdd()}>+</button>
+            <button className="btn app-button" type="button" onClick={() => onAdd()}>+</button>
         </div>
     </div>
 
