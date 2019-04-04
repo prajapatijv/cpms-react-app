@@ -11,7 +11,7 @@ import StatusBar from './containers/status-bar/statusbar'
 class App extends Component {
   render() {
     return (
-      <div className="cmps-app">
+      <React.Fragment>
         <StatusBar />
         <Navbar />        
         <Sidebar />
@@ -22,7 +22,7 @@ class App extends Component {
             </main>
           </div>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 }
