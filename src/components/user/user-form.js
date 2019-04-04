@@ -1,6 +1,6 @@
 import React from 'react'
-import { Formik, ErrorMessage, Field } from 'formik'
-import { InputBox  } from '../shared/controls'
+import { Formik, Field } from 'formik'
+import { InputBox } from '../shared/controls'
 import * as Yup from 'yup'
 
 import ButtonBar from '../shared/button-bar'
@@ -41,7 +41,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                                 onClick={() => onClose()}>
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>            
+                        </div>
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
@@ -57,23 +57,17 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                             </div>
                             <div className="form-row mb-3">
                                 <label htmlFor="userName">Username</label>
-                                <div className="input-group">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">@</span>
-                                    </div>
-                                    <input type="text" className="form-control" name="userName" placeholder="Username"
-                                       onChange={props.handleChange}
-                                        onBlur={props.handleBlur}
-                                        value={props.values.userName} />
-                                    <ErrorMessage name="userName">{msg => <div className="invalid-tooltip show">{msg}</div>}</ErrorMessage>
-                                </div>
+                                <Field type="text" name="userName" component={InputBox} prefix="@" />
                             </div>
                             <div className="form-row mb-3">
                                 <label htmlFor="password">Password</label>
                                 <Field type="password" name="password" component={InputBox} />
+                                <small id="passwordHelpBlock" className="form-text text-muted">
+                                    Must be 6-15 characters long, contains letters and numbers.
+                                </small>
                             </div>
 
-                            <ButtonBar 
+                            <ButtonBar
                                 showDelete={user.id !== 0}
                                 onDelete={(id) => onDeleteUser(user.id)}
                                 saving={saving}
