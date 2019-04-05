@@ -1,7 +1,7 @@
 import { call, put } from 'redux-saga/effects'
 import axios from "axios"
 import { AppConfig, GetContext } from '../AppConfig'
-import { HandleError } from './handle-error'
+import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
 
 
 const fetchApi = (apiUrl, criteria) => axios.get(`${apiUrl}/${criteria}`)
@@ -36,7 +36,7 @@ export function* save(context, payload) {
         const apiUrl = GetApiUrl(contextObj.apiContext);
         const response = yield (call(saveApi, apiUrl, payload))
 
-        yield put({ "type": `SAVE_${contextObj.actionContextSingular}_SUCCEED`, payload: response.data })
+        yield HandleSaveSuccess(contextObj.actionContextSingular, response.data)
 
     } catch (error) {
         yield HandleError(`SAVE_${contextObj.actionContextSingular}_FAILED`, error)
@@ -50,7 +50,8 @@ export function* remove(context, id) {
         const apiUrl = GetApiUrl(contextObj.apiContext);
         const response = yield (call(deleteApi, apiUrl, id))
 
-        yield put({ "type": `DELETE_${contextObj.actionContextSingular}_SUCCEED`, payload: response.data })
+        yield HandleDeleteSuccess(contextObj.actionContextSingular, response.data)
+
     } catch (error) {
         yield HandleError(`DELETE_${contextObj.actionContextSingular}_FAILED`, error)
     }

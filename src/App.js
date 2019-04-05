@@ -12,9 +12,9 @@ class App extends Component {
   render() {
     return (
       <div className="wrapper">
-        <StatusBar />
         <Sidebar />
           <div className="container-fluid px-0">
+            <StatusBar />
             <Navbar />
             <Routes />
           </div>

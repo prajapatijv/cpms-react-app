@@ -5,7 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
 import configureFontawsome from './components/shared/fontawsome'
-import { HandleError } from './utility/handle-error'
+import { HandleError } from './utility/status'
 
 import './stylesheets/custom.scss';
 import './stylesheets/index.scss';
