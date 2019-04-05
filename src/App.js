@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route , Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import Navbar from './components/shared/navbar'
 import Sidebar from './components/shared/sidebar'
@@ -11,40 +11,36 @@ import StatusBar from './containers/status-bar/statusbar'
 class App extends Component {
   render() {
     return (
-      <React.Fragment>
+      <div className="wrapper">
         <StatusBar />
-        <Navbar />        
         <Sidebar />
-        <div className="container-fluid">
-          <div className="row">
-            <main role="main" className="col-md-10 ml-sm-auto col-lg-10 px-0 py-4">
-              <Routes/>
-            </main>
+          <div className="container-fluid px-0">
+            <Navbar />
+            <Routes />
           </div>
-        </div>
-      </React.Fragment>
+      </div>
     );
   }
 }
 
-const Routes = () => 
+const Routes = () =>
   <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/users" component={User} />
-    <Route component={Whoops404}/>
+    <Route component={Whoops404} />
   </Switch>
 
 
 const HomePage = () =>
-    <div className="home-page">
-        <h1>Home page</h1>
-    </div>
+  <div className="home-page">
+    <h1>Home page</h1>
+  </div>
 
 
 const Whoops404 = ({ location }) =>
-    <div className="whoops-404">
-        <h1>Whoops, route not found</h1>
-        <p>Cannot find content for {location.pathname}</p>
-    </div>
+  <div className="whoops-404">
+    <h1>Whoops, route not found</h1>
+    <p>Cannot find content for {location.pathname}</p>
+  </div>
 
 export default App;

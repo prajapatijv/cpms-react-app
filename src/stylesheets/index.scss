@@ -15,6 +15,34 @@ code {
     monospace;
 }
 
+.wrapper {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+  color: #fff;
+  transition: all 0.3s;  
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+
+  &.active {
+    margin-left: -250px;
+  }
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -250px;
+  }
+  #sidebar.active {
+      margin-left: 0;
+  }
+}
+
 //Base Styles
 .full-height {
   height: calc(100vh - 160px);
@@ -74,69 +102,8 @@ code {
     padding: 0 1.5rem;
   }
 
-
   .modal-header {
     border: none
   }
 }
 
-
-.invalid-tooltip.show {
-  display: block
-}
-
-.invalid-feedback.show {
-  display: block
-}
-
-
-.sidebar {
-  position: fixed;
-  top: 3.6rem;
-  bottom: 0;
-  left: 0;
-  padding: 0.6rem 0 0 0;
-  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-
-  &.collaspe {
-      min-width: 5rem;
-      max-width: 5rem;
-      text-align: center;
-  }
-
-  .nav-link {
-    font-weight: 500;
-    color: #333;
-
-    &.active {
-      color: #007bff;
-    }
-
-    svg {
-      margin-right: 0.6rem;
-      //height: 1.5rem;
-      //width: 1.5rem;
-    }
-  }
-}
-
-.sidebar-sticky {
-  position: relative;
-  top: 0;
-  height: calc(100vh - 48px);
-  padding-top: .5rem;
-  overflow-x: hidden;
-  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-
-  .sidebar-heading {
-    font-size: .75rem;
-    text-transform: uppercase;
-  }
-}
-
-@supports ((position: -webkit-sticky) or (position: sticky)) {
-  .sidebar-sticky {
-    position: -webkit-sticky;
-    position: sticky;
-  }
-}
