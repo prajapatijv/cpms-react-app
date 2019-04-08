@@ -5,7 +5,7 @@ import * as statusbarActionCreators from './actions'
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        errors: state.errors,
+        status: state.status,
     }
 }
 
