@@ -1,16 +1,20 @@
-import { ADD_ERROR_SUCCESS, CLEAR_ERRORS } from './actions'
+import { STATUS_ACTIONS as C } from '../actionTypes'
 
-const errors = (state=[], action) => {
+const Status = (state={}, action) => {
+    
     switch (action.type) {
-        case ADD_ERROR_SUCCESS:
-            return [...state, action.payload]
+        case C.ADD_INFO_SUCCESS:
+            return {...state, info:[...state.infos, action.payload] }
 
-        case CLEAR_ERRORS:
-            return []
+        case C.ADD_ERROR_SUCCESS:
+            return {...state, info:[...state.errors, action.payload] }
+
+        case C.CLEAR_ALL:
+            return {}
 
         default:
             return state
     }
 }
 
-export default errors;
+export default Status;

@@ -7,18 +7,19 @@ import Sidebar from './components/shared/sidebar'
 import User from './containers/user-page/user'
 import StatusBar from './containers/status-bar/statusbar'
 
-
 class App extends Component {
   render() {
     return (
+      <React.Fragment>
+      <StatusBar />
       <div className="wrapper">
         <Sidebar />
         <div className="container-fluid px-0">
-          <StatusBar />
           <Navbar />
           <Routes />
         </div>
       </div>
+      </React.Fragment>
     );
   }
 }
