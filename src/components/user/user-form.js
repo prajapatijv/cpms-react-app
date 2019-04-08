@@ -2,6 +2,8 @@ import React from 'react'
 import { Formik, Field } from 'formik'
 import { InputBox } from '../shared/controls'
 import * as Yup from 'yup'
+import PageTitle from '../shared/page-title'
+
 
 import ButtonBar from '../shared/button-bar'
 
@@ -36,7 +38,8 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                 onSubmit={onSaveUser}
                 render={props => (
                     <React.Fragment>
-                        <div className="modal-header px-0 py-0">
+                        <div className="modal-header mb-3 py-0">
+                            <PageTitle title="User" fetching={props.fetching}></PageTitle>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close"
                                 onClick={() => onClose()}>
                                 <span aria-hidden="true">&times;</span>

@@ -36,7 +36,7 @@ code {
 
 //Base Styles
 .full-height {
-  height: calc(100vh - 160px);
+  height: calc(100vh - 90px);
 }
 
 .right-border {
@@ -93,7 +93,13 @@ code {
   }
 
   .modal-header {
-    border: none
+    padding: 0 0 10px 0;
+  }
+
+  .app-page-title {
+    h4 {
+      padding-left: 0;
+    }
   }
 }
 

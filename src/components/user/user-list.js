@@ -1,12 +1,10 @@
 import React from 'react'
-import PageTitle from '../shared/page-title'
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 import { Spinner } from '../shared/progress'
 
 const UserList = (props) => 
-    <div className="app-page user-page">
-        <PageTitle title="Users" fetching={props.fetching}></PageTitle>
+    <div className="app-page user-page py-3">
         <div className="row no-gutters full-height px-0" >
             <div className="col-md-4 right-border app-list">
                 <UserLines {...props} />
@@ -20,7 +18,7 @@ const UserList = (props) =>
 
 const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) => 
     <React.Fragment>
-        <SearchBar onAdd={onAdd} onSearch={onSearch}/>
+        <SearchBar onAdd={onAdd} onSearch={onSearch} placeholder="Search users"/>
         <Spinner show={fetching}/> 
         <ul className="list-group list-group-flush">
         {
