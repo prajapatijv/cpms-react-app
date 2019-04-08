@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import classNames from 'classnames';
 
 const StatusBar = ({status,  clearAll}) => {
@@ -6,9 +6,8 @@ const StatusBar = ({status,  clearAll}) => {
     const hasErrors = (status.errors && status.errors.length > 0) 
     const hasInfos = (status.infos && status.infos.length > 0) 
 
-    const [show, setShow] = useState(true);
     useEffect(() => {
-        let timer = setTimeout(() => {clearAll(); setShow(false)}, 9000)
+        let timer = setTimeout(() => {clearAll()}, 9000)
 
         return() => {
             clearTimeout(timer)
@@ -22,7 +21,7 @@ const StatusBar = ({status,  clearAll}) => {
     })
 
     return (
-    (show && (hasInfos || hasErrors)) &&
+     (hasInfos || hasErrors) &&
      <div className={cls} role="alert">
         <strong className="alert-heading">
             {hasErrors ? status.errors.join(" ") : status.infos.join(" ")}  
