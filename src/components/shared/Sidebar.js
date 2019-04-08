@@ -1,14 +1,25 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import classNames from 'classnames';
 
-const Sidebar = () =>
-    <nav id="sidebar" className="bg-light sidebar">
+const Sidebar = () => {
+    const [toggle, setToggle] = useState(0);
+
+    var cls = classNames({
+        'bg-light': true,
+        'side-bar': true,
+        'collaspe': toggle === 1
+    })
+
+    return (
+    <nav id="sidebar" className={cls}>
         <div className="navbar navbar-dark bg-dark">
-            <button className="navbar-toggler"
-                type="button" data-toggle="collapse" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
+            <a className="navbar-brand" href="/">
+                BS
+            </a>
+            {toggle === 0 && <span className="toggle"><FontAwesomeIcon icon="chevron-left" onClick={() => setToggle(1)}/></span>}
+            {toggle === 1 && <span className="toggle"><FontAwesomeIcon icon="chevron-right" onClick={() => setToggle(0)}/></span>}
         </div>
 
         <div className="sidebar-sticky pt-3">
@@ -40,5 +51,7 @@ const Sidebar = () =>
             </ul>
         </div>
     </nav>
+    )
+}
 
 export default Sidebar

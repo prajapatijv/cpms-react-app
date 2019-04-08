@@ -13,11 +13,11 @@ class App extends Component {
     return (
       <div className="wrapper">
         <Sidebar />
-          <div className="container-fluid px-0">
-            <StatusBar />
-            <Navbar />
-            <Routes />
-          </div>
+        <div className="container-fluid px-0">
+          <StatusBar />
+          <Navbar />
+          <Routes />
+        </div>
       </div>
     );
   }
