@@ -11,8 +11,8 @@ const Sidebar = () =>
             </button>
         </div>
 
-        <div className="sidebar-sticky">
-            <ul className="nav flex-column">
+        <div className="sidebar-sticky pt-3">
+            <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
                     <NavLink to="/users" className="nav-link" activeClassName="active">
                         <FontAwesomeIcon icon="id-card" />
@@ -26,16 +26,16 @@ const Sidebar = () =>
             </h6>
             <ul className="nav flex-column mb-2">
                 <li className="nav-item">
-                    <a className="nav-link " href="/report1">
+                    <NavLink to="/report-1" className="nav-link" activeClassName="active">
                         <FontAwesomeIcon icon="chart-bar" />
-                        Report 1 <span className="sr-only">(current)</span>
-                    </a>
+                        Report 1
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link " href="/report2">
+                    <NavLink to="/report-2" className="nav-link" activeClassName="active">
                         <FontAwesomeIcon icon="chart-bar" />
-                        Report 2 <span className="sr-only">(current)</span>
-                    </a>
+                        Report 2
+                    </NavLink>
                 </li>
             </ul>
         </div>
