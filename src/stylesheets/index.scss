@@ -127,7 +127,7 @@ code {
 }
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
-.status-bar {
+.toast-info {
   visibility: hidden; /* Hidden by default. Visible on click */
   min-width: 400px; /* Set a default minimum width */
   margin-left: -200px; /* Divide value of min-width by 2 */
@@ -141,21 +141,21 @@ code {
   line-height:30px;
   padding:0px 15px;
 
+  &.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  
   .close {
     padding: 0 8px; 
     text-shadow: none;  
     color: white;
     opacity:0.9
   }
-}
 
-/* Show the snackbar when clicking on a button (class added with JavaScript) */
-.status-bar.show {
-  visibility: visible; /* Show the snackbar */
-  /* Add animation: Take 0.5 seconds to fade in and out the snackbar. 
-  However, delay the fade out process for 2.5 seconds */
-  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
-  animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
 /* Animations to fade the snackbar in and out */

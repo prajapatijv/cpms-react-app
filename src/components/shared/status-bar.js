@@ -1,46 +1,60 @@
-import React, { useEffect} from 'react';
-import classNames from 'classnames';
-import Icon from '../shared/icon'
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types'
 
-const StatusBar = ({status,  clearAll}) => {
+const StatusBar = ({ status, clearErrors, clearInfos }) => {
 
-    const hasErrors = (status.errors && status.errors.length > 0) 
-    const hasInfos = (status.infos && status.infos.length > 0) 
+    const hasErrors = (status.errors && status.errors.length > 0)
+    const hasInfos = (status.infos && status.infos.length > 0)
 
-    useEffect(() => {
-        let timer = setTimeout(() => {clearAll()}, 2000)
+    if (hasInfos) {
+        useEffect(() => {
+            let timer = setTimeout(() => {clearInfos()}, 2000)
 
-        return() => {
-            clearTimeout(timer)
-        }
-    })
-
-    var cls = classNames({
-        'status-bar alert alert-dismissible fade show app-alert bg-dark': true,
-        'alert-danger': hasErrors,
-        'alert-info': hasInfos
-    })
+            return() => {
+                clearTimeout(timer)
+            }
+        })
+    }
 
     return (
-    
-     <div className={cls} role="alert">
-        <Icon icon="check-circle" />
-        <strong className="alert-heading text-light">
-        Saved
-            {hasErrors ? status.errors.join(" ") : status.infos.join(" ")}  
-        </strong>
-        <button type="button" className="close" data-dismiss="alert" aria-label="Close" 
-            onClick={() => clearAll()}>
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div> 
+        <React.Fragment>
+            <Error hasErrors={hasErrors} status={status} clearErrors={clearErrors} />
+            <Info hasInfos={hasInfos} status={status} clearInfos={clearInfos} />
+        </React.Fragment>
     )
 }
 
 export default StatusBar
 
+const Error = ({hasErrors,  status, clearErrors}) =>
+    hasErrors && 
+    <div className="alert alert-dismissible fade show app-alert alert-warning" role="alert">
+        <strong className="alert-heading">
+            Error: 
+            {status.errors.join(" ")}
+        </strong>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close"
+            onClick={() => clearErrors()}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    
+
+const Info = ({hasInfos, status, clearInfos}) =>
+    hasInfos && 
+    <div className="toast-info alert alert-dismissible fade show app-alert bg-dark" role="alert">
+        <strong className="alert-heading text-light">
+            {status.infos.join(" ")}
+        </strong>
+        <button type="button" className="close" data-dismiss="alert" aria-label="Close"
+            onClick={() => clearInfos()}>
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+
+
 StatusBar.propTypes = {
     status: PropTypes.object,
-    clearAll: PropTypes.func
+    clearErrors: PropTypes.func,
+    clearInfos: PropTypes.func
 }

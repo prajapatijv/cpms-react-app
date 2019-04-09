@@ -14,8 +14,11 @@ const Status = (state=initialState, action) => {
         case C.ADD_ERROR_SUCCESS:
             return {...state, errors:[...state.errors, action.payload] }
 
-        case C.CLEAR_ALL:
-            return initialState
+        case C.CLEAR_ERRORS:
+            return {...state, errors:[] }
+
+        case C.CLEAR_INFOS:
+            return {...state, infos:[] }
 
         default:
             return state
