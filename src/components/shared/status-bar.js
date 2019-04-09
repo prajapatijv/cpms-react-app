@@ -8,7 +8,7 @@ const StatusBar = ({status,  clearAll}) => {
     const hasInfos = (status.infos && status.infos.length > 0) 
 
     useEffect(() => {
-        let timer = setTimeout(() => {clearAll()}, 3000)
+        let timer = setTimeout(() => {clearAll()}, 2000)
 
         return() => {
             clearTimeout(timer)
@@ -16,15 +16,15 @@ const StatusBar = ({status,  clearAll}) => {
     })
 
     var cls = classNames({
-        'alert alert-dismissible fade show app-alert bg-dark ': true,
+        'status-bar alert alert-dismissible fade show app-alert bg-dark': true,
         'alert-danger': hasErrors,
         'alert-info': hasInfos
     })
 
     return (
-     (hasInfos || hasErrors) &&
-     <div id="snackbar" className={cls} role="alert">
-        <strong className="alert-heading">
+    (hasInfos || hasErrors) &&
+     <div className={cls} role="alert">
+        <strong className="alert-heading text-light">
             {hasErrors ? status.errors.join(" ") : status.infos.join(" ")}  
         </strong>
         <button type="button" className="close" data-dismiss="alert" aria-label="Close" 
