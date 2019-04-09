@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import classNames from 'classnames';
+import PropTypes from 'prop-types'
 
 const StatusBar = ({status,  clearAll}) => {
 
@@ -35,3 +36,8 @@ const StatusBar = ({status,  clearAll}) => {
 }
 
 export default StatusBar
+
+StatusBar.propTypes = {
+    status: PropTypes.object,
+    clearAll: PropTypes.func
+}

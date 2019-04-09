@@ -1,5 +1,7 @@
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
+
 import StatusBar from '../../components/shared/status-bar'
 import * as statusbarActionCreators from './actions'
 
@@ -12,3 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(statusbarActionCreators , dispatch)
 
 export default connect(mapStateToProps,mapDispatchToProps)(StatusBar)
+
+StatusBar.propTypes = {
+    status: PropTypes.object
+}

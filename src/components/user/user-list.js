@@ -1,4 +1,5 @@
 import React from 'react'
+
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 import { Spinner } from '../shared/progress'

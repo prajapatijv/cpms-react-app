@@ -1,10 +1,10 @@
 import React from 'react'
+import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
 import { InputBox } from '../shared/controls'
 import * as Yup from 'yup'
+
 import PageTitle from '../shared/page-title'
-
-
 import ButtonBar from '../shared/button-bar'
 
 const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
@@ -86,3 +86,12 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
 }
 
 export default UserForm
+
+UserForm.propTypes = {
+    user: PropTypes.object,
+    onClose: PropTypes.func,
+    onSave: PropTypes.func,
+    onDelete: PropTypes.func,
+    saving: PropTypes.bool,
+    deleting: PropTypes.bool
+}

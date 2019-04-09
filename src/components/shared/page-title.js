@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const PageTitle = ({title}) => 
     <div className="app-page-title">
@@ -6,3 +7,8 @@ const PageTitle = ({title}) =>
     </div>
 
 export default PageTitle;
+
+
+PageTitle.propTypes = {
+    title: PropTypes.string
+}

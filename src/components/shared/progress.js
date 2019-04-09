@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 export const Spinner = ({ show }) =>
   show ?
@@ -7,4 +8,8 @@ export const Spinner = ({ show }) =>
         <span className="sr-only">Loading...</span>
       </div>
     </div>
-  : null
+    : null
+
+Spinner.propTypes = {
+  show: PropTypes.bool
+}

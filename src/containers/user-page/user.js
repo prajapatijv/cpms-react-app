@@ -1,6 +1,8 @@
 import React , { Component } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import PropTypes from 'prop-types'
+
 import UserList from '../../components/user/user-list'
 import * as userActionCreators from './actions'
 
@@ -42,5 +44,18 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(userActionCreators, dispatch)
 
-
 export default connect(mapStateToProps,mapDispatchToProps)(UserContainer)
+
+UserContainer.propTypes = {
+    users: PropTypes.array,
+    user:PropTypes.object,
+    selectUser:PropTypes.func,
+    fetchUsers:PropTypes.func,
+    addUser:PropTypes.func,
+    closeUser:PropTypes.func,
+    saveUser:PropTypes.func,
+    deleteUser:PropTypes.func,
+    fetching:PropTypes.bool,
+    saving:PropTypes.bool,
+    deleting:PropTypes.bool
+}
