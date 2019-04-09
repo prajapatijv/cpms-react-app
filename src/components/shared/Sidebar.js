@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames';
 
+import Icon from '../shared/icon'
+
 const Sidebar = () => {
     const [toggle, setToggle] = useState(0);
 
@@ -18,15 +20,15 @@ const Sidebar = () => {
             <a className="navbar-brand" href="/">
                 BS
             </a>
-            {toggle === 0 && <span className="toggle"><FontAwesomeIcon icon="chevron-left" onClick={() => setToggle(1)}/></span>}
-            {toggle === 1 && <span className="toggle"><FontAwesomeIcon icon="chevron-right" onClick={() => setToggle(0)}/></span>}
+            {toggle === 0 && <span className="toggle"><Icon icon="chevron-left" onClick={() => setToggle(1)}/></span>}
+            {toggle === 1 && <span className="toggle"><Icon icon="chevron-right" onClick={() => setToggle(0)}/></span>}
         </div>
 
         <div className="sidebar-sticky pt-3">
             <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
                     <NavLink to="/users" className="nav-link" activeClassName="active">
-                        <FontAwesomeIcon icon="id-card" />
+                        <Icon icon="id-card" />
                         Users
                     </NavLink>
                 </li>
@@ -38,13 +40,13 @@ const Sidebar = () => {
             <ul className="nav flex-column mb-2">
                 <li className="nav-item">
                     <NavLink to="/report-1" className="nav-link" activeClassName="active">
-                        <FontAwesomeIcon icon="chart-bar" />
+                        <Icon icon="chart-bar" />
                         Report 1
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/report-2" className="nav-link" activeClassName="active">
-                        <FontAwesomeIcon icon="chart-bar" />
+                        <Icon icon="chart-bar" />
                         Report 2
                     </NavLink>
                 </li>

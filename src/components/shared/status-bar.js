@@ -1,5 +1,6 @@
 import React, { useEffect} from 'react';
 import classNames from 'classnames';
+import Icon from '../shared/icon'
 import PropTypes from 'prop-types'
 
 const StatusBar = ({status,  clearAll}) => {
@@ -22,9 +23,11 @@ const StatusBar = ({status,  clearAll}) => {
     })
 
     return (
-    (hasInfos || hasErrors) &&
+    
      <div className={cls} role="alert">
+        <Icon icon="check-circle" />
         <strong className="alert-heading text-light">
+        Saved
             {hasErrors ? status.errors.join(" ") : status.infos.join(" ")}  
         </strong>
         <button type="button" className="close" data-dismiss="alert" aria-label="Close" 
