@@ -1,23 +1,38 @@
-import React , { Component } from 'react'
+import React, { useEffect, useState, Component, useCallback } from 'react'
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import PropTypes from 'prop-types'
 
+import { useMappedState, useDispatch, } from "redux-react-hook";
+
 import UserList from '../../components/user/user-list'
 import * as userActionCreators from './actions'
 
-class UserContainer extends Component {
+const UserContainer = ({ user, selectUser, fetchUsers, addUser, closeUser, saveUser, deleteUser,
+     saving, deleting }) => {
 
-    componentDidMount() {
-        this.props.fetchUsers("")
-    }
+    const load = useCallback(
+        () => dispatch(userActionCreators.fetchUsers(""))
+    );
 
-    render() {
-        const { users, user, selectUser, fetchUsers, addUser, closeUser , saveUser, deleteUser, 
-                fetching, saving, deleting } = this.props
+    const mapState = useCallback(
+        state => ({
+            users: state.userState.users,
+            user: state.userState.user,
+            fetching: state.userState.fetching
+        }),
+    );
+    const { users , fetching } = useMappedState(mapState)
+    const dispatch = useDispatch()
 
-        return <UserList 
-            users={users} user={user} 
+    useEffect(() => {
+        load()
+    },[]);
+
+    return (
+        <UserList
+            users={users}
+            user={user}
             onSelect={selectUser}
             onSearch={fetchUsers}
             onAdd={addUser}
@@ -28,34 +43,25 @@ class UserContainer extends Component {
             saving={saving}
             deleting={deleting}
         />
-    }
+    )
 }
 
-const mapStateToProps = (state, ownProps) => {
-    return {
-        users: state.userState.users,
-        user: state.userState.user,
-        fetching:state.userState.fetching,
-        saving:state.userState.saving,
-        deleting:state.userState.deleting
-    }
-}
 
 
 const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(userActionCreators, dispatch)
 
-export default connect(mapStateToProps,mapDispatchToProps)(UserContainer)
+export default UserContainer
 
 UserContainer.propTypes = {
     users: PropTypes.array,
-    user:PropTypes.object,
-    selectUser:PropTypes.func,
-    fetchUsers:PropTypes.func,
-    addUser:PropTypes.func,
-    closeUser:PropTypes.func,
-    saveUser:PropTypes.func,
-    deleteUser:PropTypes.func,
-    fetching:PropTypes.bool,
-    saving:PropTypes.bool,
-    deleting:PropTypes.bool
+    user: PropTypes.object,
+    selectUser: PropTypes.func,
+    fetchUsers: PropTypes.func,
+    addUser: PropTypes.func,
+    closeUser: PropTypes.func,
+    saveUser: PropTypes.func,
+    deleteUser: PropTypes.func,
+    fetching: PropTypes.bool,
+    saving: PropTypes.bool,
+    deleting: PropTypes.bool
 }

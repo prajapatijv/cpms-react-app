@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { StoreContext } from 'redux-react-hook';
 import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
@@ -29,11 +29,11 @@ if (AppConfig.ENV !== Env.Production) {
 window.addEventListener("error", (err) => HandleError(err.message, store.dispatch))
 
 ReactDOM.render(
-    <Provider store={store}>
+    <StoreContext.Provider value={store}>
         <BrowserRouter>
             <App />
         </BrowserRouter>
-    </Provider>,
+    </StoreContext.Provider>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
