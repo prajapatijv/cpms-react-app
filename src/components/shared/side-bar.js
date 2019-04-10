@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import classNames from 'classnames';
 
-import Icon from '../shared/icon'
+import Icon from './icon'
 
 const Sidebar = () => {
     const [toggle, setToggle] = useState(0);
