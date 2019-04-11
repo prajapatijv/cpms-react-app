@@ -1,27 +1,26 @@
 import React from 'react';
-import { useMappedState } from "redux-react-hook";
-import PropTypes from 'prop-types'
+import { useMappedState, useDispatch } from "redux-react-hook";
 
-import StatusBar from '../../components/shared/status-bar'
-//import * as statusbarActionCreators from './actions'
+import StatusBarComponent from '../../components/shared/status-bar'
+import * as actions from './actions'
 
-const mapState  = (state, ownProps) => {
-    return {
-        status: state.status,
+const StatusBar = () => {
+    const dispatch = useDispatch()
+
+    const mapState  = (state) => {
+        return {
+            status: state.status,
+        }
     }
-}
-
-//const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(statusbarActionCreators , dispatch)
-
-const StatusBarContainer = () => {
+    
     const { status  } = useMappedState(mapState)
+
     return (
-        <StatusBar status={status}/>
+        <StatusBarComponent status={status} 
+            clearInfos={() => dispatch(actions.clearInfos())}
+            clearErrors={() => dispatch(actions.clearErrors())}
+        />
     )
 }
 
-export default StatusBarContainer
-
-StatusBar.propTypes = {
-    status: PropTypes.object
-}
+export default StatusBar
