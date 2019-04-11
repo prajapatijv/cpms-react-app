@@ -29,7 +29,7 @@ export default Statusbar
 
 const Error = ({hasErrors,  status, clearErrors}) =>
     hasErrors && 
-    <div className="alert alert-dismissible fade show app-alert alert-warning" role="alert">
+    <div className="alert alert-dismissible fade show alert-warning app-alert " role="alert">
         <strong className="alert-heading">
             Error: 
             {status.errors.join(" ")}
@@ -43,7 +43,7 @@ const Error = ({hasErrors,  status, clearErrors}) =>
 
 const Info = ({hasInfos, status, clearInfos}) =>
     hasInfos && 
-    <div className="toast-info alert alert-dismissible fade show app-alert bg-dark" role="alert">
+    <div className="app-toast-info alert alert-dismissible fade show bg-dark app-alert" role="alert">
         <strong className="alert-heading text-light">
             {status.infos.join(" ")}
         </strong>

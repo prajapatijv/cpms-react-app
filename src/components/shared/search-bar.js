@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types'
+import './search-bar.scss'
 
 const SearchBar = ({ onAdd, onSearch, placeholder }) =>
     <div className="input-group">
-        <input type="text" className="form-control app-page-search"
+        <input type="text" className="form-control app-search"
             placeholder={placeholder} aria-label={placeholder}
             onChange={(e) => onSearch(e.target.value)} />
         <div className="input-group-append">

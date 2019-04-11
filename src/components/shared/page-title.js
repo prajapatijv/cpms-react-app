@@ -1,22 +1,13 @@
 import React from 'react'
-
-import { css } from 'emotion'
 import PropTypes from 'prop-types'
+import './page-title.scss'
 
 const PageTitle = ({title}) => 
-    <div className={styles.title}>
+    <div className="page-title">
         <h4 >{title}</h4>
     </div>
 
 export default PageTitle;
-
-const styles = {
-    title: css`
-    h4 {
-        padding-left: 0;
-    }
-    `
-}
 
 PageTitle.propTypes = {
     title: PropTypes.string

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
-import { InputBox } from '../shared/controls'
+import { InputBox } from '../shared/input-box'
 import * as Yup from 'yup'
 
 import PageTitle from '../shared/page-title'

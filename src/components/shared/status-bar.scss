@@ -1,6 +1,10 @@
+.app-alert {
+  margin-bottom: 0;
+  border-radius: 0;
+}
 
 /* The snackbar - position it at the bottom and in the middle of the screen */
-.toast-info {
+.app-toast-info {
     visibility: hidden; /* Hidden by default. Visible on click */
     min-width: 400px; /* Set a default minimum width */
     margin-left: -200px; /* Divide value of min-width by 2 */
