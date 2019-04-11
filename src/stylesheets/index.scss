@@ -22,18 +22,11 @@ code {
 }
 
 
-//Base Styles
-.full-height {
-  height: calc(100vh - 90px);
-}
-
-.right-border {
-  border-right: 0.1rem aliceblue solid;
-}
-
 .app-page {
   .app-list {
+    height: calc(100vh - 90px);
     padding: 0 1rem 0 0;
+    border-right: 0.1rem aliceblue solid;
   }
 
   .app-form {

@@ -6,8 +6,8 @@ import { Spinner } from '../shared/spinner'
 
 const UserList = (props) => 
     <div className="app-page user-page py-3">
-        <div className="row no-gutters full-height px-0" >
-            <div className="col-md-4 right-border app-list">
+        <div className="row no-gutters  px-0" >
+            <div className="col-md-4 app-list">
                 <UserLines {...props} />
             </div>
             <div className="col-md-6 app-form">
