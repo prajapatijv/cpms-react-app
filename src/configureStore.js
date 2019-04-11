@@ -1,5 +1,4 @@
 import { applyMiddleware, compose, createStore } from 'redux'
-import thunkMiddleware from 'redux-thunk'
 
 import createSagaMiddleware  from "redux-saga";
 import rootSaga from './containers/root-sagas'
@@ -13,8 +12,8 @@ const configureStore = (preloadedState) => {
   const sagaMiddleware = createSagaMiddleware()
 
   const middlewares = (AppConfig.ENV === Env.Production) ? 
-    [thunkMiddleware, sagaMiddleware] :
-    [loggerMiddleware, thunkMiddleware, sagaMiddleware]
+    [sagaMiddleware] :
+    [loggerMiddleware, sagaMiddleware]
    
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
