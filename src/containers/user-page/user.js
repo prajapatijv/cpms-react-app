@@ -16,16 +16,16 @@ const UserContainer = () => {
             users: state.userState.users,
             user: state.userState.user,
             fetching: state.userState.fetching,
-            saving:  state.userState.saving, 
-            deleting:  state.userState.deleting
+            saving: state.userState.saving,
+            deleting: state.userState.deleting
         }),
     );
 
-    const { users , user, fetching, saving, deleting } = useMappedState(mapState)
-    
+    const { users, user, fetching, saving, deleting } = useMappedState(mapState)
+
     useEffect(() => {
         dispatch(actions.fetchUsers(""))
-    },[]);
+    }, []);
 
     return (
         <UserList
