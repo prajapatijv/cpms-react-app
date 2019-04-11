@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 import classNames from 'classnames';
 
 import Icon from './icon'
+import './side-bar.scss'
 
 const Sidebar = () => {
     const [toggle, setToggle] = useState(0);

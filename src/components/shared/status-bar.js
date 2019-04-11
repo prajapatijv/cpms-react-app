@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types'
+import './status-bar.scss'
 
-const StatusBarComponent = ({ status, clearErrors, clearInfos }) => {
+const Statusbar = ({ status, clearErrors, clearInfos }) => {
 
     const hasErrors = (status.errors && status.errors.length > 0)
     const hasInfos = (status.infos && status.infos.length > 0)
@@ -24,7 +25,7 @@ const StatusBarComponent = ({ status, clearErrors, clearInfos }) => {
     )
 }
 
-export default StatusBarComponent
+export default Statusbar
 
 const Error = ({hasErrors,  status, clearErrors}) =>
     hasErrors && 
@@ -53,7 +54,7 @@ const Info = ({hasInfos, status, clearInfos}) =>
     </div>
 
 
-StatusBarComponent.propTypes = {
+Statusbar.propTypes = {
     status: PropTypes.object,
     clearErrors: PropTypes.func,
     clearInfos: PropTypes.func

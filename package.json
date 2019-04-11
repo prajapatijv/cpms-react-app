@@ -11,6 +11,7 @@
     "bootstrap": "^4.3.1",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
+    "emotion": "^10.0.9",
     "express": "^4.16.4",
     "express-delay": "^0.2.0",
     "formik": "^1.5.1",

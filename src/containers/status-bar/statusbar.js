@@ -1,7 +1,7 @@
 import React from 'react';
 import { useMappedState, useDispatch } from "redux-react-hook";
 
-import StatusBarComponent from '../../components/shared/status-bar'
+import Statusbar from '../../components/shared/status-bar'
 import * as actions from './actions'
 
 const StatusBar = () => {
@@ -16,7 +16,7 @@ const StatusBar = () => {
     const { status  } = useMappedState(mapState)
 
     return (
-        <StatusBarComponent status={status} 
+        <Statusbar status={status} 
             clearInfos={() => dispatch(actions.clearInfos())}
             clearErrors={() => dispatch(actions.clearErrors())}
         />
