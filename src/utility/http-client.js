@@ -1,4 +1,4 @@
-import { call, put } from 'redux-saga/effects'
+import { call, put, delay } from 'redux-saga/effects'
 import axios from "axios"
 import { AppConfig, GetContext } from '../AppConfig'
 import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
@@ -11,12 +11,13 @@ const saveApi = (apiUrl, payload) => {
 const deleteApi = (apiUrl, id) => axios.get(`${apiUrl}/${id}`)
 
 
-export function* fetch(context, params, delay = false) {
+export function* fetch(context, params, throttle = false) {
 
     try {
-        if (delay && params.criteria !== "") { yield delay(500) }
-
         var contextObj = GetContext(context);
+
+        if (throttle && params.criteria !== "") { yield delay(500) }
+
         const apiUrl = GetApiUrl(contextObj.apiContext);
 
         const response = yield (call(fetchApi, apiUrl, params.criteria))

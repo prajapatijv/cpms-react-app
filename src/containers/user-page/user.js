@@ -1,44 +1,42 @@
-import React, { useEffect, useState, Component, useCallback } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import PropTypes from 'prop-types'
-
+import React, { useEffect, useCallback } from 'react'
 import { useMappedState, useDispatch, } from "redux-react-hook";
 
 import UserList from '../../components/user/user-list'
-import * as userActionCreators from './actions'
+import * as actions from './actions'
 
-const UserContainer = ({ user, selectUser, fetchUsers, addUser, closeUser, saveUser, deleteUser,
-     saving, deleting }) => {
+const UserContainer = () => {
 
-    const load = useCallback(
-        () => dispatch(userActionCreators.fetchUsers(""))
-    );
+    const dispatch = useDispatch()
+    /*const load = useCallback(
+        () => dispatch(actions.fetchUsers(""))
+    );*/
 
     const mapState = useCallback(
         state => ({
             users: state.userState.users,
             user: state.userState.user,
-            fetching: state.userState.fetching
+            fetching: state.userState.fetching,
+            saving:  state.userState.saving, 
+            deleting:  state.userState.deleting
         }),
     );
-    const { users , fetching } = useMappedState(mapState)
-    const dispatch = useDispatch()
 
+    const { users , user, fetching, saving, deleting } = useMappedState(mapState)
+    
     useEffect(() => {
-        load()
+        dispatch(actions.fetchUsers(""))
     },[]);
 
     return (
         <UserList
             users={users}
             user={user}
-            onSelect={selectUser}
-            onSearch={fetchUsers}
-            onAdd={addUser}
-            onClose={closeUser}
-            onSave={saveUser}
-            onDelete={deleteUser}
+            onSelect={(id) => dispatch(actions.selectUser(id))}
+            onSearch={(criteria) => dispatch(actions.fetchUsers(criteria))}
+            onAdd={() => dispatch(actions.addUser())}
+            onClose={() => dispatch(actions.closeUser())}
+            onSave={(user) => dispatch(actions.saveUser(user))}
+            onDelete={(id) => dispatch(actions.deleteUser(id))}
             fetching={fetching}
             saving={saving}
             deleting={deleting}
@@ -46,22 +44,4 @@ const UserContainer = ({ user, selectUser, fetchUsers, addUser, closeUser, saveU
     )
 }
 
-
-
-const mapDispatchToProps = (dispatch, ownProps) => bindActionCreators(userActionCreators, dispatch)
-
 export default UserContainer
-
-UserContainer.propTypes = {
-    users: PropTypes.array,
-    user: PropTypes.object,
-    selectUser: PropTypes.func,
-    fetchUsers: PropTypes.func,
-    addUser: PropTypes.func,
-    closeUser: PropTypes.func,
-    saveUser: PropTypes.func,
-    deleteUser: PropTypes.func,
-    fetching: PropTypes.bool,
-    saving: PropTypes.bool,
-    deleting: PropTypes.bool
-}
