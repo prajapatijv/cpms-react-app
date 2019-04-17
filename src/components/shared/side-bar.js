@@ -20,8 +20,8 @@ const Sidebar = () => {
             <a className="navbar-brand" href="/">
                 BS
             </a>
-            {toggle === 0 && <span className="toggle"><Icon icon="chevron-left" onClick={() => setToggle(1)}/></span>}
-            {toggle === 1 && <span className="toggle"><Icon icon="chevron-right" onClick={() => setToggle(0)}/></span>}
+            {toggle === 0 && <span className="toggle" onClick={() => setToggle(1)}><Icon icon="chevron-left"/></span>}
+            {toggle === 1 && <span className="toggle" onClick={() => setToggle(0)}><Icon icon="chevron-right"/></span>}
         </div>
 
         <div className="sidebar-sticky pt-3">
