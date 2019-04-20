@@ -13,5 +13,6 @@ export const GetContext = (context) => _contextMapping.filter(c => c.context ===
 
 const _contextMapping = [
     { 'context': 'user', 'apiContext': 'users', 'actionContextPlural': 'USERS', 'actionContextSingular': 'USER' },
+    { 'context': 'item', 'apiContext': 'items', 'actionContextPlural': 'ITEMS', 'actionContextSingular': 'ITEM' },
 ]
 

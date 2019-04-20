@@ -3,9 +3,11 @@ import { Route, Switch } from "react-router-dom";
 
 import Navbar from './components/shared/nav-bar'
 import Sidebar from './components/shared/side-bar'
+import StatusBar from './containers/status-bar/statusbar'
 
 import User from './containers/user-page/user'
-import StatusBar from './containers/status-bar/statusbar'
+import Item from './containers/item-page/item'
+
 
 class App extends Component {
   render() {
@@ -28,6 +30,7 @@ const Routes = () =>
   <Switch>
     <Route exact path="/" component={HomePage} />
     <Route path="/users" component={User} />
+    <Route path="/items" component={Item} />
     <Route component={Whoops404} />
   </Switch>
 

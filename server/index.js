@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 
 const users = require('./data/users.json')
+const items = require('./data/items.json')
 
 
 const logger = (req, res, next) => {
@@ -16,7 +17,7 @@ const logger = (req, res, next) => {
     next()
 }
 
-const byFullNameName = criteria => user => {
+const byFullName = criteria => user => {
     if (criteria === undefined) {
         return true
     }
@@ -25,7 +26,16 @@ const byFullNameName = criteria => user => {
             user.lastName.toLowerCase().match(criteria.toLowerCase())
     }
 }
-    
+
+const byItemName = criteria => item => {
+    if (criteria === undefined) {
+        return true
+    }
+    else  {
+        return item.itemName.toLowerCase().match(criteria.toLowerCase())     
+    }
+}
+
 const app = express()
     .use(logger)
     .use(bodyParser.json()) // for parsing application/json    
@@ -34,9 +44,10 @@ const app = express()
     .use(cors())
     .use('/', express.static('./dist/img'));
 
+//Users   
 app.get('/api/users/:criteria?', (req, res) =>
     res.status(200).json(
-        users.filter(byFullNameName(req.params.criteria))
+        users.filter(byFullName(req.params.criteria))
     )
 )
 
@@ -45,6 +56,22 @@ app.post('/api/users', (req, res) =>
 )
 
 app.delete('/api/users/:id', (req, res) =>
+    res.status(200).json({})
+)
+
+
+//Items
+app.get('/api/items/:criteria?', (req, res) =>
+    res.status(200).json(
+        items.filter(byItemName(req.params.criteria))
+    )
+)
+
+app.post('/api/items', (req, res) =>
+    res.status(200).json({})
+)
+
+app.delete('/api/items/:id', (req, res) =>
     res.status(200).json({})
 )
 
