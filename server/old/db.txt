@@ -1,0 +1,93 @@
+Personal
+	accd
+	grcd 	string
+	name
+	alnm
+	add1, add2, add3
+	city
+	pncd
+	dist
+	phn1, phn2, phn3
+	mobl
+	emal
+	pagr
+	pano
+	rem1, rem2
+	flag
+	clbl
+	plts
+	
+Item
+	itcd
+	itnm
+	rate
+	stat	(SELF/RENT)
+	netp
+	
+Statement
+	itcd
+	accd
+	date
+	time
+	pltd
+	pltc
+	netp
+	days
+	rate
+	Tamt
+	Aamt
+	
+Reminder
+	accd
+	rmdt
+	rem1
+	
+RateParty
+	accd
+	itcd
+	rate
+	
+Heading
+	Prnm
+	addr
+	phno
+	line
+	HdN1
+	HdN2
+	HdN3
+	
+Trans
+	itcd
+	accd
+	date
+	pltd
+	pltc
+	days
+	rate
+	rem1
+	rem2
+	aamt
+	rndt
+	netp
+	flag
+	time
+	
+CashTrn
+	accd
+	itcd
+	tamt
+	damt
+	date
+	rate
+	days
+	netp
+	flag
+	rem1
+	rem2
+	time
+	
+Current
+	itcd
+	accd
+	camt
+	
