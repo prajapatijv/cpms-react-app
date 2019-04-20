@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Route, Switch } from "react-router-dom";
 
-import Navbar from './components/shared/navbar'
+import Navbar from './components/shared/nav-bar'
 import Sidebar from './components/shared/side-bar'
 
 import User from './containers/user-page/user'
