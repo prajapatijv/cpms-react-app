@@ -24,19 +24,19 @@ const UserContainer = () => {
     const { users, user, fetching, saving, deleting } = useMappedState(mapState)
 
     useEffect(() => {
-        dispatch(actions.fetchUsers(""))
+        dispatch(actions.fetch(""))
     }, []);
 
     return (
         <UserList
             users={users}
             user={user}
-            onSelect={(id) => dispatch(actions.selectUser(id))}
-            onSearch={(criteria) => dispatch(actions.fetchUsers(criteria))}
-            onAdd={() => dispatch(actions.addUser())}
-            onClose={() => dispatch(actions.closeUser())}
-            onSave={(user) => dispatch(actions.saveUser(user))}
-            onDelete={(id) => dispatch(actions.deleteUser(id))}
+            onSelect={(id) => dispatch(actions.select(id))}
+            onSearch={(criteria) => dispatch(actions.fetch(criteria))}
+            onAdd={() => dispatch(actions.add())}
+            onClose={() => dispatch(actions.close())}
+            onSave={(user) => dispatch(actions.save(user))}
+            onDelete={(id) => dispatch(actions.deleteEntity(id))}
             fetching={fetching}
             saving={saving}
             deleting={deleting}

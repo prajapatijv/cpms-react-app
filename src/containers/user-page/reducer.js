@@ -1,6 +1,6 @@
 import { USER_ACTIONS as C } from '../actionTypes'
 
-const initUser = { 
+const init = { 
     id:0,
     firstName:"",
     lastName:"",
@@ -27,7 +27,7 @@ const users = (state=initialState, action) => {
         }
 
         case C.ADD_USER: {
-            return {...state, user: initUser }
+            return {...state, user: init }
         }
 
         case C.SELECT_USER:{

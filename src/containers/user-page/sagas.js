@@ -7,22 +7,22 @@ const CONTEXT = 'user'
 
 ///Saga Watchers
 export const userSagas = [
-    takeLatest(C.FETCH_USERS, fetchUserWorker),
-    takeEvery(C.SAVE_USER, saveUserWorker),
-    takeEvery(C.DELETE_USER, deleteUserWorker)
+    takeLatest(C.FETCH_USERS, fetchWorker),
+    takeEvery(C.SAVE_USER, saveWorker),
+    takeEvery(C.DELETE_USER, deleteWorker)
 ]
 
 
 ///Saga Worker functions
-function* fetchUserWorker(params) {
+function* fetchWorker(params) {
     yield* fetch(CONTEXT, params, true)
 }
 
-function* saveUserWorker(params) {
+function* saveWorker(params) {
     yield* save(CONTEXT, params.user)
 }
 
-function* deleteUserWorker(params) {
+function* deleteWorker(params) {
     yield* remove(CONTEXT, params.id)
 }
 

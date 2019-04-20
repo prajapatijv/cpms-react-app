@@ -1,8 +1,8 @@
 import { USER_ACTIONS as C } from '../actionTypes'
 
-export const fetchUsers = (criteria) => ({ type: C.FETCH_USERS, criteria: criteria })
-export const selectUser = (id) => ({ type: C.SELECT_USER, payload: id })
-export const addUser = () => ({ type: C.ADD_USER })
-export const closeUser = () => ({ type: C.CLOSE_USER })
-export const saveUser = (user) => ({ type: C.SAVE_USER, user: user })
-export const deleteUser = (id) => ({ type: C.DELETE_USER, id: id })
+export const fetch = (criteria) => ({ type: C.FETCH_USERS, criteria: criteria })
+export const select = (id) => ({ type: C.SELECT_USER, payload: id })
+export const add = () => ({ type: C.ADD_USER })
+export const close = () => ({ type: C.CLOSE_USER })
+export const save = (user) => ({ type: C.SAVE_USER, user: user })
+export const deleteEntity = (id) => ({ type: C.DELETE_USER, id: id })
