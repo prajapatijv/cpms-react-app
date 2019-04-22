@@ -4,7 +4,7 @@ import { useMappedState, useDispatch, } from "redux-react-hook";
 import UserList from '../../components/user/user-list'
 import * as actions from './actions'
 
-const UserContainer = () => {
+const UserContainer = (props) => {
 
     const dispatch = useDispatch()
     /*const load = useCallback(
@@ -17,11 +17,13 @@ const UserContainer = () => {
             user: state.userState.user,
             fetching: state.userState.fetching,
             saving: state.userState.saving,
-            deleting: state.userState.deleting
+            deleting: state.userState.deleting,
+            userId: props.userId
         }),
     );
 
     const { users, user, fetching, saving, deleting } = useMappedState(mapState)
+
 
     useEffect(() => {
         dispatch(actions.fetch(""))

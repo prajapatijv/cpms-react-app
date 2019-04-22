@@ -5,8 +5,8 @@ import Navbar from './components/shared/nav-bar'
 import Sidebar from './components/shared/side-bar'
 import StatusBar from './containers/status-bar/statusbar'
 
-import User from './containers/user-page/user'
-import Item from './containers/item-page/item'
+import UserPage from './containers/user-page/user'
+import ItemPage from './containers/item-page/item'
 
 
 const App = ({children}) =>
@@ -24,8 +24,9 @@ const App = ({children}) =>
 const Routes = () =>
   <Router>
     <HomePage path="/" />
-    <User path="users" />
-    <Item path="items" />
+    <UserPage path="users" />
+    <UserPage path="users/:userId" />
+    <ItemPage path="items" />
     <NotFound default />
   </Router>
 
