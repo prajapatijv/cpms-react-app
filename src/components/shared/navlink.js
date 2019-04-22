@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-const NavLink = props => 
+const NavLink = ({activeClassName, ...props}) => 
 <Link
     {...props}
     getProps={({ isCurrent }) => {
         return {
-            class:  isCurrent ? `${props.className} ${props.activeClassName}` : props.className
+            className:  isCurrent ? `${props.className} ${props.activeClassName}` : props.className
         };
     }}
 />
