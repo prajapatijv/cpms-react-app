@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { StoreContext } from 'redux-react-hook';
-import { BrowserRouter } from "react-router-dom";
 import * as serviceWorker from './serviceWorker';
 
 import configureFontawsome from './components/shared/fontawsome'
@@ -30,9 +29,7 @@ window.addEventListener("error", (err) => HandleError(err.message, store.dispatc
 
 ReactDOM.render(
     <StoreContext.Provider value={store}>
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
+        <App />
     </StoreContext.Provider>,
     document.getElementById('root'));
 
