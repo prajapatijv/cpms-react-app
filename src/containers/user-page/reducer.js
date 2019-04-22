@@ -31,7 +31,7 @@ const users = (state=initialState, action) => {
         }
 
         case C.SELECT_USER:{
-            const user = state.users.find(u => u.id === action.payload)
+            const user = state.users.find(u => u.id === parseInt(action.payload))
             return {...state, user:user }
         }
 

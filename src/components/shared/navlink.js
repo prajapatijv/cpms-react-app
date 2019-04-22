@@ -6,7 +6,7 @@ const NavLink = ({activeClassName, ...props}) =>
     {...props}
     getProps={({ isCurrent }) => {
         return {
-            className:  isCurrent ? `${props.className} ${props.activeClassName}` : props.className
+            className:  isCurrent ? `${props.className} ${activeClassName}` : props.className
         };
     }}
 />
