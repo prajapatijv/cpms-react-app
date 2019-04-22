@@ -19,7 +19,7 @@ const ItemList = (props) =>
 
 const ItemLines = ({ items , onSelect, onAdd , onSearch, fetching}) => 
     <React.Fragment>
-        <SearchBar onAdd={onAdd} onSearch={onSearch} placeholder="Search items"/>
+        <SearchBar onAdd={onAdd} onSearch={onSearch} placeholder={fetching ? "Fetching items" : "Search items" }/>
         <Spinner show={fetching}/> 
         <ul className="list-group list-group-flush">
         {
