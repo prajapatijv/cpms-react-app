@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
-import { Link } from '@reach/router'
 import classNames from 'classnames';
 
 import Icon from './icon'
+import NavLink from './navlink'
+
 import './side-bar.scss'
 
 const Sidebar = () => {
-    const [toggle, setToggle] = useState(0);
+    const [toggle, setToggle] = useState(1);
 
     var cls = classNames({
         'bg-light': true,
@@ -27,16 +28,16 @@ const Sidebar = () => {
         <div className="sidebar-sticky pt-3">
             <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
-                    <Link to="/users" className="nav-link" activeClassName="active">
+                    <NavLink to="/users" className="nav-link" activeClassName="active">
                         <Icon icon="id-card" />
                         Users
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/items" className="nav-link" activeClassName="active">
+                    <NavLink to="/items" className="nav-link" activeClassName="active">
                         <Icon icon="id-card" />
                         Items
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
 
@@ -45,16 +46,16 @@ const Sidebar = () => {
             </h6>
             <ul className="nav flex-column mb-2">
                 <li className="nav-item">
-                    <Link to="/report-1" className="nav-link" activeClassName="active">
+                    <NavLink to="/report-1" className="nav-link" activeClassName="active">
                         <Icon icon="chart-bar" />
                         Report 1
-                    </Link>
+                    </NavLink>
                 </li>
                 <li className="nav-item">
-                    <Link to="/report-2" className="nav-link" activeClassName="active">
+                    <NavLink to="/report-2" className="nav-link" activeClassName="active">
                         <Icon icon="chart-bar" />
                         Report 2
-                    </Link>
+                    </NavLink>
                 </li>
             </ul>
         </div>
