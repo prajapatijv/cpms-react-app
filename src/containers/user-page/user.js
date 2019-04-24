@@ -19,7 +19,7 @@ const UserContainer = (props) => {
             fetching: state.userState.fetching,
             saving: state.userState.saving,
             deleting: state.userState.deleting
-        }),props.userId);
+        }),[props.userId || ""]);
 
     const { users, user, fetching, saving, deleting } = useMappedState(mapState)
 
