@@ -41,9 +41,7 @@ const Sidebar = () => {
                 </li>
             </ul>
 
-            <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                <span>Reports</span>
-            </h6>
+            <hr/>
             <ul className="nav flex-column nav-pills mb-2">
                 <li className="nav-item">
                     <NavLink to="/report-1" className="nav-link" activeClassName="active">

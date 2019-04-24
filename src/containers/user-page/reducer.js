@@ -31,8 +31,9 @@ const users = (state=initialState, action) => {
         case `${C.FETCH_USERS}_SUCCEED`: {
             return {...state, fetching:false, 
                 users: action.payload.criteria === "" ? 
-                    action.payload.users : 
-                    action.payload.users.filter(byFullName(action.payload.criteria)) }
+                    action.payload.data : 
+                    action.payload.data.filter(byFullName(action.payload.criteria)) 
+                }
         }
 
         case `${C.FETCH_USERS}_FAILED`: {

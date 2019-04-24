@@ -12,6 +12,15 @@ const initialState = {
     items:[]
 } 
 
+const byItemName = criteria => item => {
+    if (criteria === undefined) {
+        return true
+    }
+    else  {
+        return item.itemName.toLowerCase().match(criteria.toLowerCase())     
+    }
+}
+
 const items = (state=initialState, action) => {
 
     switch (action.type) {
@@ -19,7 +28,11 @@ const items = (state=initialState, action) => {
             return {...state, fetching:true , error:null}
         
         case `${C.FETCH_ITEMS}_SUCCEED`: {
-            return {...state, fetching:false, items:action.payload }
+            return {...state, fetching:false, 
+                items:action.payload.criteria === "" ? 
+                action.payload.data : 
+                action.payload.data.filter(byItemName(action.payload.criteria)) 
+            }
         }
 
         case `${C.FETCH_ITEMS}_FAILED`: {

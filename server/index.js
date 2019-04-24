@@ -17,25 +17,6 @@ const logger = (req, res, next) => {
     next()
 }
 
-const byFullName = criteria => user => {
-    if (criteria === undefined) {
-        return true
-    }
-    else  {
-        return user.firstName.toLowerCase().match(criteria.toLowerCase()) ||
-            user.lastName.toLowerCase().match(criteria.toLowerCase())
-    }
-}
-
-const byItemName = criteria => item => {
-    if (criteria === undefined) {
-        return true
-    }
-    else  {
-        return item.itemName.toLowerCase().match(criteria.toLowerCase())     
-    }
-}
-
 const app = express()
     .use(logger)
     .use(bodyParser.json()) // for parsing application/json    
@@ -45,9 +26,9 @@ const app = express()
     .use('/', express.static('./dist/img'));
 
 //Users   
-app.get('/api/users/:criteria?', (req, res) =>
+app.get('/api/users', (req, res) =>
     res.status(200).json(
-        users.filter(byFullName(req.params.criteria))
+        users
     )
 )
 
@@ -61,9 +42,9 @@ app.delete('/api/users/:id', (req, res) =>
 
 
 //Items
-app.get('/api/items/:criteria?', (req, res) =>
+app.get('/api/items', (req, res) =>
     res.status(200).json(
-        items.filter(byItemName(req.params.criteria))
+        items
     )
 )
 
@@ -75,4 +56,4 @@ app.delete('/api/items/:id', (req, res) =>
     res.status(200).json({})
 )
 
-app.listen(port, () => console.log('CMPS app server running on port ' + port + ' with random delay'))
+app.listen(port, () => console.log('App server running on port ' + port + ' with random delay'))
