@@ -3,6 +3,7 @@ import React from 'react'
 import SearchBar from '../shared/search-bar'
 import UserForm from './user-form'
 import { Spinner } from '../shared/spinner'
+import NavLink from '../shared/navlink';
 
 const UserList = (props) => 
     <div className="app-page user-page py-3">
@@ -25,11 +26,13 @@ const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) =>
         {
             !fetching && 
             users.map((user) => 
-                <button key={user.id} 
-                    onClick={() => onSelect(user.id)}
+                <NavLink key={user.id} 
+                    to={`/users/${user.id}`}
+                    //onClick={() => onSelect(user.id)}
+                    activeClassName="active"
                     className="app-list-item list-group-item-action"
                     >{user.firstName} {user.lastName}
-                </button>
+                </NavLink>
                 )
         }
         </ul>

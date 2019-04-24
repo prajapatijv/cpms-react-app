@@ -29,7 +29,7 @@ const users = (state=initialState, action) => {
             return {...state, fetching:true , error:null}
         
         case `${C.FETCH_USERS}_SUCCEED`: {
-            return {...state, fetching:false, 
+            return {...state, fetching:false,
                 users: action.payload.criteria === "" ? 
                     action.payload.data : 
                     action.payload.data.filter(byFullName(action.payload.criteria)) 
@@ -44,13 +44,8 @@ const users = (state=initialState, action) => {
             return {...state, user: init }
         }
 
-        case C.SELECT_USER:{
-            const user = state.users.find(u => u.id === parseInt(action.payload))
-            return {...state, user:user }
-        }
-
         case C.CLOSE_USER:{
-            return {...state, user:null }
+            return {...state, user:undefined }
         }
 
         case C.SAVE_USER: {
@@ -70,7 +65,7 @@ const users = (state=initialState, action) => {
         }
 
         case `${C.DELETE_USER}_SUCCEED`: {
-            return { ...state, user:null, deleting: false }
+            return { ...state, deleting: false }
         }
 
         case `${C.DELETE_USER}_FAILED`: {

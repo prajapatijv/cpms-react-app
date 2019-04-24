@@ -25,6 +25,7 @@ const Routes = () =>
   <Router>
     <HomePage path="/" />
     <UserPage path="users" />
+    <UserPage path="users/:userId" />
     <ItemPage path="items" />
     <NotFound default />
   </Router>

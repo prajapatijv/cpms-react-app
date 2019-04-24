@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback } from 'react'
-import { useMappedState, useDispatch, } from "redux-react-hook";
+import { useMappedState, useDispatch, } from "redux-react-hook"
 
 import UserList from '../../components/user/user-list'
 import * as actions from './actions'
+
 
 const UserContainer = (props) => {
 
@@ -14,16 +15,14 @@ const UserContainer = (props) => {
     const mapState = useCallback(
         state => ({
             users: state.userState.users,
-            user: state.userState.user,
+            user: props.userId === undefined ? state.userState.user : state.userState.users.find(u => u.id === parseInt(props.userId)),
             fetching: state.userState.fetching,
             saving: state.userState.saving,
-            deleting: state.userState.deleting,
-            userId: props.userId
+            deleting: state.userState.deleting
         }),
     );
 
     const { users, user, fetching, saving, deleting } = useMappedState(mapState)
-
 
     useEffect(() => {
         dispatch(actions.fetch(""))
@@ -33,10 +32,10 @@ const UserContainer = (props) => {
         <UserList
             users={users}
             user={user}
-            onSelect={(id) => dispatch(actions.select(id))}
+            //onSelect={(id) => dispatch(actions.select(props.userId))}
             onSearch={(criteria) => dispatch(actions.fetch(criteria))}
-            onAdd={() => dispatch(actions.add())}
-            onClose={() => dispatch(actions.close())}
+            onAdd={() => dispatch(actions.add()) }
+            onClose={() => dispatch(actions.close()) }
             onSave={(user) => dispatch(actions.save(user))}
             onDelete={(id) => dispatch(actions.deleteEntity(id))}
             fetching={fetching}
