@@ -3,6 +3,7 @@ import axios from "axios"
 import { GetItem, SetItem, RemoveItem } from './cache'
 import { AppConfig, GetContext } from '../AppConfig'
 import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
+import { navigate } from '@reach/router'
 
 
 const fetchApi = (apiUrl, criteria) => axios.get(`${apiUrl}`)
@@ -48,6 +49,7 @@ export function* save(context, payload) {
         //Cleanup cache
         RemoveItem(contextObj.actionContextPlural) 
 
+        navigate(`/${contextObj.apiContext}/3`)
     } catch (error) {
         yield HandleError(`SAVE_${contextObj.actionContextSingular}_FAILED`, error)
     }
@@ -64,7 +66,8 @@ export function* remove(context, id) {
 
         //Cleanup cache
         RemoveItem(contextObj.actionContextPlural) 
-
+        
+        navigate(`/${contextObj.apiContext}`)
     } catch (error) {
         yield HandleError(`DELETE_${contextObj.actionContextSingular}_FAILED`, error)
     }
