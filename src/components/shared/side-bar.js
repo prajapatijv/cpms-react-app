@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart }  from 'react-feather'
 import classNames from 'classnames';
 
-import Icon from './icon'
 import NavLink from './navlink'
 
 import './side-bar.scss'
@@ -21,21 +21,21 @@ const Sidebar = () => {
             <a className="navbar-brand" href="/">
                 BS
             </a>
-            {toggle === 0 && <span className="toggle" onClick={() => setToggle(1)}><Icon icon="chevron-left"/></span>}
-            {toggle === 1 && <span className="toggle" onClick={() => setToggle(0)}><Icon icon="chevron-right"/></span>}
+            {toggle === 0 && <span className="toggle" onClick={() => setToggle(1)}><ChevronLeft/></span>}
+            {toggle === 1 && <span className="toggle" onClick={() => setToggle(0)}><ChevronRight/></span>}
         </div>
 
         <div className="sidebar-sticky pt-3">
             <ul className="nav nav-pills flex-column">
                 <li className="nav-item">
                     <NavLink to="/users" className="nav-link" activeClassName="active">
-                        <Icon icon="id-card" />
+                        <Users/>
                         Users
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/items" className="nav-link" activeClassName="active">
-                        <Icon icon="id-card" />
+                        <List/>
                         Items
                     </NavLink>
                 </li>
@@ -44,16 +44,16 @@ const Sidebar = () => {
             <h6 className="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                 <span>Reports</span>
             </h6>
-            <ul className="nav flex-column mb-2">
+            <ul className="nav flex-column nav-pills mb-2">
                 <li className="nav-item">
                     <NavLink to="/report-1" className="nav-link" activeClassName="active">
-                        <Icon icon="chart-bar" />
+                        <BarChart/>
                         Report 1
                     </NavLink>
                 </li>
                 <li className="nav-item">
                     <NavLink to="/report-2" className="nav-link" activeClassName="active">
-                        <Icon icon="chart-bar" />
+                        <PieChart/>
                         Report 2
                     </NavLink>
                 </li>

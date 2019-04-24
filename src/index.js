@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { StoreContext } from 'redux-react-hook';
 import * as serviceWorker from './serviceWorker';
 
-import configureFontawsome from './components/shared/fontawsome'
 import { HandleError } from './utility/status'
 
 import './stylesheets/custom.scss';
@@ -14,8 +13,6 @@ import { AppConfig, Env } from './AppConfig'
 
 import App from './App';
 
-
-configureFontawsome()
 
 const store = configureStore({})
 
