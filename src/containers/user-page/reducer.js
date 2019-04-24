@@ -12,6 +12,16 @@ const initialState = {
     users:[]
 } 
 
+const byFullName = criteria => user => {
+    if (criteria === undefined) {
+        return true
+    }
+    else  {
+        return user.firstName.toLowerCase().match(criteria.toLowerCase()) ||
+            user.lastName.toLowerCase().match(criteria.toLowerCase())
+    }
+}
+
 const users = (state=initialState, action) => {
 
     switch (action.type) {
@@ -19,7 +29,10 @@ const users = (state=initialState, action) => {
             return {...state, fetching:true , error:null}
         
         case `${C.FETCH_USERS}_SUCCEED`: {
-            return {...state, fetching:false, users:action.payload }
+            return {...state, fetching:false, 
+                users: action.payload.criteria === "" ? 
+                    action.payload.users : 
+                    action.payload.users.filter(byFullName(action.payload.criteria)) }
         }
 
         case `${C.FETCH_USERS}_FAILED`: {

@@ -1,5 +1,6 @@
 import { call, put, delay } from 'redux-saga/effects'
 import axios from "axios"
+import { GetItem, SetItem, RemoveItem, Clear } from './cache'
 import { AppConfig, GetContext } from '../AppConfig'
 import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
 
@@ -19,10 +20,15 @@ export function* fetch(context, params, throttle = false) {
         if (throttle && params.criteria !== "") { yield delay(500) }
 
         const apiUrl = GetApiUrl(contextObj.apiContext);
+        var cached = GetItem(contextObj.actionContextPlural) 
+        
+        const response = cached === null ? yield (call(fetchApi, apiUrl, params.criteria)) : cached
+        const data = (params.criteria === null) ? response.data : cached
 
-        const response = yield (call(fetchApi, apiUrl, params.criteria))
+        yield put({ "type": `FETCH_${contextObj.actionContextPlural}_SUCCEED`, payload: { users: data, criteria: params.criteria } })
 
-        yield put({ "type": `FETCH_${contextObj.actionContextPlural}_SUCCEED`, payload: response.data })
+        //Load cache
+        SetItem(contextObj.actionContextPlural, cached === null ? response.data : cached) 
 
     } catch (error) {
         yield HandleError(`FETCH_${contextObj.actionContextPlural}_FAILED`, error)
