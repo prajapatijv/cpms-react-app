@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './page-title.scss'
 
 const PageTitle = ({title}) => 
     <div className="page-title">

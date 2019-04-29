@@ -8,6 +8,12 @@
 .app-list-item {
     @extend .list-group-item;
     border: 1px aliceblue solid;
+
+    &.active {
+      color: unset;
+      background-color:rgba(0, 123, 255, 0.36);
+      border-color:transparent;
+    }
   }
 
 .app-button {
