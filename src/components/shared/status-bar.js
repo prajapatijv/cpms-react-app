@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types'
+import { Info as InfoIcon , AlertCircle }  from 'react-feather'
+
 import './status-bar.scss'
 
 const Statusbar = ({ status, clearErrors, clearInfos }) => {
@@ -30,6 +32,7 @@ export default Statusbar
 const Error = ({hasErrors,  status, clearErrors}) =>
     hasErrors && 
     <div className="alert alert-dismissible fade show alert-warning app-alert " role="alert">
+        <AlertCircle />
         <strong className="alert-heading">
             Error: 
             {status.errors.join(" ")}
@@ -42,8 +45,9 @@ const Error = ({hasErrors,  status, clearErrors}) =>
     
 
 const Info = ({hasInfos, status, clearInfos}) =>
-    hasInfos && 
+    hasInfos &&
     <div className="app-toast-info alert alert-dismissible fade show bg-dark app-alert" role="alert">
+        <InfoIcon />
         <strong className="alert-heading text-light">
             {status.infos.join(" ")}
         </strong>
