@@ -1,4 +1,5 @@
 import React from 'react';
+import { Plus } from 'react-feather'
 import PropTypes from 'prop-types'
 
 const SearchBar = ({ onAdd, onSearch, placeholder }) =>
@@ -7,7 +8,9 @@ const SearchBar = ({ onAdd, onSearch, placeholder }) =>
             placeholder={placeholder} aria-label={placeholder}
             onChange={(e) => onSearch(e.target.value)} />
         <div className="input-group-append">
-            <button className="btn app-button" type="button" onClick={() => onAdd()}>+</button>
+            <button className="btn app-button" type="button" onClick={() => onAdd()}>
+                <Plus height='18px' />
+            </button>
         </div>
     </div>
 

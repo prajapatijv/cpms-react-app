@@ -38,11 +38,7 @@ const ItemForm = ({ item, onClose, onSave, onDelete, saving, deleting }) => {
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
-                            <PageTitle title="Item" fetching={props.fetching}></PageTitle>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close"
-                                onClick={() => onClose()}>
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <PageTitle title="Item" fetching={props.fetching} onClose={onClose}></PageTitle>
                         </div>
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
