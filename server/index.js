@@ -32,9 +32,10 @@ app.get('/api/users', (req, res) =>
     )
 )
 
-app.post('/api/users', (req, res) =>
-    res.status(200).json({})
-)
+app.post('/api/users', (req, res) => {
+    console.log(req.body);
+    res.status(200).json(req.body)
+})
 
 app.delete('/api/users/:id', (req, res) =>
     res.status(200).json({})

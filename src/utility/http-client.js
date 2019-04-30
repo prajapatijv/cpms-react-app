@@ -49,7 +49,9 @@ export function* save(context, payload) {
         //Cleanup cache
         RemoveItem(contextObj.actionContextPlural) 
 
-        navigate(`/${contextObj.apiContext}/3`)
+        if (undefined !== response.data.id)
+            navigate(`/${contextObj.apiContext}/${response.data.id}`)
+            
     } catch (error) {
         yield HandleError(`SAVE_${contextObj.actionContextSingular}_FAILED`, error)
     }
