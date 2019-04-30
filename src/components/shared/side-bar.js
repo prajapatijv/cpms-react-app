@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart }  from 'react-feather'
+import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart, Settings }  from 'react-feather'
 import classNames from 'classnames';
 
 import NavLink from './navlink'
@@ -27,38 +27,31 @@ const Sidebar = () => {
 
         <div className="sidebar-sticky pt-3">
             <ul className="nav nav-pills flex-column">
-                <li className="nav-item">
-                    <NavLink to="/users" className="nav-link" activeClassName="active">
-                        <Users/>
-                        Users
-                    </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/items" className="nav-link" activeClassName="active">
-                        <List/>
-                        Items
-                    </NavLink>
-                </li>
+                <NavItem path="/users" displayName="Users" icon={<Users/>} />
+                <NavItem path="/items" displayName="Items" icon={<List/>} />
             </ul>
 
             <hr/>
             <ul className="nav flex-column nav-pills mb-2">
-                <li className="nav-item">
-                    <NavLink to="/report-1" className="nav-link" activeClassName="active">
-                        <BarChart/>
-                        Report 1
-                    </NavLink>
-                </li>
-                <li className="nav-item">
-                    <NavLink to="/report-2" className="nav-link" activeClassName="active">
-                        <PieChart/>
-                        Report 2
-                    </NavLink>
-                </li>
+                <NavItem path="/report-1" displayName="Report 1" icon={<BarChart/>} />
+                <NavItem path="/report-2" displayName="Report 2" icon={<PieChart/>} />
+            </ul>
+
+            <hr/>
+            <ul className="nav flex-column nav-pills mb-2">
+                <NavItem path="/settings" displayName="Settings" icon={<Settings/>} />
             </ul>
         </div>
     </nav>
     )
 }
+
+const NavItem = ({path, displayName, icon}) =>                 
+    <li className="nav-item">
+        <NavLink to={path} className="nav-link" activeClassName="active">
+            {icon}
+            {displayName}
+        </NavLink>
+    </li>
 
 export default Sidebar

@@ -30,7 +30,6 @@ const Routes = () =>
     <NotFound default />
   </Router>
 
-
 const HomePage = () =>
   <div className="home-page">
     <h1>Home page</h1>
@@ -42,5 +41,6 @@ const NotFound = ({ location }) =>
     <h1>Whoops, route not found</h1>
     <p>Cannot find content for {location.pathname}</p>
   </div>
+
 
 export default App;
