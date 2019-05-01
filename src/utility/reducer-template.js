@@ -1,60 +1,60 @@
-const reducerTemplate = (initialState, action, newState, filterByFn) => {
-    return template(initialState, action, newState, filterByFn)
+const applyReducerTemplate = (actionTypePlural, actionTypeSingular, state, action, defaultEntity, filterByFn) => {
+    return template(actionTypePlural, actionTypeSingular, state, action, defaultEntity, filterByFn)
 }
 
-const template = (typePlural, type, state, action, newState, filterByFn) => {
+const template = (actionTypePlural, actionTypeSingular, state, action, defaultEntity, filterByFn) => {
+    
     switch (action.type) {
-        case `FETCH_${typePlural}`:
+        case `FETCH_${actionTypePlural}`:
             return {...state, fetching:true , error:null}
         
-        case `FETCH_${typePlural}_SUCCEED`: {
+        case `FETCH_${actionTypePlural}_SUCCEED`: {
             return {...state, fetching:false,
-                users: action.payload.criteria === "" ? 
+                [actionTypePlural.toLowerCase()]: action.payload.criteria === "" ? 
                     action.payload.data : 
                     action.payload.data.filter(filterByFn(action.payload.criteria)) 
                 }
         }
 
-        case `FETCH_${typePlural}_FAILED`: {
+        case `FETCH_${actionTypePlural}_FAILED`: {
             return {...state, fetching:false }
         }
 
-        case `ADD_${type}`: {
-            return {...state, user: newState }
+        case `ADD_${actionTypeSingular}`: {
+            return {...state, [actionTypeSingular.toLowerCase()]: defaultEntity }
         }
 
-        case `CLOSE_${type}`: {
-            return {...state, user:undefined }
+        case `CLOSE_${actionTypeSingular}`: {
+            return {...state, [actionTypeSingular.toLowerCase()]:undefined }
         }
 
-        case `SAVE_${type}`: {
+        case `SAVE_${actionTypeSingular}`: {
             return { ...state, saving: true }
         }
 
-        case `SAVE_${type}_SUCCEED`: {
-            return { ...state, user:undefined, saving: false }
+        case `SAVE_${actionTypeSingular}_SUCCEED`: {
+            return { ...state, [actionTypeSingular.toLowerCase()]:undefined, saving: false }
         }
 
-        case `SAVE_${type}_FAILED`: {
-            return { ...state, saving: false }
+        case `SAVE_${actionTypeSingular}_FAILED`: {
+            return { ...state, [actionTypeSingular.toLowerCase()]: false }
         }
 
-        case `DELETE_${type}`: {
+        case `DELETE_${actionTypeSingular}`: {
             return {...state, deleting:true }
         }
 
-        case `DELETE_${type}_SUCCEED`: {
+        case `DELETE_${actionTypeSingular}_SUCCEED`: {
             return { ...state, deleting: false }
         }
 
-        case `DELETE_${type}_FAILED`: {
+        case `DELETE_${actionTypeSingular}_FAILED`: {
             return { ...state, deleting: false }
         }        
 
         default:
             return state;
     }
-
 }
 
-export default reducerTemplate
+export default applyReducerTemplate
