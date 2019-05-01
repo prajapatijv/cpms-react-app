@@ -1,39 +1,39 @@
 import React, { useEffect, useCallback } from 'react'
+import { bindActionCreators } from 'redux';
 import { useMappedState, useDispatch, } from "redux-react-hook";
 
 import ItemList from '../../components/item/item-list'
 import * as actions from './actions'
 
-const ItemContainer = () => {
+const ItemContainer = (props) => {
 
-    const dispatch = useDispatch()
+    const mapActions = bindActionCreators(actions, useDispatch());
 
     const mapState = useCallback(
         state => ({
             items: state.itemState.items,
-            item: state.itemState.item,
+            item: (props.itemId === undefined || state.itemState.item !== undefined) ? state.itemState.item : state.itemState.items.find(u => u.id === parseInt(props.itemId)),
             fetching: state.itemState.fetching,
             saving: state.itemState.saving,
             deleting: state.itemState.deleting
         }),
-    );
+    [props.itemId || ""]);
 
     const { items, item, fetching, saving, deleting } = useMappedState(mapState)
 
     useEffect(() => {
-        dispatch(actions.fetch(""))
+        mapActions.fetch("")
     }, []);
 
     return (
         <ItemList
             items={items}
             item={item}
-            onSelect={(id) => dispatch(actions.select(id))}
-            onSearch={(criteria) => dispatch(actions.fetch(criteria))}
-            onAdd={() => dispatch(actions.add())}
-            onClose={() => dispatch(actions.close())}
-            onSave={(item) => dispatch(actions.save(item))}
-            onDelete={(id) => dispatch(actions.deleteEntity(id))}
+            onSearch={mapActions.fetch}
+            onAdd={() => { mapActions.add(); props.navigate('/items/0')} }
+            onClose={() => {mapActions.close(); props.navigate('/items') }}
+            onSave={mapActions.save}
+            onDelete={mapActions.deleteEntity}
             fetching={fetching}
             saving={saving}
             deleting={deleting}

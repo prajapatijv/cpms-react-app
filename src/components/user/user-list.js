@@ -18,7 +18,7 @@ const UserList = (props) =>
     </div>
 
 
-const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) => 
+const UserLines = ({ users , onAdd , onSearch, fetching}) => 
     <React.Fragment>
         <SearchBar onAdd={onAdd} onSearch={onSearch} placeholder={fetching ? "Fetching users" : "Search users" }  />
         <Spinner show={fetching}/> 
@@ -28,7 +28,6 @@ const UserLines = ({ users , onSelect, onAdd , onSearch, fetching}) =>
             users.map((user) => 
                 <NavLink key={user.id} 
                     to={`/users/${user.id}`}
-                    //onClick={() => onSelect(user.id)}
                     activeClassName="active"
                     className="app-list-item list-group-item-action"
                     >{user.firstName} {user.lastName}

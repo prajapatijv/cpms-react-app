@@ -3,6 +3,7 @@ import React from 'react'
 import SearchBar from '../shared/search-bar'
 import ItemForm from './item-form'
 import { Spinner } from '../shared/spinner'
+import NavLink from '../shared/navlink';
 
 const ItemList = (props) => 
     <div className="app-page item-page py-3">
@@ -25,11 +26,12 @@ const ItemLines = ({ items , onSelect, onAdd , onSearch, fetching}) =>
         {
             !fetching && 
             items.map((item) => 
-                <button key={item.id} 
-                    onClick={() => onSelect(item.id)}
+                <NavLink key={item.id} 
+                    to={`/items/${item.id}`}
+                    activeClassName="active"
                     className="app-list-item list-group-item-action"
                     >{item.itemName}
-                </button>
+                </NavLink>
                 )
         }
         </ul>
