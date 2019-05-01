@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux';
 import { useMappedState, useDispatch, } from "redux-react-hook";
 
-import ItemList from '../../components/item/item-list'
+import ItemPage from '../../components/item/item-page'
 import * as actions from './actions'
 
 const ItemContainer = (props) => {
@@ -26,7 +26,7 @@ const ItemContainer = (props) => {
     }, []);
 
     return (
-        <ItemList
+        <ItemPage
             items={items}
             item={item}
             onSearch={mapActions.fetch}

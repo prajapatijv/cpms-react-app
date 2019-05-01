@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux';
 import { useMappedState, useDispatch } from "redux-react-hook"
 
-import UserList from '../../components/user/user-list'
+import UserPage from '../../components/user/user-page'
 import * as actions from './actions'
 
 const UserContainer = (props) => {
@@ -30,7 +30,7 @@ const UserContainer = (props) => {
     }, []);
 
     return (
-        <UserList
+        <UserPage
             users={users}
             user={user}
             onSearch={mapActions.fetch}
