@@ -25,9 +25,9 @@ const Routes = () =>
   <Router>
     <HomePage path="/" />
     <UserPage path="users" />
-    <UserPage path="users/:userId" />
+    <UserPage path="users/:id" />
     <ItemPage path="items" />
-    <ItemPage path="items/:itemId" />
+    <ItemPage path="items/:id" />
     <NotFound default />
   </Router>
 

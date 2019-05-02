@@ -1,7 +1,7 @@
 import ItemPage from '../../components/item/item-page'
 import * as actions from './actions'
-import ContainerWrapper from '../../components/shared/container-wrapper'
+import WithPageContainer from '../../components/shared/with-page-container'
 
-const ItemContainer = (props) => ContainerWrapper(ItemPage, actions, props, "itemState", "items", "item")
+const ItemContainer = (props) => WithPageContainer(ItemPage, actions, props, "item")
 
 export default ItemContainer
