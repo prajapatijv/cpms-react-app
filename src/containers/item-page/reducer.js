@@ -4,8 +4,7 @@ import { GetContext } from '../../AppConfig'
 var contextObj = GetContext('item');
 
 const items = (state=initialState, action) => {
-    return applyReducerTemplate(contextObj.actionContextPlural, contextObj.actionContextSingular, 
-        state, action, defaultItem, (criteria) => byItemName(criteria))
+    return applyReducerTemplate(contextObj, state, action, defaultItem, (criteria) => byItemName(criteria))
 }
 
 const defaultItem = { 

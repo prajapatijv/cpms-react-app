@@ -7,18 +7,18 @@ import applyActionTemplate from './action-template'
 
 const WithPageContainer = (WrappedComponent, props, context ) => {
     
-    const contextObj = GetContext(context);
+    const contextObj = GetContext(context)
     //Exapmles: userState, itemState
-    const stateName = `${contextObj.actionContextSingular.toLowerCase()}State`
+    const stateName = `${contextObj.actionContext.singular}State`
     //Exapmles: users, items
-    const listName = contextObj.actionContextPlural.toLowerCase()
+    const listName = contextObj.actionContext.plural
     //Exapmles: user, item
-    const entityName  = contextObj.actionContextSingular.toLowerCase()
+    const entityName  = contextObj.actionContext.singular
 
     //Generate actions
     const actions = applyActionTemplate(
-            contextObj.actionContextPlural.toUpperCase(),
-            contextObj.actionContextSingular.toUpperCase())
+            contextObj.actionContext.PLURAL,
+            contextObj.actionContext.SINGULAR)
 
     const mapActions = bindActionCreators(actions, useDispatch());
 

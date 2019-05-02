@@ -21,18 +21,18 @@ export function* fetch(context, params, throttle = false) {
         if (throttle && params.criteria !== "") { yield delay(500) }
 
         const apiUrl = GetApiUrl(contextObj.apiContext);
-        var cached = GetItem(contextObj.actionContextPlural) 
+        var cached = GetItem(contextObj.actionContext.PLURAL) 
         
         const response = (cached === null || params.criteria === "") ? yield (call(fetchApi, apiUrl)) : cached
         const data = (cached === null || params.criteria === "") ? response.data : cached
 
-        yield put({ "type": `FETCH_${contextObj.actionContextPlural}_SUCCEED`, payload: { data: data, criteria: params.criteria } })
+        yield put({ "type": `FETCH_${contextObj.actionContext.PLURAL}_SUCCEED`, payload: { data: data, criteria: params.criteria } })
 
         //Load cache
-        SetItem(contextObj.actionContextPlural, data) 
+        SetItem(contextObj.actionContext.PLURAL, data) 
 
     } catch (error) {
-        yield HandleError(`FETCH_${contextObj.actionContextPlural}_FAILED`, error)
+        yield HandleError(`FETCH_${contextObj.actionContext.PLURAL}_FAILED`, error)
     }
 }
 
@@ -44,16 +44,16 @@ export function* save(context, payload) {
         const apiUrl = GetApiUrl(contextObj.apiContext);
         const response = yield (call(saveApi, apiUrl, payload))
 
-        yield HandleSaveSuccess(contextObj.actionContextSingular, response.data)
+        yield HandleSaveSuccess(contextObj.actionContext.SINGULAR, response.data)
 
         //Cleanup cache
-        RemoveItem(contextObj.actionContextPlural) 
+        RemoveItem(contextObj.actionContext.PLURAL) 
 
         if (undefined !== response.data.id)
             navigate(`/${contextObj.apiContext}/${response.data.id}`)
             
     } catch (error) {
-        yield HandleError(`SAVE_${contextObj.actionContextSingular}_FAILED`, error)
+        yield HandleError(`SAVE_${contextObj.actionContext.SINGULAR}_FAILED`, error)
     }
 }
 
@@ -64,14 +64,14 @@ export function* remove(context, id) {
         const apiUrl = GetApiUrl(contextObj.apiContext);
         const response = yield (call(deleteApi, apiUrl, id))
 
-        yield HandleDeleteSuccess(contextObj.actionContextSingular, response.data)
+        yield HandleDeleteSuccess(contextObj.actionContext.SINGULAR, response.data)
 
         //Cleanup cache
         RemoveItem(contextObj.actionContextPlural) 
         
         navigate(`/${contextObj.apiContext}`)
     } catch (error) {
-        yield HandleError(`DELETE_${contextObj.actionContextSingular}_FAILED`, error)
+        yield HandleError(`DELETE_${contextObj.actionContext.SINGULAR}_FAILED`, error)
     }
 }
 
