@@ -19,7 +19,7 @@ function* fetchWorker(params) {
 }
 
 function* saveWorker(params) {
-    yield* save(CONTEXT, params.user)
+    yield* save(CONTEXT, params.entity)
 }
 
 function* deleteWorker(params) {

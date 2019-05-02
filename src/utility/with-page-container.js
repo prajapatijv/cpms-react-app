@@ -2,15 +2,23 @@ import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
 import { GetContext } from '../AppConfig'
+import applyActionTemplate from './action-template'
 
-const WithPageContainer = (WrappedComponent, actions, props, context ) => {
+
+const WithPageContainer = (WrappedComponent, props, context ) => {
+    
     const contextObj = GetContext(context);
     //Exapmles: userState, itemState
-    const stateName = `${contextObj.actionContextSingular.toLocaleLowerCase()}State`
+    const stateName = `${contextObj.actionContextSingular.toLowerCase()}State`
     //Exapmles: users, items
-    const listName = contextObj.actionContextPlural.toLocaleLowerCase()
+    const listName = contextObj.actionContextPlural.toLowerCase()
     //Exapmles: user, item
-    const entityName  = contextObj.actionContextSingular.toLocaleLowerCase()
+    const entityName  = contextObj.actionContextSingular.toLowerCase()
+
+    //Generate actions
+    const actions = applyActionTemplate(
+            contextObj.actionContextPlural.toUpperCase(),
+            contextObj.actionContextSingular.toUpperCase())
 
     const mapActions = bindActionCreators(actions, useDispatch());
 

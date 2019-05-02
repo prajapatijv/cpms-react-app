@@ -1,7 +1,6 @@
 import WithPageContainer from '../../utility/with-page-container'
 import ItemPage from '../../components/item/item-page'
-import * as actions from './actions'
 
-const ItemContainer = (props) => WithPageContainer(ItemPage, actions, props, "item")
+const ItemContainer = (props) => WithPageContainer(ItemPage,  props, "item")
 
 export default ItemContainer
