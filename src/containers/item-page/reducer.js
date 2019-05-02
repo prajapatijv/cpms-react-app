@@ -1,6 +1,13 @@
 import  applyReducerTemplate from '../../utility/reducer-template'
 import { GetContext } from '../../AppConfig'
 
+var contextObj = GetContext('item');
+
+const items = (state=initialState, action) => {
+    return applyReducerTemplate(contextObj.actionContextPlural, contextObj.actionContextSingular, 
+        state, action, defaultItem, (criteria) => byItemName(criteria))
+}
+
 const defaultItem = { 
     id:0,
     itemName:"",
@@ -20,12 +27,6 @@ const byItemName = criteria => item => {
     else  {
         return item.itemName.toLowerCase().match(criteria.toLowerCase())     
     }
-}
-var contextObj = GetContext('item');
-
-const items = (state=initialState, action) => {
-    return applyReducerTemplate(contextObj.actionContextPlural, contextObj.actionContextSingular, 
-        state, action, defaultItem, (criteria) => byItemName(criteria))
 }
 
 export default items

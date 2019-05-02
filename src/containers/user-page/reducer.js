@@ -1,6 +1,13 @@
 import  applyReducerTemplate from '../../utility/reducer-template'
 import { GetContext } from '../../AppConfig'
 
+var contextObj = GetContext('user');
+
+const users = (state=initialState, action) => {
+    return applyReducerTemplate(contextObj.actionContextPlural, contextObj.actionContextSingular, 
+        state, action, defaultUser, (criteria) => byFullName(criteria))
+}
+
 const defaultUser = { 
     id:0,
     firstName:"",
@@ -21,13 +28,6 @@ const byFullName = criteria => user => {
         return user.firstName.toLowerCase().match(criteria.toLowerCase()) ||
             user.lastName.toLowerCase().match(criteria.toLowerCase())
     }
-}
-
-var contextObj = GetContext('user');
-
-const users = (state=initialState, action) => {
-    return applyReducerTemplate(contextObj.actionContextPlural, contextObj.actionContextSingular, 
-        state, action, defaultUser, (criteria) => byFullName(criteria))
 }
 
 export default users
