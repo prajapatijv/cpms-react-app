@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
-import { GetContext } from '../../AppConfig'
+import { GetContext } from '../AppConfig'
 
 const WithPageContainer = (WrappedComponent, actions, props, context ) => {
     const contextObj = GetContext(context);
