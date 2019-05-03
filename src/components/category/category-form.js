@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
-import { InputBox } from '../shared/input-box'
 import * as Yup from 'yup'
 
+import { InputBox } from '../shared/input-box'
+import { CheckBox } from '../shared/check-box'
 import PageTitle from '../shared/page-title'
 import ButtonBar from '../shared/button-bar'
 
@@ -53,8 +54,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
                                 <Field type="text" name="shortName" component={InputBox} />
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="active">Active</label>
-                                <Field type="check" name="active" component={InputBox} />
+                                <Field type="checkbox" name="active" component={CheckBox} label="Active" />
                             </div>
 
                             <ButtonBar
