@@ -1,7 +1,6 @@
 import { call, put, delay } from 'redux-saga/effects'
 import axios from "axios"
 import { GetItem, SetItem, RemoveItem } from './cache'
-import { AppConfig, GetContext } from '../AppConfig'
 import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
 import { navigate } from '@reach/router'
 
@@ -13,14 +12,14 @@ const saveApi = (apiUrl, payload) => {
 const deleteApi = (apiUrl, id) => axios.delete(`${apiUrl}/${id}`)
 
 
-export function* fetch(context, params, throttle = false) {
+export function* fetch(params, throttle = false) {
+    
+    const contextObj = params.all.contextObj
 
     try {
-        var contextObj = GetContext(context);
-
         if (throttle && params.criteria !== "") { yield delay(500) }
 
-        const apiUrl = GetApiUrl(contextObj.apiContext);
+        const apiUrl = GetApiUrl(params.all)
         var cached = GetItem(contextObj.actionContext.PLURAL) 
         
         const response = (cached === null || params.criteria === "") ? yield (call(fetchApi, apiUrl)) : cached
@@ -37,18 +36,20 @@ export function* fetch(context, params, throttle = false) {
 }
 
 
-export function* save(context, payload) {
-    try {
-        var contextObj = GetContext(context);
+export function* save(params) {
+    
+    const contextObj = params.all.contextObj
 
-        const apiUrl = GetApiUrl(contextObj.apiContext);
-        const response = yield (call(saveApi, apiUrl, payload))
+    try {
+        const apiUrl = GetApiUrl(params.all)
+        const response = yield (call(saveApi, apiUrl, params.entity))
 
         yield HandleSaveSuccess(contextObj.actionContext.SINGULAR, response.data)
 
         //Cleanup cache
         RemoveItem(contextObj.actionContext.PLURAL) 
 
+        //Navigate route
         if (undefined !== response.data.id)
             navigate(`/${contextObj.apiContext}/${response.data.id}`)
             
@@ -57,26 +58,27 @@ export function* save(context, payload) {
     }
 }
 
-export function* remove(context, id) {
-    try {
-        var contextObj = GetContext(context);
+export function* remove(params) {
 
-        const apiUrl = GetApiUrl(contextObj.apiContext);
-        const response = yield (call(deleteApi, apiUrl, id))
+    const contextObj = params.all.contextObj
+
+    try {
+        const apiUrl = GetApiUrl(params.all)
+        const response = yield (call(deleteApi, apiUrl, params.id))
 
         yield HandleDeleteSuccess(contextObj.actionContext.SINGULAR, response.data)
 
         //Cleanup cache
         RemoveItem(contextObj.actionContextPlural) 
         
+        //Navigate route
         navigate(`/${contextObj.apiContext}`)
     } catch (error) {
         yield HandleError(`DELETE_${contextObj.actionContext.SINGULAR}_FAILED`, error)
     }
 }
 
-
-const GetApiUrl = (apiContext) => {
-    return `${AppConfig.API_URL}/${apiContext}`
+const GetApiUrl = (all) => {
+    return `${all.config.API_URL}/${all.contextObj.apiContext}`
 }
 

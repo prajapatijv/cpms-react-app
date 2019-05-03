@@ -16,7 +16,7 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
     const entityName  = contextObj.actionContext.singular
 
     //Generate actions
-    const actions = applyActionTemplate(contextObj)
+    const actions = applyActionTemplate(contextObj, props.config)
 
     const mapActions = bindActionCreators(actions, useDispatch());
 

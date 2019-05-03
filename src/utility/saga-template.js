@@ -11,15 +11,15 @@ const applySagaTemplate = (contextObj) =>
 
 ///Saga Worker functions
 function* fetchWorker(params) {
-    yield* fetch(params.context, params, true)
+    yield* fetch(params, true)
 }
 
 function* saveWorker(params) {
-    yield* save(params.context, params.entity)
+    yield* save(params)
 }
 
 function* deleteWorker(params) {
-    yield* remove(params.context, params.id)
+    yield* remove(params)
 }
 
 export default applySagaTemplate
