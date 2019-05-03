@@ -1,6 +1,6 @@
 import { Config } from '../AppConfig'
 
-const applyReducerTemplate = (key, state, action, defaultEntity, filterByFn) => {
+const withPageReducer = (key, state, action, defaultEntity, filterByFn) => {
     const contextObj =Config.root.mappings[key]
     return template(contextObj, state, action, defaultEntity, filterByFn)
 }
@@ -60,4 +60,4 @@ const template = (contextObj, state, action, defaultEntity, filterByFn) => {
     }
 }
 
-export default applyReducerTemplate
+export default withPageReducer

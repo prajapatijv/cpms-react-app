@@ -1,4 +1,4 @@
-const applyActionTemplate = (contextObj, config) => {
+const withPageActions = (contextObj, config) => {
     const all = {
         contextObj, config
     }
@@ -11,4 +11,4 @@ const applyActionTemplate = (contextObj, config) => {
     }
 }
 
-export default applyActionTemplate
+export default withPageActions

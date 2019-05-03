@@ -1,7 +1,7 @@
-import  applyReducerTemplate from '../../utility/reducer-template'
+import  withPageReducer from '../../utility/with-page-reducer'
 
 const users = (state=initialState, action) => {
-    return applyReducerTemplate('user', state, action, defaultUser, (criteria) => byFullName(criteria))
+    return withPageReducer('user', state, action, defaultUser, (criteria) => byFullName(criteria))
 }
 
 const defaultUser = { 

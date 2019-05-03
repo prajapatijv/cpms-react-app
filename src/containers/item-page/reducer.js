@@ -1,7 +1,7 @@
-import  applyReducerTemplate from '../../utility/reducer-template'
+import  withPageReducer from '../../utility/with-page-reducer'
 
 const items = (state=initialState, action) => {
-    return applyReducerTemplate('item', state, action, defaultItem, (criteria) => byItemName(criteria))
+    return withPageReducer('item', state, action, defaultItem, (criteria) => byItemName(criteria))
 }
 
 const defaultItem = { 

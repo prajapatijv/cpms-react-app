@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
-import applyActionTemplate from './action-template'
+import withPageActions from './with-page-action'
 
 
 const WithPageContainer = (WrappedComponent, props, context ) => {
@@ -16,14 +16,14 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
     const entityName  = contextObj.actionContext.singular
 
     //Generate actions
-    const actions = applyActionTemplate(contextObj, props.config)
+    const actions = withPageActions(contextObj, props.config)
 
     const mapActions = bindActionCreators(actions, useDispatch());
 
     const mapState = useCallback(
         state => ({
             [listName]: state[stateName][listName],
-            [entityName]: (props.id === undefined || state[stateName].item !== undefined) ? 
+            [entityName]: (props.id === undefined || state[stateName][entityName] !== undefined) ? 
                                 state[stateName][entityName] : 
                                 state[stateName][listName].find(u => u.id === parseInt(props.id)),
             fetching: state[stateName].fetching,
