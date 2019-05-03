@@ -6,18 +6,18 @@ import rootSaga from './containers/root-sagas'
 import monitorReducersEnhancer from './enhancers/monitorReducer'
 import loggerMiddleware from './middleware/logger'
 import rootReducer from './containers/combined-reducers'
-import { AppConfig, Env } from './AppConfig'
+import { Config, Env } from './AppConfig'
 
 const configureStore = (preloadedState) => {
   const sagaMiddleware = createSagaMiddleware()
 
-  const middlewares = (AppConfig.ENV === Env.Production) ? 
+  const middlewares = (Config.ENV === Env.Production) ? 
     [sagaMiddleware] :
     [loggerMiddleware, sagaMiddleware]
    
   const middlewareEnhancer = applyMiddleware(...middlewares)
 
-  const enhancers = (AppConfig.ENV === Env.Production) ?
+  const enhancers = (Config.ENV === Env.Production) ?
     [middlewareEnhancer] :
     [middlewareEnhancer, monitorReducersEnhancer]
 

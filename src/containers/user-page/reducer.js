@@ -1,10 +1,7 @@
 import  applyReducerTemplate from '../../utility/reducer-template'
-import { GetContext } from '../../AppConfig'
-
-var contextObj = GetContext('user');
 
 const users = (state=initialState, action) => {
-    return applyReducerTemplate(contextObj, state, action, defaultUser, (criteria) => byFullName(criteria))
+    return applyReducerTemplate('user', state, action, defaultUser, (criteria) => byFullName(criteria))
 }
 
 const defaultUser = { 

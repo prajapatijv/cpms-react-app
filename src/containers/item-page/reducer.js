@@ -1,10 +1,7 @@
 import  applyReducerTemplate from '../../utility/reducer-template'
-import { GetContext } from '../../AppConfig'
-
-var contextObj = GetContext('item');
 
 const items = (state=initialState, action) => {
-    return applyReducerTemplate(contextObj, state, action, defaultItem, (criteria) => byItemName(criteria))
+    return applyReducerTemplate('item', state, action, defaultItem, (criteria) => byItemName(criteria))
 }
 
 const defaultItem = { 
