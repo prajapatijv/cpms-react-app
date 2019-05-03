@@ -7,6 +7,7 @@ import StatusBar from './containers/status-bar/statusbar'
 
 import UserPage from './containers/user-page/user'
 import ItemPage from './containers/item-page/item'
+import CategoryPage from './containers/category-page/category'
 
 
 const App = (props) =>
@@ -28,6 +29,8 @@ const Routes = (props) =>
     <UserPage {...props} path="users/:id" />
     <ItemPage {...props} path="items" />
     <ItemPage {...props} path="items/:id" />
+    <CategoryPage {...props} path="categories" />
+    <CategoryPage {...props} path="categories/:id" />
     <NotFound default />
   </Router>
 

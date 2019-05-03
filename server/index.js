@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const users = require('./data/users.json')
 const items = require('./data/items.json')
-
+const categories = require('./data/categories.json')
 
 const logger = (req, res, next) => {
     console.log(`${req.method} request for ${req.url}`)
@@ -54,6 +54,21 @@ app.post('/api/items', (req, res) =>
 )
 
 app.delete('/api/items/:id', (req, res) =>
+    res.status(200).json({})
+)
+
+//Categories
+app.get('/api/categories', (req, res) =>
+    res.status(200).json(
+        categories
+    )
+)
+
+app.post('/api/categories', (req, res) =>
+    res.status(200).json({})
+)
+
+app.delete('/api/categories/:id', (req, res) =>
     res.status(200).json({})
 )
 
