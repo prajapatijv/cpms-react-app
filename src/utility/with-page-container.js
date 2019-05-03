@@ -1,13 +1,13 @@
 import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
-import { GetContext } from '../AppConfig'
 import applyActionTemplate from './action-template'
 
 
 const WithPageContainer = (WrappedComponent, props, context ) => {
-    
-    const contextObj = GetContext(context)
+
+    const contextObj = props.config.mappings[context]
+
     //Exapmles: userState, itemState
     const stateName = `${contextObj.actionContext.singular}State`
     //Exapmles: users, items

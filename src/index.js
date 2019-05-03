@@ -9,15 +9,14 @@ import './stylesheets/custom.scss';
 import './stylesheets/index.scss';
 
 import configureStore from './configureStore'
-import { AppConfig, Env } from './AppConfig'
+import { Env , Config } from './AppConfig'
 
 import App from './App';
 
 
 const store = configureStore({})
 
-if (AppConfig.ENV !== Env.Production) {
-    console.log(AppConfig.ENV)
+if (Config.ENV !== Env.Production) {
     window.React = React
     window.store = store
 }
@@ -26,7 +25,7 @@ window.addEventListener("error", (err) => HandleError(err.message, store.dispatc
 
 ReactDOM.render(
     <StoreContext.Provider value={store}>
-        <App />
+        <App config={Config} />
     </StoreContext.Provider>,
     document.getElementById('root'));
 

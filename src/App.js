@@ -9,25 +9,25 @@ import UserPage from './containers/user-page/user'
 import ItemPage from './containers/item-page/item'
 
 
-const App = ({children}) =>
+const App = (props) =>
 <React.Fragment>
   <StatusBar />
   <div className="wrapper">
     <Sidebar />
     <div className="container-fluid px-0">
       <Navbar />
-      <Routes />
+      <Routes {...props} />
     </div>
   </div>
 </React.Fragment>
 
-const Routes = () =>
+const Routes = (props) =>
   <Router>
     <HomePage path="/" />
-    <UserPage path="users" />
-    <UserPage path="users/:id" />
-    <ItemPage path="items" />
-    <ItemPage path="items/:id" />
+    <UserPage {...props} path="users" />
+    <UserPage {...props} path="users/:id" />
+    <ItemPage {...props} path="items" />
+    <ItemPage {...props} path="items/:id" />
     <NotFound default />
   </Router>
 
