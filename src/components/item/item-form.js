@@ -9,6 +9,8 @@ import ButtonBar from '../shared/button-bar'
 
 const ItemForm = ({ item, onClose, onSave, onDelete, saving, deleting }) => {
 
+    const _item = { ...item }
+
     const itemSchema = Yup.object().shape({
         id:Yup.number(),
         itemName: Yup.string().min(2).max(50).required(),
@@ -31,7 +33,7 @@ const ItemForm = ({ item, onClose, onSave, onDelete, saving, deleting }) => {
         item ?
             <Formik
                 enableReinitialize
-                initialValues={item}
+                initialValues={_item}
                 validationSchema={itemSchema}
                 validateOnBlur={true}
                 onSubmit={onSaveItem}
