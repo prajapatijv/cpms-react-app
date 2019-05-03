@@ -25,7 +25,7 @@ window.addEventListener("error", (err) => HandleError(err.message, store.dispatc
 
 ReactDOM.render(
     <StoreContext.Provider value={store}>
-        <App config={Config.root} />
+        <App config={Config} />
     </StoreContext.Provider>,
     document.getElementById('root'));
 

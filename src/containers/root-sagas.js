@@ -1,15 +1,15 @@
 import { all , call} from "redux-saga/effects";
 
-import applySagaTemplate from '../utility/saga-template'
+import withPageSaga from '../utility/with-page-saga'
 import {addErrorSaga} from './status-bar/actions'
 import { Config } from '../AppConfig'
 
-const {user, item } = Config.root.mappings
+const {user, item } = Config.mappings
 
 export default function* rootSaga() {
     yield all([
         call(addErrorSaga),
-        ...applySagaTemplate(user),
-        ...applySagaTemplate(item)
+        ...withPageSaga(user),
+        ...withPageSaga(item)
     ])
 }

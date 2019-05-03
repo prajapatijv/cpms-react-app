@@ -2,7 +2,7 @@ import { takeLatest, takeEvery } from 'redux-saga/effects'
 import { fetch, save, remove } from './http-client'
 
 ///Saga Watchers
-const applySagaTemplate = (contextObj) => 
+const withPageSaga = (contextObj) => 
     [    
         takeLatest(`FETCH_${contextObj.actionContext.PLURAL}`, fetchWorker),
         takeEvery(`SAVE_${contextObj.actionContext.SINGULAR}`, saveWorker),
@@ -22,4 +22,4 @@ function* deleteWorker(params) {
     yield* remove(params)
 }
 
-export default applySagaTemplate
+export default withPageSaga

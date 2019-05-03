@@ -14,12 +14,12 @@ const deleteApi = (apiUrl, id) => axios.delete(`${apiUrl}/${id}`)
 
 export function* fetch(params, throttle = false) {
     
-    const contextObj = params.all.contextObj
+    const contextObj = params.contextObj
 
     try {
         if (throttle && params.criteria !== "") { yield delay(500) }
 
-        const apiUrl = GetApiUrl(params.all)
+        const apiUrl = GetApiUrl(params)
         var cached = GetItem(contextObj.actionContext.PLURAL) 
         
         const response = (cached === null || params.criteria === "") ? yield (call(fetchApi, apiUrl)) : cached
@@ -38,10 +38,10 @@ export function* fetch(params, throttle = false) {
 
 export function* save(params) {
     
-    const contextObj = params.all.contextObj
+    const contextObj = params.contextObj
 
     try {
-        const apiUrl = GetApiUrl(params.all)
+        const apiUrl = GetApiUrl(params)
         const response = yield (call(saveApi, apiUrl, params.entity))
 
         yield HandleSaveSuccess(contextObj.actionContext.SINGULAR, response.data)
@@ -60,10 +60,10 @@ export function* save(params) {
 
 export function* remove(params) {
 
-    const contextObj = params.all.contextObj
+    const contextObj = params.contextObj
 
     try {
-        const apiUrl = GetApiUrl(params.all)
+        const apiUrl = GetApiUrl(params)
         const response = yield (call(deleteApi, apiUrl, params.id))
 
         yield HandleDeleteSuccess(contextObj.actionContext.SINGULAR, response.data)
@@ -78,7 +78,7 @@ export function* remove(params) {
     }
 }
 
-const GetApiUrl = (all) => {
-    return `${all.config.API_URL}/${all.contextObj.apiContext}`
+const GetApiUrl = (params) => {
+    return `${params.config.API_URL}/${params.contextObj.apiContext}`
 }
 

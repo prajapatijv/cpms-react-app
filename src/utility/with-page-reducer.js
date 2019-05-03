@@ -1,7 +1,7 @@
 import { Config } from '../AppConfig'
 
 const withPageReducer = (key, state, action, defaultEntity, filterByFn) => {
-    const contextObj =Config.root.mappings[key]
+    const contextObj =Config.mappings[key]
     return template(contextObj, state, action, defaultEntity, filterByFn)
 }
 

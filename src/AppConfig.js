@@ -9,9 +9,7 @@ const _contextMappings = {
 }
 
 export const Config = {
-    root: {
-        ENV: process.env.NODE_ENV,
-        API_URL: process.env.REACT_APP_API_URL,
-        mappings : _contextMappings
-    }
+    ENV: process.env.NODE_ENV,
+    API_URL: process.env.REACT_APP_API_URL,
+    mappings : _contextMappings
 }
