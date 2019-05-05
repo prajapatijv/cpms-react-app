@@ -1,7 +1,8 @@
-import  withPageReducer from '../../utility/with-page-reducer'
+import keys from '../container-types'
+import withPageReducer from '../../utility/with-page-reducer'
 
 const categories = (state=initialState, action) => {
-    return withPageReducer('category', state, action, defaultCategory, (criteria) => byName(criteria))
+    return withPageReducer(keys.Category, state, action, defaultCategory, (criteria) => byName(criteria))
 }
 
 const defaultCategory = { 

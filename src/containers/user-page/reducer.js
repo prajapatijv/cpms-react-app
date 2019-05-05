@@ -1,7 +1,8 @@
 import  withPageReducer from '../../utility/with-page-reducer'
+import keys from '../container-types'
 
 const users = (state=initialState, action) => {
-    return withPageReducer('user', state, action, defaultUser, (criteria) => byFullName(criteria))
+    return withPageReducer(keys.User, state, action, defaultUser, (criteria) => byFullName(criteria))
 }
 
 const defaultUser = { 

@@ -1,7 +1,8 @@
 import  withPageReducer from '../../utility/with-page-reducer'
+import keys from '../container-types'
 
 const items = (state=initialState, action) => {
-    return withPageReducer('item', state, action, defaultItem, (criteria) => byItemName(criteria))
+    return withPageReducer(keys.Item, state, action, defaultItem, (criteria) => byItemName(criteria))
 }
 
 const defaultItem = { 
