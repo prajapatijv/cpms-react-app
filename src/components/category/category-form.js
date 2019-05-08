@@ -10,21 +10,21 @@ import ButtonBar from '../shared/button-bar'
 
 const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting }) => {
 
-    const _category = { ...category }
+    const _init = { ...category }
 
-    const categorySchema = Yup.object().shape({
+    const schema = Yup.object().shape({
         id:Yup.number(),
         name: Yup.string().min(2).max(50).required(),
         shortName: Yup.string().min(2).max(50).required(),
         active: Yup.boolean().notRequired()
     })
 
-    const onSaveAction = (values, actions) => {
+    const onSaveEntity = (values, actions) => {
         onSave(values)
         actions.setSubmitting(false)
     }
 
-    const onDeleteAction = (id) => {
+    const onDeleteEntity = (id) => {
         onDelete(id)
     }
 
@@ -33,10 +33,10 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
         category ?
             <Formik
                 enableReinitialize
-                initialValues={_category}
-                validationSchema={categorySchema}
+                initialValues={_init}
+                validationSchema={schema}
                 validateOnBlur={true}
-                onSubmit={onSaveAction}
+                onSubmit={onSaveEntity}
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
@@ -59,7 +59,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
 
                             <ButtonBar
                                 showDelete={category.id !== 0}
-                                onDelete={(id) => onDeleteAction(category.id)}
+                                onDelete={(id) => onDeleteEntity(category.id)}
                                 saving={saving}
                                 deleting={deleting}
                                 dirty={props.dirty}

@@ -12,6 +12,7 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
     const _init = { ...asset }
 
     const schema = Yup.object().shape({
+        id:Yup.number(),
         assetType: Yup.string().min(2).max(10).required(),
         fileName: Yup.string().min(2).max(2000).required(),
         fileSizeBytes: Yup.number().required(),

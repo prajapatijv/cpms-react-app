@@ -7,10 +7,19 @@ const assets = (state=initialState, action) => {
 
 const defaultAsset= { 
     id:0,
-    firstName:"",
-    lastName:"",
-    userName:"",
-    password:""
+    assetType:"",
+    fileName:"",
+    fileSizeBytes:0,
+    title:"",
+    description:"",
+    transcripts:"",
+    author:"",
+    categories:[],
+    tags:[],
+    quality:"",
+    mediaType:"",
+    compressionFormat:"",
+    archive:[]
 }
 
 const initialState = {

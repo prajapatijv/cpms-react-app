@@ -9,21 +9,21 @@ import ButtonBar from '../shared/button-bar'
 
 const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
 
-    const _user = { ...user }
+    const _init = { ...user }
 
-    const userSchema = Yup.object().shape({
+    const schema = Yup.object().shape({
         firstName: Yup.string().min(2).max(50).required(),
         lastName: Yup.string().min(2).max(50).required(),
         userName: Yup.string().min(2).max(30).required(),
         password: Yup.string().min(6).max(15).required()
     })
 
-    const onSaveUser = (values, actions) => {
+    const onSaveEntity = (values, actions) => {
         onSave(values)
         actions.setSubmitting(false)
     }
 
-    const onDeleteUser = (id) => {
+    const onDeleteEntity = (id) => {
         onDelete(id)
     }
 
@@ -32,10 +32,10 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
         user ?
             <Formik
                 enableReinitialize
-                initialValues={_user}
-                validationSchema={userSchema}
+                initialValues={_init}
+                validationSchema={schema}
                 validateOnBlur={true}
-                onSubmit={onSaveUser}
+                onSubmit={onSaveEntity}
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
@@ -68,7 +68,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
 
                             <ButtonBar
                                 showDelete={user.id !== 0}
-                                onDelete={(id) => onDeleteUser(user.id)}
+                                onDelete={(id) => onDeleteEntity(user.id)}
                                 saving={saving}
                                 deleting={deleting}
                                 dirty={props.dirty}
