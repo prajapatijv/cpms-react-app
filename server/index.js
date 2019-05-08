@@ -7,6 +7,7 @@ const cors = require('cors')
 const users = require('./data/users.json')
 const items = require('./data/items.json')
 const categories = require('./data/categories.json')
+const assets = require('./data/assets.json')
 
 const logger = (req, res, next) => {
     console.log(`${req.method} request for ${req.url}`)
@@ -19,9 +20,9 @@ const logger = (req, res, next) => {
 
 const app = express()
     .use(logger)
+    .use(bodyParser.urlencoded({ extended: true }))
     .use(bodyParser.json()) // for parsing application/json    
     .use(delay(1000, 4000))
-    .use(bodyParser.urlencoded({ extended: true }))
     .use(cors())
     .use('/', express.static('./dist/img'));
 
@@ -69,6 +70,21 @@ app.post('/api/categories', (req, res) =>
 )
 
 app.delete('/api/categories/:id', (req, res) =>
+    res.status(200).json({})
+)
+
+//Assets
+app.get('/api/assets', (req, res) =>
+    res.status(200).json(
+        assets
+    )
+)
+
+app.post('/api/assets', (req, res) =>
+    res.status(200).json({})
+)
+
+app.delete('/api/assets/:id', (req, res) =>
     res.status(200).json({})
 )
 
