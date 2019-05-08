@@ -56,8 +56,20 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
                             <div className="form-row  mb-3">
-                                <label htmlFor="assetType">Asset Type</label>
-                                <Field type="text" name="assetType" component={InputBox} />
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link active">Video</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Image</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link">Audio</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link disabled">Document</a>
+                                    </li>
+                                </ul>
                             </div>
                             <div className="form-row mb-3">
                                 <label htmlFor="title">Upload File</label>
