@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart, Settings, Book }  from 'react-feather'
+import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart, Settings, Book, Video }  from 'react-feather'
 import classNames from 'classnames';
 
 import NavLink from './navlink'
@@ -30,6 +30,7 @@ const Sidebar = () => {
                 <NavItem path="/categories" displayName="Categories" icon={<Book/>} />
                 <NavItem path="/users" displayName="Users" icon={<Users/>} />
                 <NavItem path="/items" displayName="Items" icon={<List/>} />
+                <NavItem path="/assets" displayName="Assets" icon={<Video/>} />
             </ul>
 
             <hr/>

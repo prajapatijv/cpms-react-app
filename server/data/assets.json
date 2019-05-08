@@ -1,5 +1,6 @@
 [
     {
+        "id":"1001",
         "assetType":"video",
         "fileName":"c:/test/videoname.mp4",
         "fileSizeBytes":"18900254",
@@ -19,6 +20,7 @@
         }]
     },
     {
+        "id":"1005",
         "assetType":"audio",
         "fileName":"c:/test/audioname.mp3",
         "fileSizeBytes":"89010",
@@ -38,6 +40,7 @@
         }]
     },
     {
+        "id":"2010",
         "assetType":"video",
         "fileName":"c:/test/videoname.mp4",
         "fileSizeBytes":"89010004",
@@ -57,6 +60,7 @@
         }]
     } ,
     {
+        "id":"2500",
         "assetType":"image",
         "fileName":"c:/test/image.png",
         "fileSizeBytes":"15235",

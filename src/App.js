@@ -8,7 +8,7 @@ import StatusBar from './containers/status-bar/statusbar'
 import UserPage from './containers/user-page/user'
 import ItemPage from './containers/item-page/item'
 import CategoryPage from './containers/category-page/category'
-
+import AssetPage from './containers/asset-page/asset'
 
 const App = (props) =>
 <React.Fragment>
@@ -31,6 +31,8 @@ const Routes = (props) =>
     <ItemPage {...props} path="items/:id" />
     <CategoryPage {...props} path="categories" />
     <CategoryPage {...props} path="categories/:id" />
+    <AssetPage {...props} path="assets" />
+    <AssetPage {...props} path="assets/:id" />
     <NotFound default />
   </Router>
 
