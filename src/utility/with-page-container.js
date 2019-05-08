@@ -25,7 +25,7 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
             [listName]: state[stateName][listName],
             [entityName]: (props.id === undefined || state[stateName][entityName] !== undefined) ? 
                                 state[stateName][entityName] : 
-                                state[stateName][listName].find(u => u.id === parseInt(props.id)),
+                                state[stateName][listName].find(u => parseInt(u.id) === parseInt(props.id)),
             fetching: state[stateName].fetching,
             saving: state[stateName].saving,
             deleting: state[stateName].deleting
