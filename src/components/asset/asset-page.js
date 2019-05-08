@@ -18,8 +18,12 @@ const AssetLines = ({ assets }) =>
         <NavLink key={asset.id} 
             to={`/assets/${asset.id}`}
             activeClassName="active"
-            className="app-list-item list-group-item-action"
-            >{asset.assetType} {asset.title}
+            className="app-list-item list-group-item-action">
+            <div className="d-flex w-100 justify-content-between">
+                {asset.title}
+                <small>{asset.assetType}</small>
+            </div>
+            <p className="mb-1">{asset.description}</p>
         </NavLink>
     )
 

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types';
 import { Formik, Field } from 'formik'
 import { InputBox } from '../shared/input-box'
+import { TextAreaBox } from '../shared/textarea-box'
+
 import * as Yup from 'yup'
 
 import PageTitle from '../shared/page-title'
@@ -12,7 +14,7 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
     const _init = { ...asset }
 
     const schema = Yup.object().shape({
-        id:Yup.number(),
+        id: Yup.number(),
         assetType: Yup.string().min(2).max(10).required(),
         fileName: Yup.string().min(2).max(2000).required(),
         fileSizeBytes: Yup.number().required(),
@@ -37,7 +39,6 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
         onDelete(id)
     }
 
-
     return (
         asset ?
             <Formik
@@ -54,26 +55,42 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
-                            <div className="form-row">
-                                <div className="col-md-6 mb-3">
-                                    <label htmlFor="firstName">First name</label>
-                                    <Field type="text" name="firstName" component={InputBox} />
-                                </div>
-                                <div className="col-md-6 mb-3">
-                                    <label htmlFor="lastName">Last name</label>
-                                    <Field type="text" name="lastName" component={InputBox} />
+                            <div className="form-row  mb-3">
+                                <label htmlFor="assetType">Asset Type</label>
+                                <Field type="text" name="assetType" component={InputBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="title">Upload File</label>
+                                <div className="input-group">
+                                    <input type="text" class="form-control" placeholder="Upload file" aria-label="Upload file" aria-describedby="button-addon2" />
+                                    <div class="input-group-append">
+                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Upload</button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="userName">Username</label>
-                                <Field type="text" name="userName" component={InputBox} prefix="@" />
+                                <label htmlFor="title">Title</label>
+                                <Field type="text" name="title" component={InputBox} />
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="password">Password</label>
-                                <Field type="password" name="password" component={InputBox} />
-                                <small id="passwordHelpBlock" className="form-text text-muted">
-                                    Must be 6-15 characters long, contains letters and numbers.
-                                </small>
+                                <label htmlFor="description">Description</label>
+                                <Field type="textarea" rows="4" name="description" component={TextAreaBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="transcripts">Transcript</label>
+                                <Field type="textarea" rows="3" name="transcripts" component={TextAreaBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="author">Author</label>
+                                <Field type="text" name="author" component={InputBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="categories">Categories</label>
+                                <Field type="text" name="categories" component={InputBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="transcripts">Transcript</label>
+                                <Field type="text" name="transcripts" component={InputBox} />
                             </div>
 
                             <ButtonBar
