@@ -16,7 +16,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
         id:Yup.number(),
         name: Yup.string().min(2).max(50).required(),
         shortName: Yup.string().min(2).max(50).required(),
-        active: Yup.bool()
+        active: Yup.boolean().notRequired()
     })
 
     const onSaveAction = (values, actions) => {
@@ -46,7 +46,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
                             <div className="form-row mb-3">
-                                <label htmlFor="Name">Name</label>
+                                <label htmlFor="name">Name</label>
                                 <Field type="text" name="name" component={InputBox} />
                             </div>
                             <div className="form-row mb-3">
