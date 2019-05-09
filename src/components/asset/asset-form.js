@@ -55,28 +55,18 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
-                            <div className="form-row  mb-3">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link active">Video</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Image</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link">Audio</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link disabled">Document</a>
-                                    </li>
-                                </ul>
+                            <div className="form-row mb-3 nav nav-tabs">
+                                <a href="#video" className="nav-item nav-link active">Video</a>
+                                <a href="#image" className="nav-item nav-link">Image</a>
+                                <a href="#audio" className="nav-item nav-link">Audio</a>
+                                <a href="#document" className="nav-item nav-link">Document</a>
                             </div>
                             <div className="form-row mb-3">
                                 <label htmlFor="title">Upload File</label>
                                 <div className="input-group">
-                                    <input type="text" class="form-control" placeholder="Upload file" aria-label="Upload file" aria-describedby="button-addon2" />
-                                    <div class="input-group-append">
-                                        <button class="btn btn-outline-secondary" type="button" id="button-addon2">Upload</button>
+                                    <input type="text" className="form-control" placeholder="Upload file" aria-label="Upload file" aria-describedby="button-addon2" />
+                                    <div className="input-group-append">
+                                        <button className="btn btn-outline-secondary" type="button" id="button-addon2">Upload</button>
                                     </div>
                                 </div>
                             </div>

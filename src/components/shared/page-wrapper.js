@@ -11,7 +11,7 @@ const PageWrapper = (props) =>
                     {props.children[0]}
                 </LinesContainer>
             </div>
-            <div className="col-md-6 app-form">
+            <div className="col-md-7 app-form">
                 {props.children[1]}
             </div>
         </div>
