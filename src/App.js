@@ -1,6 +1,14 @@
 import React from 'react'
 import { Router } from "@reach/router";
 
+// Material helpers
+import { ThemeProvider } from '@material-ui/styles';
+
+// Theme
+import theme from './theme';
+// Shared layouts
+import Dashboard from './layouts' ;
+
 import Navbar from './components/shared/nav-bar'
 import Sidebar from './components/shared/side-bar'
 import StatusBar from './containers/status-bar/statusbar'
@@ -11,7 +19,7 @@ import CategoryPage from './containers/category-page/category'
 import AssetPage from './containers/asset-page/asset'
 
 const App = (props) =>
-<React.Fragment>
+<ThemeProvider theme={theme}>
   <StatusBar />
   <div className="wrapper">
     <Sidebar />
@@ -20,7 +28,7 @@ const App = (props) =>
       <Routes {...props} />
     </div>
   </div>
-</React.Fragment>
+</ThemeProvider>
 
 const Routes = (props) =>
   <Router>
@@ -37,9 +45,11 @@ const Routes = (props) =>
   </Router>
 
 const HomePage = () =>
+<Dashboard>
   <div className="home-page">
     <h1>Home page</h1>
   </div>
+</Dashboard>
 
 
 const NotFound = ({ location }) =>
