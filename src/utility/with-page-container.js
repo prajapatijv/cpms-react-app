@@ -1,6 +1,8 @@
 import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
+import Layout from '../layouts'
+
 import withPageActions from './with-page-action'
 
 
@@ -39,14 +41,16 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
     }, []);
 
     return (
-        <WrappedComponent
-            {...state}
-            onSearch={mapActions.fetch}
-            onAdd={() => { mapActions.add(); props.navigate(`/${listName}/0`)} }
-            onClose={() => {mapActions.close(); props.navigate(`/${listName}`) }}
-            onSave={mapActions.save}
-            onDelete={mapActions.deleteEntity}
-        />
+        <Layout>
+            <WrappedComponent
+                {...state}
+                onSearch={mapActions.fetch}
+                onAdd={() => { mapActions.add(); props.navigate(`/${listName}/0`)} }
+                onClose={() => {mapActions.close(); props.navigate(`/${listName}`) }}
+                onSave={mapActions.save}
+                onDelete={mapActions.deleteEntity}
+            />
+        </Layout>
     )
 }
 

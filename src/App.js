@@ -1,13 +1,13 @@
 import React from 'react'
-import { Router } from "@reach/router";
+import { Router } from "@reach/router"
 
 // Material helpers
-import { ThemeProvider } from '@material-ui/styles';
+import { ThemeProvider } from '@material-ui/styles'
 
 // Theme
-import theme from './theme';
+import theme from './theme'
 // Shared layouts
-import Dashboard from './layouts';
+import Layout from './layouts'
 
 import Navbar from './components/shared/nav-bar'
 import StatusBar from './containers/status-bar/statusbar'
@@ -20,11 +20,8 @@ import AssetPage from './containers/asset-page/asset'
 const App = (props) =>
   <ThemeProvider theme={theme}>
     <StatusBar />
-    <div className="wrapper">
-      <div className="container-fluid px-0">
-        <Navbar />
+    <div className="root">
         <Routes {...props} />
-      </div>
     </div>
   </ThemeProvider>
 
@@ -43,11 +40,11 @@ const Routes = (props) =>
   </Router>
 
 const HomePage = () =>
-  <Dashboard>
+  <Layout>
     <div className="home-page">
       <h1>Home page</h1>
     </div>
-  </Dashboard>
+  </Layout>
 
 
 const NotFound = ({ location }) =>
