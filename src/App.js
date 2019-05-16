@@ -7,10 +7,9 @@ import { ThemeProvider } from '@material-ui/styles';
 // Theme
 import theme from './theme';
 // Shared layouts
-import Dashboard from './layouts' ;
+import Dashboard from './layouts';
 
 import Navbar from './components/shared/nav-bar'
-import Sidebar from './components/shared/side-bar'
 import StatusBar from './containers/status-bar/statusbar'
 
 import UserPage from './containers/user-page/user'
@@ -19,15 +18,15 @@ import CategoryPage from './containers/category-page/category'
 import AssetPage from './containers/asset-page/asset'
 
 const App = (props) =>
-<ThemeProvider theme={theme}>
-  <StatusBar />
-  <div className="wrapper">
-    <div className="container-fluid px-0">
-      <Navbar />
-      <Routes {...props} />
+  <ThemeProvider theme={theme}>
+    <StatusBar />
+    <div className="wrapper">
+      <div className="container-fluid px-0">
+        <Navbar />
+        <Routes {...props} />
+      </div>
     </div>
-  </div>
-</ThemeProvider>
+  </ThemeProvider>
 
 const Routes = (props) =>
   <Router>
@@ -44,11 +43,11 @@ const Routes = (props) =>
   </Router>
 
 const HomePage = () =>
-<Dashboard>
-  <div className="home-page">
-    <h1>Home page</h1>
-  </div>
-</Dashboard>
+  <Dashboard>
+    <div className="home-page">
+      <h1>Home page</h1>
+    </div>
+  </Dashboard>
 
 
 const NotFound = ({ location }) =>

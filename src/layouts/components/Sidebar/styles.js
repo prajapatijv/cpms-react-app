@@ -4,8 +4,8 @@ export default theme => ({
       display: 'flex',
       flexDirection: 'column',
       height: '100%',
-      paddingLeft: theme.spacing.unit,
-      paddingRight: theme.spacing.unit
+      paddingLeft: theme.spacing(0),
+      paddingRight: theme.spacing(0)
     },
     logoWrapper: {
       display: 'flex',
@@ -14,35 +14,14 @@ export default theme => ({
       height: '63px',
       flexShrink: 0
     },
+    logoText: {
+      color:theme.palette.primary.dark
+    },
     logoLink: {
       fontSize: 0
     },
     logoImage: {
       cursor: 'pointer'
-    },
-    logoDivider: {
-      marginBottom: theme.spacing.unit * 2
-    },
-    profile: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      minHeight: 'fit-content'
-    },
-    avatar: {
-      width: '100px',
-      height: '100px'
-    },
-    nameText: {
-      marginTop: theme.spacing.unit * 2
-    },
-    bioText: {},
-    profileDivider: {
-      marginBottom: theme.spacing.unit * 2,
-      marginTop: theme.spacing.unit * 2
-    },
-    listSubheader: {
-      color: theme.palette.text.secondary
     },
     listItem: {
       cursor: 'pointer',
@@ -56,7 +35,7 @@ export default theme => ({
         }
       },
       '& + &': {
-        marginTop: theme.spacing.unit
+        marginTop: theme.spacing(0)
       }
     },
     activeListItem: {
@@ -79,8 +58,8 @@ export default theme => ({
       color: theme.palette.text.secondary
     },
     listDivider: {
-      marginBottom: theme.spacing.unit * 2,
-      marginTop: theme.spacing.unit * 2
+      marginBottom: theme.spacing(2),
+      marginTop: theme.spacing(2)
     }
   });
   

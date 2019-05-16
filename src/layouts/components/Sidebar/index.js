@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Link } from "@reach/router"
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
@@ -7,7 +7,7 @@ import PropTypes from 'prop-types'
 import { withStyles } from '@material-ui/core'
 
 // Material components
-import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
+import { Divider, List, ListItem, ListItemIcon, ListItemText, Typography } from '@material-ui/core'
 
 // Material icons
 import {
@@ -23,13 +23,15 @@ import styles from './styles'
 
 const Sidebar = ({ classes, className }) => {
 
-  const rootClassName = classNames(classes.root, className);
+  const rootClassName = classNames(classes.root, className)
 
   return (
     <nav className={rootClassName}>
       <div className={classes.logoWrapper}>
-        <NavLink className={classes.logoLink} to="/"        >
-          <img alt="Brainalytica logo" className={classes.logoImage} src="images/logos/brainalytica_logo.svg" />
+        <NavLink className={classes.logoLink} to="/">
+          <Typography className={classes.logoText} variant="h2" noWrap>
+            BS
+          </Typography>
         </NavLink>
       </div>
       <Divider className={classes.logoDivider} />
@@ -53,18 +55,11 @@ const Sidebar = ({ classes, className }) => {
 }
 
 const NavItem = ({ path, displayName, icon, classes }) =>
-  <ListItem
-    activeClassName={classes.activeListItem}
-    className={classes.listItem}
-    component={NavLink}
-    to={path}>
+  <ListItem activeClassName={classes.activeListItem} className={classes.listItem} component={NavLink} to={path}>
     <ListItemIcon className={classes.listItemIcon}>
       {icon}
     </ListItemIcon>
-    <ListItemText
-      classes={{ primary: classes.listItemText }}
-      primary={displayName}
-    />
+    <ListItemText classes={{ primary: classes.listItemText }} primary={displayName} />
   </ListItem>
 
 const NavLink = ({ activeClassName, ...props }) =>

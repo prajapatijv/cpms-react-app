@@ -12,7 +12,7 @@ export default theme => ({
       width: '100%'
     },
     title: {
-      marginLeft: theme.spacing.unit
+      marginLeft: theme.spacing(0)
     },
     menuButton: {
       marginLeft: '-4px'
@@ -21,7 +21,7 @@ export default theme => ({
       marginLeft: 'auto'
     },
     signOutButton: {
-      marginLeft: theme.spacing.unit
+      marginLeft: theme.spacing(0)
     }
   });
   
