@@ -22,7 +22,6 @@ const App = (props) =>
 <ThemeProvider theme={theme}>
   <StatusBar />
   <div className="wrapper">
-    <Sidebar />
     <div className="container-fluid px-0">
       <Navbar />
       <Routes {...props} />
