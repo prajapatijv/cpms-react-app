@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import React, { Component } from 'react'
+import { Link } from "@reach/router"
 
 // Externals
 import classNames from 'classnames';
@@ -9,27 +9,14 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core';
 
 // Material components
-import {
-  Avatar,
-  Divider,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  ListSubheader,
-  Typography
-} from '@material-ui/core';
+import { Divider, List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 
 // Material icons
 import {
   DashboardOutlined as DashboardIcon,
   PeopleOutlined as PeopleIcon,
   ShoppingBasketOutlined as ShoppingBasketIcon,
-  LockOpenOutlined as LockOpenIcon,
-  TextFields as TextFieldsIcon,
   ImageOutlined as ImageIcon,
-  InfoOutlined as InfoIcon,
-  AccountBoxOutlined as AccountBoxIcon,
   SettingsOutlined as SettingsIcon
 } from '@material-ui/icons';
 
@@ -44,187 +31,66 @@ class Sidebar extends Component {
 
     return (
       <nav className={rootClassName}>
-        <div className={classes.logoWrapper}>
-          <Link
+      <div className={classes.logoWrapper}>
+          <NavLink
             className={classes.logoLink}
             to="/"
           >
             <img
               alt="Brainalytica logo"
               className={classes.logoImage}
-              src="/images/logos/brainalytica_logo.svg"
+              src="images/logos/brainalytica_logo.svg"
             />
-          </Link>
-        </div>
+          </NavLink>
+        </div>      
         <Divider className={classes.logoDivider} />
-        <div className={classes.profile}>
-          <Link to="/account">
-            <Avatar
-              alt="Roman Kutepov"
-              className={classes.avatar}
-              src="/images/avatars/avatar_1.png"
-            />
-          </Link>
-          <Typography
-            className={classes.nameText}
-            variant="h6"
-          >
-            Roman Kutepov
-          </Typography>
-          <Typography
-            className={classes.bioText}
-            variant="caption"
-          >
-            Brain Director
-          </Typography>
-        </div>
-        <Divider className={classes.profileDivider} />
-        <List
-          component="div"
-          disablePadding
-        >
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/dashboard"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <DashboardIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Dashboard"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/users"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <PeopleIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Users"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/products"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ShoppingBasketIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Products"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/sign-in"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <LockOpenIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Authentication"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/typography"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <TextFieldsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Typography"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/icons"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <ImageIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Icons and Images"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/account"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <AccountBoxIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Account"
-            />
-          </ListItem>
-          <ListItem
-            activeClassName={classes.activeListItem}
-            className={classes.listItem}
-            component={NavLink}
-            to="/settings"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <SettingsIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Settings"
-            />
-          </ListItem>
+        <List component="div" disablePadding>
+          <NavItem component={NavLink} path="/categories" displayName="Categories" icon={<DashboardIcon />} classes={classes} />
+          <NavItem component={NavLink} path="/users" displayName="Categories" icon={<PeopleIcon />} classes={classes} />
+          <NavItem component={NavLink} path="/items" displayName="Categories" icon={<ShoppingBasketIcon />} classes={classes} />
+          <NavItem component={NavLink} path="/assets" displayName="Categories" icon={<ImageIcon />} classes={classes} />
         </List>
         <Divider className={classes.listDivider} />
-        <List
-          component="div"
-          disablePadding
-          subheader={
-            <ListSubheader className={classes.listSubheader}>
-              Support
-            </ListSubheader>
-          }
-        >
-          <ListItem
-            className={classes.listItem}
-            component="a"
-            href="https://devias.io/contact-us"
-            target="_blank"
-          >
-            <ListItemIcon className={classes.listItemIcon}>
-              <InfoIcon />
-            </ListItemIcon>
-            <ListItemText
-              classes={{ primary: classes.listItemText }}
-              primary="Customer support"
-            />
-          </ListItem>
+        <List component="div" disablePadding>
+          <NavItem component={NavLink} path="/report-1" displayName="Report 1" icon={<ImageIcon />} classes={classes} />
+          <NavItem component={NavLink} path="/report-2" displayName="Report 2" icon={<ImageIcon />} classes={classes} />
+        </List>
+        <Divider className={classes.listDivider} />
+        <List component="div" disablePadding>
+          <NavItem component={NavLink} path="/settings" displayName="Settings" icon={<SettingsIcon />} classes={classes} />
         </List>
       </nav>
     );
   }
 }
+
+
+const NavItem = ({ path, displayName, icon, classes }) =>
+  <ListItem
+    activeClassName={classes.activeListItem}
+    className={classes.listItem}
+    component={NavLink}
+    to={path}
+  >
+    <ListItemIcon className={classes.listItemIcon}>
+      {icon}
+    </ListItemIcon>
+    <ListItemText
+      classes={{ primary: classes.listItemText }}
+      primary={displayName}
+    />
+  </ListItem>
+
+const NavLink = ({activeClassName, ...props}) => 
+<Link
+    {...props}
+    getProps={({ isCurrent }) => {
+        return {
+            className:  isCurrent ? `${props.className} ${activeClassName}` : props.className
+        };
+    }}
+/>
+
 
 Sidebar.propTypes = {
   className: PropTypes.string,
