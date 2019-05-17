@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart, Settings, Book, Video }  from 'react-feather'
 import classNames from 'classnames';
 
-import NavLink from './navlink'
+import NavLink from '../components/shared/navlink'
 
 import './side-bar.scss'
 
