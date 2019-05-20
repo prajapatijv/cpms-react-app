@@ -32,9 +32,10 @@ const HomePage = () =>
 
 const NotFound = ({ location }) =>
   <WithOpenLayout>
-    <div className="whoops-404">
-      <h1>Whoops, route not found</h1>
-      <p>Cannot find content for {location.pathname}</p>
+    <div className="whoops-404 text-center m-4">
+      <h1 className="h1 mb-3 font-weight-normal">404</h1>
+      <div>We couldn't find this page. </div>
+      <p>{location.pathname}</p>
     </div>
   </WithOpenLayout>
 
