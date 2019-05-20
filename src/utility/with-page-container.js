@@ -2,7 +2,7 @@ import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
 import { useMappedState, useDispatch } from "redux-react-hook"
 import withPageActions from './with-page-action'
-import WithBasicLayout from '../layouts'
+import { WithBasicLayout }  from '../layouts'
 
 const WithPageContainer = (WrappedComponent, props, context ) => {
 

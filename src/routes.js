@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router } from "@reach/router"
 
-import WithBasicLayout from './layouts'
+import { WithBasicLayout, WithOpenLayout } from './layouts'
 import UserPage from './containers/user-page/user'
 import ItemPage from './containers/item-page/item'
 import CategoryPage from './containers/category-page/category'
@@ -23,18 +23,19 @@ const Routes = (props) =>
 
 
 const HomePage = () =>
-<WithBasicLayout>
-  <div className="home-page">
-    <h1>Home page</h1>
-  </div>
-</WithBasicLayout>
+  <WithBasicLayout>
+    <div className="home-page">
+      <h1>Home page</h1>
+    </div>
+  </WithBasicLayout>
 
 
 const NotFound = ({ location }) =>
-  <div className="whoops-404">
-    <h1>Whoops, route not found</h1>
-    <p>Cannot find content for {location.pathname}</p>
-  </div>
-
+  <WithOpenLayout>
+    <div className="whoops-404">
+      <h1>Whoops, route not found</h1>
+      <p>Cannot find content for {location.pathname}</p>
+    </div>
+  </WithOpenLayout>
 
 export default Routes
