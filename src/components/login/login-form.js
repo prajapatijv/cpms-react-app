@@ -16,21 +16,31 @@ const LoginForm = () => {
     }
 
     return (
-        <div className="modal-header mb-3 py-0">
-        Login form
-    </div>
-
-        /*<Formik validationSchema={schema}
+            <Formik
+                enableReinitialize
+                validationSchema={schema}
                 validateOnBlur={true}
-                onSubmit={onLogin}>
-                    render={props => (
+                onSubmit={onLogin}
+                render={props => (
                     <React.Fragment>
-                        <div className="modal-header mb-3 py-0">
-                            Login form
+                        <div className="modal-header">
+                            Login
                         </div>
+                        <form className="needs-validation"
+                            onSubmit={props.handleSubmit}
+                            onReset={props.handleReset}>
+                            <div className="form-row mb-3">
+                                <label htmlFor="userName">User name</label>
+                                <Field type="text" name="userName" component={InputBox} />
+                            </div>
+                            <div className="form-row mb-3">
+                                <label htmlFor="password">Password</label>
+                                <Field type="text" name="password" component={InputBox} />
+                            </div>
+                        </form>
                     </React.Fragment>
                 )}
-        </Formik>*/
+            />
     )
 }
 
