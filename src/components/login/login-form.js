@@ -1,8 +1,10 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import { LogIn }  from 'react-feather'
 import { Formik, Field } from 'formik'
-import { InputBox } from '../shared/input-box'
 import * as Yup from 'yup'
+import PropTypes from 'prop-types';
+
+import { InputBox } from '../shared/input-box'
 
 const LoginForm = () => {
 
@@ -23,12 +25,11 @@ const LoginForm = () => {
                 onSubmit={onLogin}
                 render={props => (
                     <React.Fragment>
-                        <div className="modal-header">
-                            Login
-                        </div>
-                        <form className="needs-validation"
+                        <form className="login-form needs-validation"
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
+                            <LogIn size="42px" className="mb-3" />
+                            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
                             <div className="form-row mb-3">
                                 <label htmlFor="userName">User name</label>
                                 <Field type="text" name="userName" component={InputBox} />
@@ -37,6 +38,8 @@ const LoginForm = () => {
                                 <label htmlFor="password">Password</label>
                                 <Field type="text" name="password" component={InputBox} />
                             </div>
+                            <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>                            
+                            <p className="mt-5 mb-3 text-muted">© 2019</p>
                         </form>
                     </React.Fragment>
                 )}
