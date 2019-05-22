@@ -2,6 +2,7 @@ import React from 'react'
 import { Router } from "@reach/router"
 
 import { WithBasicLayout, WithOpenLayout } from './layouts'
+import LoginPage from './containers/login-page/login'
 import UserPage from './containers/user-page/user'
 import ItemPage from './containers/item-page/item'
 import CategoryPage from './containers/category-page/category'
@@ -10,6 +11,7 @@ import AssetPage from './containers/asset-page/asset'
 const Routes = (props) =>
   <Router>
     <HomePage path="/" />
+    <LoginPage {...props} path="/login"/>
     <UserPage {...props} path="users" />
     <UserPage {...props} path="users/:id" />
     <ItemPage {...props} path="items" />
