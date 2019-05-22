@@ -1,6 +1,6 @@
 import React from 'react'
-import LoginForm from '../../components/login/login-form'
+import LoginPage from '../../components/login/login-page'
 
-const Login = (props) => <LoginForm {...props}/>
+const Login = (props) => <LoginPage {...props}/>
 
 export default Login
