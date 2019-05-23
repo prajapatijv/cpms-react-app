@@ -14,16 +14,18 @@ export const InputBox = ({
 
   var clsig = classNames({
     'input-group':true,
-    'floating-label':props.FloatingLabel
+    'floating-label':props.floatingLabel,
+    'prefix-text':props.prefix
   })
 
   if (props.prefix) {
     return (
-      <div className="input-group">
+      <div className={clsig}>
         <div className="input-group-prepend">
           <span className="input-group-text">{props.prefix}</span>
         </div>
         <TextBox field={field} props={props} touched={touched} errors={errors} cls={cls} />
+        <FloatingLabel props={props} />
       </div>
     )
   }
@@ -43,5 +45,9 @@ const TextBox = ({ field, props, touched, errors, cls }) =>
     {...field} {...props}
   />
 
-const FloatingLabel = ({props}) => 
-  props.FloatingLabel ? <label htmlFor={props.htmlFor}>{props.Label}</label> : null
+const FloatingLabel = ({props}) => {
+  const style = { left: props.floatingLeft}
+  return(
+    props.floatingLabel ? <label style={style} htmlFor={props.name}>{props.placeholder}</label> : null
+  )
+}

@@ -46,21 +46,17 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                             onReset={props.handleReset}>
                             <div className="form-row">
                                 <div className="col-md-6 mb-3">
-                                    <label htmlFor="firstName">First name</label>
-                                    <Field type="text" name="firstName" component={InputBox} />
+                                    <Field type="text" name="firstName" component={InputBox} placeholder="First name" floatingLabel="1" />
                                 </div>
                                 <div className="col-md-6 mb-3">
-                                    <label htmlFor="lastName">Last name</label>
-                                    <Field type="text" name="lastName" component={InputBox} />
+                                    <Field type="text" name="lastName" component={InputBox} placeholder="Last name" floatingLabel="1" />
                                 </div>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="userName">Username</label>
-                                <Field type="text" name="userName" component={InputBox} prefix="@" />
+                                <Field type="text" name="userName" component={InputBox} prefix="@" placeholder="User name" floatingLabel="1" floatingLeft="40px"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="password">Password</label>
-                                <Field type="password" name="password" component={InputBox} />
+                                <Field type="password" name="password" component={InputBox} placeholder="Password" floatingLabel="1" />
                                 <small id="passwordHelpBlock" className="form-text text-muted">
                                     Must be 6-15 characters long, contains letters and numbers.
                                 </small>
