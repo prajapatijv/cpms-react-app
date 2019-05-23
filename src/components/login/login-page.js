@@ -4,7 +4,7 @@ import LoginForm from './login-form'
 
 const LoginPage = (props) =>
 <div className="login-container text-center bg-light">
-    <div className="login-form">
+    <div className="py-5">
         <LoginForm {...props} />
     </div>
 </div>

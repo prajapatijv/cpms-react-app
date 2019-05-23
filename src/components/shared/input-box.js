@@ -25,6 +25,7 @@ export const InputBox = ({
     return (
       <div className="input-group">
         <TextBox field={field} props={props} touched={touched} errors={errors} cls={cls} />
+        <FloatingLabel props={props} />
       </div>
     )
   }
@@ -35,3 +36,6 @@ const TextBox = ({ field, props, touched, errors, cls }) =>
     invalid={touched[field.name] && errors[field.name] ? "false" : "true"}
     {...field} {...props}
   />
+
+const FloatingLabel = ({props}) => 
+  props.FloatingLabel ? <label htmlFor={props.htmlFor}>{props.Label}</label> : null
