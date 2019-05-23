@@ -31,10 +31,10 @@ const LoginForm = () => {
                             <Feather size="42px" className="mb-3" />
                             <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
                             <div className="form-label-group">
-                                <Field type="text" name="userName" component={InputBox} placeholder="User name" floatingLabel="1"/>
+                                <Field type="text" name="userName" component={InputBox} placeholder="User name" floatinglabel="1"/>
                             </div>
                             <div className="form-label-group">
-                                <Field type="text" name="password" component={InputBox} placeholder="Password" floatingLabel="1"/>
+                                <Field type="text" name="password" component={InputBox} placeholder="Password" floatinglabel="1"/>
                             </div>
                             <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>                            
                             <p className="mt-5 mb-3 text-muted">© 2019</p>
@@ -46,3 +46,7 @@ const LoginForm = () => {
 }
 
 export default LoginForm
+
+LoginForm.propTypes = {
+    onLogin: PropTypes.func
+}

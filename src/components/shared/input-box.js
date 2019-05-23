@@ -14,7 +14,7 @@ export const InputBox = ({
 
   var clsig = classNames({
     'input-group':true,
-    'floating-label':props.floatingLabel,
+    'floating-label':props.floatinglabel,
     'prefix-text':props.prefix
   })
 
@@ -48,6 +48,6 @@ const TextBox = ({ field, props, touched, errors, cls }) =>
 const FloatingLabel = ({props}) => {
   const style = { left: props.floatingLeft}
   return(
-    props.floatingLabel ? <label style={style} htmlFor={props.name}>{props.placeholder}</label> : null
+    props.floatinglabel ? <label style={style} htmlFor={props.name}>{props.placeholder}</label> : null
   )
 }
