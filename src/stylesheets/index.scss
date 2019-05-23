@@ -25,8 +25,14 @@ code {
 .app-page {
   .app-list {
     height: calc(100vh - 80px);
-    padding: 0 1rem 0 0;
+    padding: 0 0.0rem 0 0;
     border-right: 0.1rem aliceblue solid;
+
+    .active {
+      border-left: 4px solid blueviolet;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px #eaeaea;
+    }
   }
 
   .app-form {
