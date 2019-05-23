@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import './input-box.scss'
 
 export const InputBox = ({
   field, // { name, value, onChange, onBlur }
@@ -9,6 +10,11 @@ export const InputBox = ({
   var cls = classNames({
     'form-control': true,
     'is-invalid': touched[field.name] && errors[field.name]
+  })
+
+  var clsig = classNames({
+    'input-group':true,
+    'floating-label':props.FloatingLabel
   })
 
   if (props.prefix) {
@@ -23,7 +29,7 @@ export const InputBox = ({
   }
   else {
     return (
-      <div className="input-group">
+      <div className={clsig} >
         <TextBox field={field} props={props} touched={touched} errors={errors} cls={cls} />
         <FloatingLabel props={props} />
       </div>
