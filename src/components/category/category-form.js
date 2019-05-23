@@ -46,12 +46,10 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
                             <div className="form-row mb-3">
-                                <label htmlFor="name">Name</label>
-                                <Field type="text" name="name" component={InputBox} />
+                                <Field type="text" name="name" component={InputBox} placeholder="Name" floatingLabel="1" />
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="shortName">Short Name</label>
-                                <Field type="text" name="shortName" component={InputBox} />
+                                <Field type="text" name="shortName" component={InputBox} placeholder="Short Name" floatingLabel="1" />
                             </div>
                             <div className="form-row mb-3">
                                 <Field type="checkbox" name="active" component={CheckBox} label="Active" />

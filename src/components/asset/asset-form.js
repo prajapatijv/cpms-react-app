@@ -71,28 +71,22 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
                                 </div>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="title">Title</label>
-                                <Field type="text" name="title" component={InputBox} />
+                                <Field type="text" name="title" component={InputBox} placeholder="Title" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="description">Description</label>
-                                <Field type="textarea" rows="4" name="description" component={TextAreaBox} />
+                                <Field type="textarea" rows="4" name="description" component={TextAreaBox} placeholder="Description" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="transcripts">Transcript</label>
-                                <Field type="textarea" rows="3" name="transcripts" component={TextAreaBox} />
+                                <Field type="textarea" rows="3" name="transcripts" component={TextAreaBox} placeholder="Transcript" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="author">Author</label>
-                                <Field type="text" name="author" component={InputBox} />
+                                <Field type="text" name="author" component={InputBox} placeholder="Author" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="categories">Categories</label>
-                                <Field type="text" name="categories" component={InputBox} />
+                                <Field type="text" name="categories" component={InputBox} placeholder="Categories" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="transcripts">Transcript</label>
-                                <Field type="text" name="transcripts" component={InputBox} />
+                                <Field type="text" name="tags" component={InputBox} placeholder="Tags" floatingLabel="1"/>
                             </div>
 
                             <ButtonBar

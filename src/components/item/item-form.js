@@ -45,21 +45,20 @@ const ItemForm = ({ item, onClose, onSave, onDelete, saving, deleting }) => {
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
                             onReset={props.handleReset}>
-                            <div className="form-row mb-3">
-                                <label htmlFor="itemName">Item name</label>
-                                <Field type="text" name="itemName" component={InputBox} />
+                            <div className="form-row">
+                                <Field type="text" name="itemName" component={InputBox} placeholder="Item Name" floatingLabel="1"/>
                             </div>
                             <div className="form-row mb-3">
-                                <label htmlFor="rate">Rate</label>
-                                <Field type="number" name="rate" component={InputBox} />
+                                <Field type="text" name="type" component={InputBox} placeholder="Type" floatingLabel="1"/>
                             </div>
-                            <div className="form-row mb-3">
-                                <label htmlFor="type">Type</label>
-                                <Field type="text" name="type" component={InputBox} />
-                            </div>
-                            <div className="form-row mb-3">
-                                <label htmlFor="Stock">Stock</label>
-                                <Field type="number" name="stock" component={InputBox} />
+                            
+                            <div className="form-row">
+                                <div className="col-md-6 mb-3">
+                                    <Field type="number" name="rate" component={InputBox} placeholder="Rate" floatingLabel="1"/>
+                                </div>
+                                <div className="col-md-6 mb-3">
+                                    <Field type="number" name="stock" component={InputBox} placeholder="Stock" floatingLabel="1"/>
+                                </div>
                             </div>
 
                             <ButtonBar

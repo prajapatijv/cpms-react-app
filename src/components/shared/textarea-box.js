@@ -1,5 +1,6 @@
 import React from 'react'
 import classNames from 'classnames'
+import './textarea-box.scss'
 
 export const TextAreaBox = ({
   field, // { name, value, onChange, onBlur }
@@ -10,9 +11,17 @@ export const TextAreaBox = ({
     'form-control': true,
     'is-invalid': touched[field.name] && errors[field.name]
   })
+
+  var clsig = classNames({
+    'input-group':true,
+    'floating-label':props.floatingLabel,
+    'prefix-text':props.prefix
+  })
+
     return (
-      <div className="input-group">
+      <div className={clsig}>
         <TextArea field={field} props={props} touched={touched} errors={errors} cls={cls} />
+        <FloatingLabel props={props} />
       </div>
     )
 };
@@ -22,3 +31,10 @@ const TextArea = ({ field, props, touched, errors, cls }) =>
     invalid={touched[field.name] && errors[field.name] ? "false" : "true"}
     {...field} {...props}
   />
+
+const FloatingLabel = ({props}) => {
+  const style = { left: props.floatingLeft}
+  return(
+    props.floatingLabel ? <label style={style} htmlFor={props.name}>{props.placeholder}</label> : null
+  )
+}
