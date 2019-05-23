@@ -1,3 +1,11 @@
+//Mixins
+@mixin placeholder {
+  &::-webkit-input-placeholder {@content}
+  &:-moz-placeholder           {@content}
+  &::-moz-placeholder          {@content}
+  &:-ms-input-placeholder      {@content}  
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -109,20 +117,10 @@ code {
         transition: all .1s ease-in-out;        
       }
 
-      input::-ms-input-placeholder {
-        color: transparent;
-      }
-      
-      input::-webkit-input-placeholder {
-        color: transparent;
-      }
-
-      input::-moz-input-placeholder {
-        color: transparent;
-      }
-
-      input::input-placeholder {
-        color: transparent;
+      input {
+        @include placeholder {
+          color: transparent;
+        }
       }
 
       input:not(:placeholder-shown) {
