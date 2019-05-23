@@ -99,3 +99,15 @@ code {
     }
   }
 }
+
+//Nav bar
+.nav {
+  .nav-item {
+    .active {
+      background-color: #eaeaea !important;
+      border-left: 4px solid blueviolet;
+      border-radius: 5px;
+      box-shadow: 0px 0px 5px 0px #eaeaea;
+    }
+  }
+}
