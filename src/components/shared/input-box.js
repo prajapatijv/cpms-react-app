@@ -46,7 +46,7 @@ const TextBox = ({ field, props, touched, errors, cls }) =>
   />
 
 const FloatingLabel = ({props}) => {
-  const style = { left: props.floatingLeft}
+  const style = { left: props.floatingleft}
   return(
     props.floatinglabel ? <label style={style} htmlFor={props.name}>{props.placeholder}</label> : null
   )

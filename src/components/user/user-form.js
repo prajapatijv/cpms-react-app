@@ -39,7 +39,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
-                            <PageTitle title="User" fetching={props.fetching} onClose={onClose}></PageTitle>
+                            <PageTitle title="User" fetching={props.fetching} onClose={onClose} adding={user.id === 0}></PageTitle>
                         </div>
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
@@ -53,7 +53,7 @@ const UserForm = ({ user, onClose, onSave, onDelete, saving, deleting }) => {
                                 </div>
                             </div>
                             <div className="form-row mb-3">
-                                <Field type="text" name="userName" component={InputBox} prefix="@" placeholder="User name" floatinglabel="1" floatingLeft="40px"/>
+                                <Field type="text" name="userName" component={InputBox} prefix="@" placeholder="User name" floatinglabel="1" floatingleft="40px"/>
                             </div>
                             <div className="form-row mb-3">
                                 <Field type="password" name="password" component={InputBox} placeholder="Password" floatinglabel="1" />

@@ -40,7 +40,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
-                            <PageTitle title="Category" fetching={props.fetching} onClose={onClose}></PageTitle>
+                            <PageTitle title="Category" fetching={props.fetching} onClose={onClose} adding={category.id === 0}></PageTitle>
                         </div>
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}

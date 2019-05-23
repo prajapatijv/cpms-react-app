@@ -1,16 +1,18 @@
 import React from 'react'
-import { X } from 'react-feather'
+import { PlusSquare, Edit, X } from 'react-feather'
 import PropTypes from 'prop-types'
 
-const PageTitle = ({ title, onClose }) =>
+const PageTitle = ({ adding, title, onClose }) =>
     <React.Fragment>
         <div className="page-title">
-            <h4 >{title}</h4>
+            <h4>
+                {adding ? <PlusSquare /> : <Edit />} {title}
+            </h4>
         </div>
         <button type="button" className="close" data-dismiss="modal" aria-label="Close"
             onClick={() => onClose()}>
             <span aria-hidden="true">
-                <X/>
+                <X />
             </span>
         </button>
     </React.Fragment>

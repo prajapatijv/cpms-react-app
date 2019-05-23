@@ -50,7 +50,7 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
                 render={props => (
                     <React.Fragment>
                         <div className="modal-header mb-3 py-0">
-                            <PageTitle title="Asset" fetching={props.fetching} onClose={onClose}></PageTitle>
+                            <PageTitle title="Asset" fetching={props.fetching} onClose={onClose} adding={asset.id === 0}></PageTitle>
                         </div>
                         <form className="needs-validation"
                             onSubmit={props.handleSubmit}
