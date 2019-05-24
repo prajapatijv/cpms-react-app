@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronLeft, ChevronRight, List, Users , BarChart, PieChart, Settings, Book, Video }  from 'react-feather'
-import classNames from 'classnames';
+import classNames from 'classnames'
 
 import NavLink from '../components/shared/navlink'
 

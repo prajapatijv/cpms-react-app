@@ -1,13 +1,16 @@
 import React from 'react'
+import { LogOut } from 'react-feather'
 
 const Navbar = () =>
-    <nav className="navbar sticky-top navbar-dark bg-dark">
+    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">
         <span className="navbar-brand"></span>
-        <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap">
-                <button className="btn btn-outline-secondary my-2 my-sm-0" type="submit">Signin</button>
+        <ul class="navbar-nav px-3">
+            <li class="nav-item text-nowrap">
+                <a class="nav-link" href="#"><LogOut /></a>
             </li>
         </ul>
     </nav>
 
 export default Navbar
+
+/*<input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" />*/
