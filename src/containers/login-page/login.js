@@ -1,6 +1,18 @@
 import React from 'react'
-import LoginPage from '../../components/login/login-page'
+import { useMappedState, useDispatch } from "redux-react-hook";
 
-const Login = (props) => <LoginPage {...props}/>
+import LoginPage from '../../components/login/login-page'
+import * as actions from './actions'
+
+const Login = (props) => {
+    
+    const dispatch = useDispatch()
+
+    return(
+        <LoginPage {...props}
+            onLogin={() => dispatch(actions.login())}
+        />
+    )
+} 
 
 export default Login

@@ -2,18 +2,19 @@ import React from 'react'
 import { Feather }  from 'react-feather'
 import { Formik, Field } from 'formik'
 import * as Yup from 'yup'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 
 import { InputBox } from '../shared/input-box'
 
-const LoginForm = () => {
+const LoginForm = ({ onLogin }) => {
 
     const schema = Yup.object().shape({
         userName: Yup.string().min(2).max(30).required(),
         password: Yup.string().min(6).max(15).required()
     })
 
-    const onLogin = (values, actions) => {
+    const onLoginAction = (values, actions) => {
+        onLogin(values)
         actions.setSubmitting(false)
     }
 
@@ -22,7 +23,7 @@ const LoginForm = () => {
                 enableReinitialize
                 validationSchema={schema}
                 validateOnBlur={true}
-                onSubmit={onLogin}
+                onSubmit={onLoginAction}
                 render={props => (
                     <React.Fragment>
                         <form className="login-form needs-validation"
