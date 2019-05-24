@@ -2,6 +2,8 @@ import { LOGIN_ACTIONS as C } from '../actionTypes'
 
 const initialState={
     authToken:'',
+    userName:'',
+    password:'',
     processing: false,
     errors:[]
 }

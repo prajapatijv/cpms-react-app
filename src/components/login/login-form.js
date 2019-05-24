@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 
 import { InputBox } from '../shared/input-box'
 
-const LoginForm = ({ onLogin }) => {
+const LoginForm = ({ auth, onLogin }) => {
 
     const schema = Yup.object().shape({
         userName: Yup.string().min(2).max(30).required(),
@@ -20,7 +20,7 @@ const LoginForm = ({ onLogin }) => {
 
     return (
             <Formik
-                enableReinitialize
+                initialValues={auth}
                 validationSchema={schema}
                 validateOnBlur={true}
                 onSubmit={onLoginAction}

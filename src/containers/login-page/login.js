@@ -7,9 +7,16 @@ import * as actions from './actions'
 const Login = (props) => {
     
     const dispatch = useDispatch()
-
+    
+    const mapState  = (state) => {
+        return {
+            auth: state.auth,
+        }
+    }
+    
+    const { auth  } = useMappedState(mapState)
     return(
-        <LoginPage {...props}
+        <LoginPage {...props} auth={auth}
             onLogin={() => dispatch(actions.login())}
         />
     )
