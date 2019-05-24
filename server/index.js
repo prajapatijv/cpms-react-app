@@ -24,8 +24,9 @@ const app = express()
     .use('/', express.static('./dist/img'));
 
 //Wildcards
-app.post('/api/*', (req, res) => {    console.log(req.body);    res.status(200).json(req.body)})
-app.delete('/api/*/:id', (req, res) =>    res.status(200).json({}))
+app.post('/api/authenticate', (req, res) => { console.log(req.body); res.status(200).json({"authToken":"base token"}) })
+app.post('/api/*', (req, res) => { console.log(req.body); res.status(200).json(req.body) })
+app.delete('/api/*/:id', (req, res) => res.status(200).json({}))
 
 //Gets
 app.get('/api/users', (req, res) => res.status(200).json(users))

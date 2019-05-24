@@ -1,7 +1,7 @@
 import { call, put, delay } from 'redux-saga/effects'
 import axios from "axios"
 import { GetItem, SetItem, RemoveItem } from './cache'
-import { HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
+import { HandleSuccess, HandleError, HandleSaveSuccess, HandleDeleteSuccess } from './status'
 import { navigate } from '@reach/router'
 
 
@@ -75,6 +75,18 @@ export function* remove(params) {
         navigate(`/${contextObj.apiContext}`)
     } catch (error) {
         yield HandleError(`DELETE_${contextObj.actionContext.SINGULAR}_FAILED`, error)
+    }
+}
+
+export function* post(apiUrl, payload, successType, errorType) {
+
+    try {
+        const response = yield (call(saveApi, apiUrl, payload))
+
+        yield HandleSuccess(successType, response.data)
+            
+    } catch (error) {
+        yield HandleError(errorType, error)
     }
 }
 
