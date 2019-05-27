@@ -1,6 +1,8 @@
 import { call, takeEvery } from 'redux-saga/effects'
 import { LOGIN_ACTIONS as C } from '../actionTypes'
 import { post } from '../../utility/http-client'
+import { SetItem } from '../../utility/cache'
+import { navigate } from '@reach/router'
 
 import { Config } from '../../AppConfig'
 
@@ -11,5 +13,10 @@ export function* loginSaga() {
 }
 
 function* loginWorker(params) {
-    return yield(call(post, API_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
+    const response = yield(call(post, API_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
+    SetItem(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
+
+    navigate('/')
+    
+    return response;
 }

@@ -15,7 +15,7 @@ const Status = (state=initialState, action) => {
             return {...state, processing:true }
 
         case C.LOGIN_SUCCESS:
-            return {...state, processing:false }
+            return {...state, password:"", processing:false }
 
         case C.LOGIN_FAILURE:
             return {...state, errors:[...state.errors, action.payload] }

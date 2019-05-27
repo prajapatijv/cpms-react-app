@@ -84,6 +84,8 @@ export function* post(apiUrl, payload, successType, errorType) {
         const response = yield (call(saveApi, apiUrl, payload))
 
         yield HandleSuccess(successType, response.data)
+
+        return response.data;
             
     } catch (error) {
         yield HandleError(errorType, error)

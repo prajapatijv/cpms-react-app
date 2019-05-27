@@ -7,15 +7,10 @@ import * as actions from './actions'
 
 const Login = (props) => {
     
-    const mapActions = bindActionCreators(actions, useDispatch());
-
-    const mapState  = (state) => {
-        return {
-            auth: state.auth,
-        }
-    }
-    
+    const mapActions = bindActionCreators(actions, useDispatch())
+    const mapState  = (state) => { return { auth: state.auth }}        
     const { auth  } = useMappedState(mapState)
+
     return(
         <LoginPage {...props} auth={auth}
             onLogin={mapActions.login}
