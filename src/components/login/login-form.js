@@ -1,5 +1,5 @@
 import React from 'react'
-import { Feather }  from 'react-feather'
+import { Feather } from 'react-feather'
 import { Formik, Field } from 'formik'
 import * as Yup from 'yup'
 import PropTypes from 'prop-types'
@@ -19,30 +19,33 @@ const LoginForm = ({ auth, onLogin }) => {
     }
 
     return (
-            <Formik
-                initialValues={auth}
-                validationSchema={schema}
-                validateOnBlur={true}
-                onSubmit={onLoginAction}
-                render={props => (
-                    <React.Fragment>
-                        <form className="login-form needs-validation"
-                            onSubmit={props.handleSubmit}
-                            onReset={props.handleReset}>
-                            <Feather size="42px" className="mb-3" />
-                            <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
-                            <div className="form-label-group">
-                                <Field type="text" name="userName" component={InputBox} placeholder="User name" floatinglabel="1"/>
-                            </div>
-                            <div className="form-label-group">
-                                <Field type="text" name="password" component={InputBox} placeholder="Password" floatinglabel="1"/>
-                            </div>
-                            <button className="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>                            
-                            <p className="mt-5 mb-3 text-muted">© 2019</p>
-                        </form>
-                    </React.Fragment>
-                )}
-            />
+        <Formik
+            initialValues={auth}
+            validationSchema={schema}
+            validateOnBlur={true}
+            onSubmit={onLoginAction}
+            render={props => (
+                <React.Fragment>
+                    <form className="login-form needs-validation"
+                        onSubmit={props.handleSubmit}
+                        onReset={props.handleReset}>
+                        <Feather size="42px" className="mb-3" />
+                        <h1 className="h3 mb-3 font-weight-normal">Please sign in</h1>
+                        <div className="form-label-group">
+                            <Field type="text" name="userName" component={InputBox} placeholder="User name" floatinglabel="1" />
+                        </div>
+                        <div className="form-label-group">
+                            <Field type="text" name="password" component={InputBox} placeholder="Password" floatinglabel="1" />
+                        </div>
+                        <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={auth.processing} >
+                            {auth.processing ? <div className="spinner-border spinner-border-sm text-light py-2 px-2 mr-2" role="status"/> : null}
+                            Sign in
+                        </button>
+                        <p className="mt-5 mb-3 text-muted">© 2019</p>
+                    </form>
+                </React.Fragment>
+            )}
+        />
     )
 }
 
