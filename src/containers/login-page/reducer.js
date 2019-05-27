@@ -17,7 +17,7 @@ const Status = (state=initialState, action) => {
         case C.LOGIN_SUCCESS:
             return {...state, processing:false }
 
-        case C.LOGIN_ERRORS:
+        case C.LOGIN_FAILURE:
             return {...state, errors:[...state.errors, action.payload] }
 
         default:
