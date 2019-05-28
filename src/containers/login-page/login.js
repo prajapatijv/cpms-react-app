@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMappedState, useDispatch } from "redux-react-hook";
+import { useMappedState, useDispatch } from "redux-react-hook"
 import { bindActionCreators } from 'redux'
 
 import LoginPage from '../../components/login/login-page'

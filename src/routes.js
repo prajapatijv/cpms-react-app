@@ -1,5 +1,6 @@
 import React from 'react'
-import { Router } from "@reach/router"
+import { Router, Redirect } from "@reach/router"
+import { useMappedState } from "redux-react-hook"
 
 import { WithBasicLayout, WithOpenLayout } from './layouts'
 import LoginPage from './containers/login-page/login'
@@ -12,14 +13,14 @@ const Routes = (props) =>
   <Router>
     <HomePage path="/" />
     <LoginPage {...props} path="/login"/>
-    <UserPage {...props} path="users" />
-    <UserPage {...props} path="users/:id" />
-    <ItemPage {...props} path="items" />
-    <ItemPage {...props} path="items/:id" />
-    <CategoryPage {...props} path="categories" />
-    <CategoryPage {...props} path="categories/:id" />
-    <AssetPage {...props} path="assets" />
-    <AssetPage {...props} path="assets/:id" />
+    <ProtectedRoute component={UserPage} {...props} path="users" />
+    <ProtectedRoute component={UserPage} {...props} path="users/:id" />
+    <ProtectedRoute component={ItemPage} {...props} path="items" />
+    <ProtectedRoute component={ItemPage} {...props} path="items/:id" />
+    <ProtectedRoute component={CategoryPage} {...props} path="categories" />
+    <ProtectedRoute component={CategoryPage} {...props} path="categories/:id" />
+    <ProtectedRoute component={AssetPage} {...props} path="assets" />
+    <ProtectedRoute component={AssetPage} {...props} path="assets/:id" />
     <NotFound default />
   </Router>
 
@@ -39,5 +40,16 @@ const NotFound = ({ location }) =>
       <p>{location.pathname}</p>
     </div>
   </WithOpenLayout>
+
+
+const ProtectedRoute = ({ component: Component, ...props }) => {
+  const mapState  = (state) => { return { auth: state.auth }}        
+  const { auth  } = useMappedState(mapState)
+
+  return(
+    auth.authToken !== "" ? 
+        <Component {...props} /> : <Redirect noThrow to='/login' />   
+  )
+}
 
 export default Routes
