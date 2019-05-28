@@ -16,10 +16,10 @@ const Navbar = (props) => {
             <span className="navbar-brand"></span>
             <ul className="navbar-nav px-3">
                 <li className="nav-item text-nowrap">
-                    <a  className="nav-link" href="#"
+                    <button  className="btn btn-dark btn-link"
                         onClick={() => mapActions.logout(auth)}>
                         <LogOut />
-                    </a>
+                    </button>
                 </li>
             </ul>
         </nav>
