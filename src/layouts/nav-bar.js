@@ -1,15 +1,30 @@
 import React from 'react'
-import { LogOut } from 'react-feather'
+import { useMappedState, useDispatch } from "redux-react-hook";
+import { bindActionCreators } from 'redux'
 
-const Navbar = () =>
-    <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">
-        <span className="navbar-brand"></span>
-        <ul className="navbar-nav px-3">
-            <li className="nav-item text-nowrap">
-                <a className="nav-link" href="#logout"><LogOut /></a>
-            </li>
-        </ul>
-    </nav>
+import { LogOut } from 'react-feather'
+import * as actions from '../containers/login-page/actions'
+
+const Navbar = (props) => {
+
+    const mapActions = bindActionCreators(actions, useDispatch())
+    const mapState  = (state) => { return { auth: state.auth }}        
+    const { auth  } = useMappedState(mapState)
+
+    return(
+        <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">
+            <span className="navbar-brand"></span>
+            <ul className="navbar-nav px-3">
+                <li className="nav-item text-nowrap">
+                    <a  className="nav-link" href="#"
+                        onClick={() => mapActions.logout(auth)}>
+                        <LogOut />
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    )
+}
 
 export default Navbar
 

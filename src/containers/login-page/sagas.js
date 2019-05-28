@@ -1,22 +1,34 @@
 import { call, takeEvery } from 'redux-saga/effects'
 import { LOGIN_ACTIONS as C } from '../actionTypes'
 import { post } from '../../utility/http-client'
-import { SetItem } from '../../utility/cache'
+import { SetItem, RemoveItem } from '../../utility/cache'
 import { navigate } from '@reach/router'
 
 import { Config } from '../../AppConfig'
 
-const API_URL =  `${Config.API_URL}/login`
+const LOGIN_URL =  `${Config.API_URL}/login`
+const LOGOUT_URL =  `${Config.API_URL}/logout`
 
 export function* loginSaga() {
     yield takeEvery(C.LOGIN, loginWorker)
 }
 
-function* loginWorker(params) {
-    const response = yield(call(post, API_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
-    SetItem(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
+export function* logoutSaga() {
+    yield takeEvery(C.LOGOUT, logoutWorker)
+}
 
-    navigate('/')
+
+function* loginWorker(params) {
+    const response = yield(call(post, LOGIN_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
+    SetItem(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
     
-    return response;
+    navigate('/')
+}
+
+function* logoutWorker(params) {
+    RemoveItem(`AUTHTOKEN_${params.payload.userName.toUpperCase()}`)
+    
+    yield(call(post, LOGOUT_URL, params.payload, C.LOGOUT_SUCCESS, C.LOGOUT_FAILURE))
+    
+    navigate('/login')
 }
