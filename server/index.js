@@ -3,6 +3,7 @@ const delay = require('express-delay')
 const { port = 3333 } = require('minimist')(process.argv)
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
 const users = require('./data/users.json')
 const items = require('./data/items.json')
@@ -24,7 +25,11 @@ const app = express()
     .use('/', express.static('./dist/img'));
 
 //Wildcards
-app.post('/api/login', (req, res) => { console.log(req.body); res.status(200).json({"userName":req.body.userName, "authToken":"token"}) })
+app.post('/api/login', (req, res) => { 
+    console.log(req.body); 
+    authToken = generateToken(req.body)
+    res.status(200).json({"userName":req.body.userName, "authToken":authToken}) 
+})
 app.post('/api/*', (req, res) => { console.log(req.body); res.status(200).json(req.body) })
 app.delete('/api/*/:id', (req, res) => res.status(200).json({}))
 
@@ -34,5 +39,15 @@ app.get('/api/items', (req, res) => res.status(200).json(items))
 app.get('/api/categories', (req, res) => res.status(200).json(categories))
 app.get('/api/assets', (req, res) => res.status(200).json(assets))
 
+const generateToken = (user) => {
+    var a = {
+        userName:  user.userName,
+        role:'admin'
+    }
+    
+    return token = jwt.sign(a , "jwtsecret", {
+        expiresIn: 60 *60*24 //24hrs
+    })
+}
 
 app.listen(port, () => console.log('App server running on port ' + port + ' with random delay'))
