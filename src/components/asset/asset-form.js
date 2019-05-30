@@ -19,7 +19,7 @@ const AssetForm = ({ asset, onClose, onSave, onDelete, saving, deleting }) => {
         fileName: Yup.string().min(2).max(2000).required(),
         fileSizeBytes: Yup.number().required(),
         title: Yup.string().min(2).max(100).required(),
-        description: Yup.string().notRequired(),
+        description: Yup.string().required(),
         transcripts: Yup.string().notRequired(),
         author: Yup.string().notRequired(),
         categories: Yup.array().required(),
