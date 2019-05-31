@@ -52,7 +52,7 @@ const CategoryForm = ({ category, onClose, onSave, onDelete, saving, deleting })
                                 <Field type="text" name="shortName" component={InputBox} placeholder="Short Name" floatinglabel="1" />
                             </div>
                             <div className="form-row mb-3">
-                                <Field type="checkbox" name="active" component={CheckBox} label="Active" />
+                                <Field type="checkbox" name="active" component={CheckBox} label="Active"/>
                             </div>
 
                             <ButtonBar
