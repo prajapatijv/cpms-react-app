@@ -1,6 +1,5 @@
 import React from 'react'
 import { Router, Redirect } from "@reach/router"
-import { useMappedState } from "redux-react-hook"
 import { GetCookie } from './utility/cookie'
 
 import { WithBasicLayout, WithOpenLayout } from './layouts'

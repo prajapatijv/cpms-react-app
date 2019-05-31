@@ -5,15 +5,18 @@ import * as Yup from 'yup'
 import PropTypes from 'prop-types'
 
 import { InputBox } from '../shared/input-box'
+import { CheckBox } from '../shared/check-box'
 
 const LoginForm = ({ auth, onLogin }) => {
 
     const schema = Yup.object().shape({
         userName: Yup.string().min(2).max(30).required(),
-        password: Yup.string().min(6).max(15).required()
+        password: Yup.string().min(6).max(15).required(),
+        rememberMe: Yup.boolean().notRequired()
     })
 
     const onLoginAction = (values, actions) => {
+        debugger
         onLogin(values)
         actions.setSubmitting(false)
     }
@@ -36,6 +39,9 @@ const LoginForm = ({ auth, onLogin }) => {
                         </div>
                         <div className="form-label-group">
                             <Field type="text" name="password" component={InputBox} placeholder="Password" floatinglabel="1" />
+                        </div>
+                        <div className="form-label-group mb-3">
+                            <Field type="checkbox" name="rememberMe" component={CheckBox} label="Remember me"/>
                         </div>
                         <button className="btn btn-lg btn-primary btn-block" type="submit" disabled={auth.processing} >
                             {auth.processing ? <div className="spinner-border spinner-border-sm text-light py-2 px-2 mr-2" role="status"/> : null}

@@ -4,6 +4,7 @@ const initialState={
     authToken:'',
     userName:'',
     password:'',
+    rememberMe: false,
     processing: false,
     errors:[]
 }
@@ -15,7 +16,12 @@ const Status = (state=initialState, action) => {
             return {...state, processing:true }
 
         case C.LOGIN_SUCCESS:
-            return {...state, userName:action.payload.userName, authToken:action.payload.authToken, password:"", processing:false }
+            return {...state, 
+                    userName:action.payload.userName, 
+                    authToken:action.payload.authToken, 
+                    password:"", 
+                    processing:false 
+                }
 
         case C.LOGIN_FAILURE:
             return {...state, errors:[...state.errors, action.payload] , processing:false }
