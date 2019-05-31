@@ -1,4 +1,4 @@
-import { all , call} from "redux-saga/effects";
+import { all , call} from "redux-saga/effects"
 
 import { loginSaga, logoutSaga } from '../containers/login-page/sagas'
 import withPageSaga from '../utility/with-page-saga'

@@ -26,7 +26,7 @@ export const TextAreaBox = ({
         <ErrorMessage className="invalid-feedback" component="div" name={field.name} />
       </div>
     )
-};
+}
 
 const TextArea = ({ field, props, touched, errors, cls }) =>
   <textarea className={cls}

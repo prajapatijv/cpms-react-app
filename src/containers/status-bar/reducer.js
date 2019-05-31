@@ -25,4 +25,4 @@ const Status = (state=initialState, action) => {
     }
 }
 
-export default Status;
+export default Status

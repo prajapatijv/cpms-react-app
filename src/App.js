@@ -3,4 +3,4 @@ import Routes from './routes'
 
 const App = (props) => <Routes {...props} />
 
-export default App;
+export default App

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import AssetForm from './asset-form'
-import NavLink from '../shared/navlink';
+import NavLink from '../shared/navlink'
 import PageWrapper from '../shared/page-wrapper'
 
 const AssetPage = (props) => {

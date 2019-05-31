@@ -1,5 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types';
+import PropTypes from 'prop-types'
 import { Formik, Field } from 'formik'
 import { InputBox } from '../shared/input-box'
 import * as Yup from 'yup'

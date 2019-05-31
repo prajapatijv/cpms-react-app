@@ -56,7 +56,7 @@ const template = (contextObj, state, action, defaultEntity, filterByFn) => {
         }        
 
         default:
-            return state;
+            return state
     }
 }
 

@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const ButtonBar = ({ showDelete, onDelete, saving, deleting, dirty, isValid }) =>
     <div className="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">

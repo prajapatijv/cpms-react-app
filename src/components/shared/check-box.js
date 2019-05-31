@@ -19,7 +19,7 @@ export const CheckBox = ({
       </label>
     </div>
   )
-};
+}
 
 const Check = ({ field, props, touched, errors, cls }) =>
   <input className={cls} id={field.name}

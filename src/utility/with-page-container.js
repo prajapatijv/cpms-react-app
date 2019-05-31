@@ -36,7 +36,7 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
 
     useEffect(() => {
         mapActions.fetch("")
-    }, []);
+    }, [])
 
     return (
         <WithBasicLayout>

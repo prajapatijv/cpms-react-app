@@ -1,17 +1,17 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { StoreContext } from 'redux-react-hook';
-import * as serviceWorker from './serviceWorker';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { StoreContext } from 'redux-react-hook'
+import * as serviceWorker from './serviceWorker'
 
 import { HandleError } from './utility/status'
 
-import './stylesheets/custom.scss';
-import './stylesheets/index.scss';
+import './stylesheets/custom.scss'
+import './stylesheets/index.scss'
 
 import configureStore from './configureStore'
 import { Env , Config } from './AppConfig'
 
-import App from './App';
+import App from './App'
 
 
 const store = configureStore({})
@@ -27,9 +27,9 @@ ReactDOM.render(
     <StoreContext.Provider value={store}>
         <App config={Config} />
     </StoreContext.Provider>,
-    document.getElementById('root'));
+    document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister()

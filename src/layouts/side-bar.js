@@ -7,7 +7,7 @@ import NavLink from '../components/shared/navlink'
 import './side-bar.scss'
 
 const Sidebar = () => {
-    const [toggle, setToggle] = useState(1);
+    const [toggle, setToggle] = useState(1)
 
     var cls = classNames({
         'bg-light': true,

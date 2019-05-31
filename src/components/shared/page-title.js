@@ -17,7 +17,7 @@ const PageTitle = ({ adding, title, onClose }) =>
         </button>
     </React.Fragment>
 
-export default PageTitle;
+export default PageTitle
 
 PageTitle.propTypes = {
     title: PropTypes.string

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useMappedState, useDispatch } from "redux-react-hook";
+import React from 'react'
+import { useMappedState, useDispatch } from "redux-react-hook"
 
 import Statusbar from '../../components/shared/status-bar'
 import * as actions from './actions'

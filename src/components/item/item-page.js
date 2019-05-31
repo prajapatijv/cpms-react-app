@@ -23,4 +23,4 @@ const ItemLines = ({ items}) =>
         </NavLink>
     )
 
-export default ItemPage;
+export default ItemPage

@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "@reach/router";
+import React from "react"
+import { Link } from "@reach/router"
 
 const NavLink = ({activeClassName, ...props}) => 
 <Link
@@ -7,7 +7,7 @@ const NavLink = ({activeClassName, ...props}) =>
     getProps={({ isCurrent }) => {
         return {
             className:  isCurrent ? `${props.className} ${activeClassName}` : props.className
-        };
+        }
     }}
 />
 
