@@ -1,7 +1,8 @@
 import { call, takeEvery } from 'redux-saga/effects'
 import { LOGIN_ACTIONS as C } from '../actionTypes'
 import { post } from '../../utility/http-client'
-import { SetItem, RemoveItem } from '../../utility/cache'
+import { SetCookie, RemoveCookie } from '../../utility/cookie'
+
 import { navigate } from '@reach/router'
 
 import { Config } from '../../AppConfig'
@@ -20,14 +21,12 @@ export function* logoutSaga() {
 
 function* loginWorker(params) {
     const response = yield(call(post, LOGIN_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
-    SetItem(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
-    
+    SetCookie(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
     navigate('/')
 }
 
 function* logoutWorker(params) {
-    RemoveItem(`AUTHTOKEN_${params.payload.userName.toUpperCase()}`)
-    
+    RemoveCookie(`AUTHTOKEN_${params.payload.userName.toUpperCase()}`)
     yield(call(post, LOGOUT_URL, params.payload, C.LOGOUT_SUCCESS, C.LOGOUT_FAILURE))
     
     navigate('/login')

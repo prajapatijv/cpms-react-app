@@ -1,6 +1,7 @@
 import React from 'react'
 import { Router, Redirect } from "@reach/router"
 import { useMappedState } from "redux-react-hook"
+import { GetCookie } from './utility/cookie'
 
 import { WithBasicLayout, WithOpenLayout } from './layouts'
 import LoginPage from './containers/login-page/login'
@@ -43,11 +44,14 @@ const NotFound = ({ location }) =>
 
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
+  
   const mapState  = (state) => { return { auth: state.auth }}        
   const { auth  } = useMappedState(mapState)
 
+  const authToken = GetCookie(`AUTHTOKEN_${auth.userName.toUpperCase()}`)
+debugger
   return(
-    auth.authToken !== "" ? 
+    authToken !== "" ? 
         <Component {...props} /> : <Redirect noThrow to='/login' />   
   )
 }
