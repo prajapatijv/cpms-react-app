@@ -16,7 +16,6 @@ const LoginForm = ({ auth, onLogin }) => {
     })
 
     const onLoginAction = (values, actions) => {
-        debugger
         onLogin(values)
         actions.setSubmitting(false)
     }
