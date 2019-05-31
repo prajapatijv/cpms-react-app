@@ -21,6 +21,7 @@ export function* logoutSaga() {
 
 function* loginWorker(params) {
     const response = yield(call(post, LOGIN_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
+    SetCookie('THISUSERNAME',response.userName.toUpperCase())
     SetCookie(`AUTHTOKEN_${response.userName.toUpperCase()}`, response.authToken)
     navigate('/')
 }

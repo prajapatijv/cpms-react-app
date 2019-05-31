@@ -45,11 +45,9 @@ const NotFound = ({ location }) =>
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
   
-  const mapState  = (state) => { return { auth: state.auth }}        
-  const { auth  } = useMappedState(mapState)
+  const thisUser = GetCookie('THISUSERNAME')
+  const authToken = GetCookie(`AUTHTOKEN_${thisUser}`)
 
-  const authToken = GetCookie(`AUTHTOKEN_${auth.userName.toUpperCase()}`)
-debugger
   return(
     authToken !== "" ? 
         <Component {...props} /> : <Redirect noThrow to='/login' />   
