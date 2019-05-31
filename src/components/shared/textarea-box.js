@@ -1,4 +1,5 @@
 import React from 'react'
+import { ErrorMessage } from 'formik'
 import classNames from 'classnames'
 import './textarea-box.scss'
 
@@ -22,6 +23,7 @@ export const TextAreaBox = ({
       <div className={clsig}>
         <TextArea field={field} props={props} touched={touched} errors={errors} cls={cls} />
         <FloatingLabel props={props} />
+        <ErrorMessage className="invalid-feedback" component="div" name={field.name} />
       </div>
     )
 };

@@ -1,6 +1,8 @@
 import React from 'react'
+import { ErrorMessage } from 'formik'
 import classNames from 'classnames'
 import './input-box.scss'
+
 
 export const InputBox = ({
   field, // { name, value, onChange, onBlur }
@@ -9,7 +11,8 @@ export const InputBox = ({
 }) => {
   var cls = classNames({
     'form-control': true,
-    'is-invalid': touched[field.name] && errors[field.name]
+    'is-invalid': touched[field.name] && errors[field.name],
+    'is-valid': touched[field.name] && !errors[field.name]
   })
 
   var clsig = classNames({
@@ -26,6 +29,7 @@ export const InputBox = ({
         </div>
         <TextBox field={field} props={props} touched={touched} errors={errors} cls={cls} />
         <FloatingLabel props={props} />
+        <ErrorMessage className="invalid-feedback" component="div" name={field.name} />
       </div>
     )
   }
@@ -34,6 +38,7 @@ export const InputBox = ({
       <div className={clsig} >
         <TextBox field={field} props={props} touched={touched} errors={errors} cls={cls} />
         <FloatingLabel props={props} />
+        <ErrorMessage className="invalid-feedback" component="div" name={field.name} />
       </div>
     )
   }
