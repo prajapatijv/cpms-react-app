@@ -11,14 +11,14 @@ import AssetPage from './containers/asset-page/asset'
 
 const Routes = (props) =>
   <Router>
-    <HomePage path="/" />
     <LoginPage {...props} path="/login"/>
+    <ProtectedRoute component={HomePage} {...props} path="/" />
     <ProtectedRoute component={UserPage} {...props} path="users" />
     <ProtectedRoute component={UserPage} {...props} path="users/:id" />
     <ProtectedRoute component={ItemPage} {...props} path="items" />
     <ProtectedRoute component={ItemPage} {...props} path="items/:id" />
-    <ProtectedRoute component={CategoryPage} {...props} path="categories" />
-    <ProtectedRoute component={CategoryPage} {...props} path="categories/:id" />
+    <ProtectedRoute component={CategoryPage} {...props} path="/categories" />
+    <ProtectedRoute component={CategoryPage} {...props} path="/categories/:id" />
     <ProtectedRoute component={AssetPage} {...props} path="assets" />
     <ProtectedRoute component={AssetPage} {...props} path="assets/:id" />
     <NotFound default />
