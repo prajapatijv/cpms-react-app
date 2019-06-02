@@ -27,7 +27,7 @@ const app = express()
 //Wildcards
 app.post('/api/login', (req, res) => { 
     console.log(req.body); 
-    authToken = generateToken(req.body)
+    const authToken = generateToken(req.body)
     res.status(200).json({"userName":req.body.userName, "authToken":authToken}) 
 })
 app.post('/api/*', (req, res) => { console.log(req.body); res.status(200).json(req.body) })
