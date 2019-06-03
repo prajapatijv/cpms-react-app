@@ -1,5 +1,4 @@
-FROM node:8.16-jessie
-
+FROM node:10.16.0
 
 # Create App Directory
 WORKDIR /cpms-react-app

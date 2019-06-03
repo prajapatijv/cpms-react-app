@@ -15,5 +15,6 @@ export const SetAuth = (authResponse) => {
 }
 
 export const RemoveAuth = (userName) => {
+    RemoveCookie(THISUSERNAME)
     RemoveCookie(`${AUTHTOKEN}${userName.toUpperCase()}`)
 }
