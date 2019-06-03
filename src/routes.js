@@ -1,7 +1,7 @@
 import React from 'react'
 import { Router, Redirect } from "@reach/router"
-import { GetCookie } from './utility/cookie'
 
+import { GetAuth } from './utility/auth-service'
 import { WithBasicLayout, WithOpenLayout } from './layouts'
 import LoginPage from './containers/login-page/login'
 import UserPage from './containers/user-page/user'
@@ -44,8 +44,7 @@ const NotFound = ({ location }) =>
 
 const ProtectedRoute = ({ component: Component, ...props }) => {
   
-  const thisUser = GetCookie('THISUSERNAME')
-  const authToken = GetCookie(`AUTHTOKEN_${thisUser}`)
+  const authToken = GetAuth()
 
   return(
     authToken !== "" ? 
