@@ -24,7 +24,7 @@ const jwtVerify = (req, res, next) => {
         return
     }
 
-    const authorizationHeader = req.headers.authorization
+    const authorizationHeader = req.headers.authorization || ""
     if (authorizationHeader.startsWith('jwt')) {
         const token = authorizationHeader.split(" ")[1]
         jwt.verify(token, TOKEN_KEY, (err,payload) => {
@@ -38,6 +38,9 @@ const jwtVerify = (req, res, next) => {
                 }
             }
         })
+    }
+    else {
+        res.status(400).json("Bad request: Auth failed")
     }
 }
 
