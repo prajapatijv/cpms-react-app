@@ -31,7 +31,7 @@ export default Statusbar
 
 const Error = ({hasErrors,  status, clearErrors}) =>
     hasErrors && 
-    <div className="alert alert-dismissible fade show alert-warning app-alert " role="alert">
+    <div className="alert alert-dismissible fade show alert-secondary app-alert shadow " role="alert">
         <AlertCircle />
         <strong className="alert-heading">
             Error: 
