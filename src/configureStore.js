@@ -1,4 +1,5 @@
-import { applyMiddleware, compose, createStore } from 'redux'
+import { applyMiddleware, createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 
 import createSagaMiddleware  from "redux-saga";
 import rootSaga from './containers/root-sagas'
@@ -21,7 +22,7 @@ const configureStore = (preloadedState) => {
     [middlewareEnhancer] :
     [middlewareEnhancer, monitorReducersEnhancer]
 
-  const composedEnhancers = compose(...enhancers)
+  const composedEnhancers = composeWithDevTools(...enhancers)
 
   const store = createStore(rootReducer, preloadedState, composedEnhancers)
 
