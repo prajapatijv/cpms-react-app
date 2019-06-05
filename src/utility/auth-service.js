@@ -9,9 +9,14 @@ export const GetAuth = () => {
 }
 
 export const SetAuth = (authResponse) => {
-    const userName = authResponse.userName.toUpperCase()
-    SetCookie(THISUSERNAME, userName)
-    SetCookie(`${AUTHTOKEN}${userName}`, authResponse.authToken)
+    if (authResponse.authToken) {
+        const userName = authResponse.userName.toUpperCase()
+        SetCookie(THISUSERNAME, userName)
+        SetCookie(`${AUTHTOKEN}${userName}`, authResponse.authToken)
+        return true
+    } else {
+        return false
+    }
 }
 
 export const RemoveAuth = (userName) => {

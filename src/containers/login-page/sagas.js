@@ -21,8 +21,7 @@ export function* logoutSaga() {
 
 function* loginWorker(params) {
     const response = yield(call(post, LOGIN_URL, params.payload, C.LOGIN_SUCCESS, C.LOGIN_FAILURE))
-    SetAuth(response)
-    navigate('/')
+    if (SetAuth(response)) navigate('/')
 }
 
 function* logoutWorker(params) {

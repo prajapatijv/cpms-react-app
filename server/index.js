@@ -55,8 +55,8 @@ const app = express()
 
 //Wildcards
 app.post('/api/login', (req, res) => { 
-    console.log(req.body); 
-    const authToken = generateToken(req.body)
+    console.log(req.body)
+    const authToken = generateToken(req)
     res.status(200).json({"userName":req.body.userName, "authToken":authToken}) 
 })
 app.post('/api/*', (req, res) => { console.log(req.body); res.status(200).json(req.body) })
@@ -69,15 +69,21 @@ app.get('/api/categories', (req, res) => res.status(200).json(categories))
 app.get('/api/assets', (req, res) => res.status(200).json(assets))
 
 
-const generateToken = (user) => {
-    var a = {
-        userName:  user.userName,
-        role:'admin'
+const generateToken = (req) => {
+    const user = users.find(u => u.userName === req.body.userName)
+    if (user && user.password === req.body.password) {
+        var payload = {
+            userName:  user.userName,
+            role:'admin'
+        }
+        
+        return token = jwt.sign(payload , TOKEN_KEY, {
+            expiresIn: 60 *60*24 //24hrs
+        })
     }
-    
-    return token = jwt.sign(a , TOKEN_KEY, {
-        expiresIn: 60 *60*24 //24hrs
-    })
+    else {
+        return null
+    }
 }
 
 app.listen(port, () => console.log('App server running on port ' + port + ' with random delay'))
