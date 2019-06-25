@@ -9,15 +9,15 @@ const Statusbar = ({ status, clearErrors, clearInfos }) => {
     const hasErrors = (status.errors && status.errors.length > 0)
     const hasInfos = (status.infos && status.infos.length > 0)
 
-    if (hasInfos) {
-        useEffect(() => {
-            let timer = setTimeout(() => {clearInfos()}, 2000)
+    useEffect(() => {
+        if (hasInfos) {
+            var timer = setTimeout(() => {clearInfos()}, 2000)
+        }
 
-            return() => {
-                clearTimeout(timer)
-            }
-        })
-    }
+        return() => {
+            if (hasInfos) clearTimeout(timer)
+        }
+    })
 
     return (
         <React.Fragment>
