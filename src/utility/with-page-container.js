@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react'
+import React, { useEffect } from 'react'
 import { bindActionCreators } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import withPageActions from './with-page-action'
@@ -20,8 +20,8 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
 
     const mapActions = bindActionCreators(actions, useDispatch());
 
-    const mapState = useCallback(
-        state => ({
+    const mapState = (state) => {
+        return {
             [listName]: state[stateName][listName],
             [entityName]: (props.id === undefined || state[stateName][entityName] !== undefined) ? 
                                 state[stateName][entityName] : 
@@ -29,13 +29,15 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
             fetching: state[stateName].fetching,
             saving: state[stateName].saving,
             deleting: state[stateName].deleting
-        }),
-    [props.id || ""])
+        }
+    }
+    
 
     const state = useSelector(mapState)
 
     useEffect(() => {
         mapActions.fetch("")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
