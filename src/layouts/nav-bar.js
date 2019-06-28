@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMappedState, useDispatch } from "redux-react-hook"
+import { useSelector, useDispatch } from 'react-redux'
 import { bindActionCreators } from 'redux'
 
 import { LogOut } from 'react-feather'
@@ -9,7 +9,7 @@ const Navbar = (props) => {
 
     const mapActions = bindActionCreators(actions, useDispatch())
     const mapState  = (state) => { return { auth: state.auth }}        
-    const { auth  } = useMappedState(mapState)
+    const { auth  } = useSelector(mapState)
 
     return(
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap">

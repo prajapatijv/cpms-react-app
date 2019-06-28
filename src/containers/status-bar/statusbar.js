@@ -1,5 +1,5 @@
 import React from 'react'
-import { useMappedState, useDispatch } from "redux-react-hook"
+import { useSelector, useDispatch } from 'react-redux'
 
 import Statusbar from '../../components/shared/status-bar'
 import * as actions from './actions'
@@ -13,7 +13,7 @@ const StatusBar = () => {
         }
     }
     
-    const { status  } = useMappedState(mapState)
+    const { status  } = useSelector(mapState)
 
     return (
         <Statusbar status={status} 

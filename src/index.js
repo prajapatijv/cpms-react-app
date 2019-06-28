@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { StoreContext } from 'redux-react-hook'
+import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker'
 
 import { HandleError } from './utility/status'
@@ -24,9 +24,9 @@ if (Config.ENV !== Env.Production) {
 window.addEventListener("error", (err) => HandleError(err.message, store.dispatch))
 
 ReactDOM.render(
-    <StoreContext.Provider value={store}>
+    <Provider store={store}>
         <App config={Config} />
-    </StoreContext.Provider>,
+    </Provider>,
     document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change

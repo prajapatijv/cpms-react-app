@@ -1,6 +1,6 @@
 import React, { useEffect, useCallback } from 'react'
 import { bindActionCreators } from 'redux'
-import { useMappedState, useDispatch } from "redux-react-hook"
+import { useSelector, useDispatch } from 'react-redux'
 import withPageActions from './with-page-action'
 import { WithBasicLayout }  from '../layouts'
 
@@ -32,7 +32,7 @@ const WithPageContainer = (WrappedComponent, props, context ) => {
         }),
     [props.id || ""])
 
-    const state = useMappedState(mapState)
+    const state = useSelector(mapState)
 
     useEffect(() => {
         mapActions.fetch("")
